@@ -1,0 +1,15 @@
+.header {
+  font-weight: 400;
+}
+
+.line {
+  padding: 16px 24px;
+}
+
+.lineTitle {
+  color: var(--tg-theme-subtitle-text-color);
+}
+
+.lineValue {
+  word-break: break-word;
+} 

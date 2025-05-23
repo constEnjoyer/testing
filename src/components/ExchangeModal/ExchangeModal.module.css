@@ -1,0 +1,766 @@
+/* Этот файл больше не используется, вся стилизация перенесена в styles.css */ 
+
+/* Модальное окно */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Центрируем окно вертикально как в CHANCE */
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1500;
+  backdrop-filter: blur(4px);
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+/* Добавляем класс-помощник для блокировки прокрутки всей страницы */
+.modalOpen {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.modalContainer {
+  width: 95%;
+  max-width: 360px; /* Точная ширина для Telegram Mini Apps */
+  /* Делаем высоту точно как в окне CHANCE */
+  height: auto; /* Автоматическая высота для адаптации к контенту */
+  min-height: 500px; /* Минимальная высота */
+  margin: 0 auto;
+  background-color: rgba(13, 6, 32, 0.85);
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  border: 1px solid rgba(138, 43, 226, 0.6);
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.6), 0 0 60px rgba(0, 60, 255, 0.3);
+  overflow: hidden;
+  position: relative;
+  animation: modalFadeIn 0.4s ease-out;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Добавляем темный слой поверх фона для лучшей читаемости */
+.modalContainer::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes modalFadeIn {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.modalHeader {
+  flex-shrink: 0; /* Предотвращаем сжатие заголовка */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+  position: relative;
+  background: linear-gradient(180deg, rgba(138, 43, 226, 0.3) 0%, rgba(13, 6, 32, 0) 100%);
+  z-index: 2;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.8), 0 0 20px rgba(138, 43, 226, 0.4), 2px 2px 2px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.5px;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.6), rgba(106, 71, 170, 0.7));
+  border: 2px solid rgba(138, 43, 226, 0.8);
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  z-index: 3;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+
+.closeButton:hover {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.8), rgba(106, 71, 170, 0.9));
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.closeButton:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+}
+
+/* Вкладки */
+.modalTabs {
+  flex-shrink: 0; /* Предотвращаем сжатие табов */
+  display: flex;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.modalTab {
+  flex: 1;
+  padding: 12px 15px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.active {
+  background: linear-gradient(180deg, rgba(138, 43, 226, 0.3) 0%, rgba(106, 71, 170, 0.2) 100%);
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+}
+
+.modalTab.active::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(138, 43, 226, 0.3), rgba(138, 43, 226, 0.8), rgba(138, 43, 226, 0.3));
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+}
+
+.modalTab:hover:not(.active) {
+  background: rgba(138, 43, 226, 0.1);
+}
+
+.modalContent {
+  padding: 15px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden !important; /* Принудительно скрываем прокрутку контента */
+  flex: 1; /* Убираем fixed height для контента */
+  display: flex;
+  flex-direction: column;
+}
+
+.modalOverlayScrollbar,
+.modalContainerScrollbar,
+.modalContentScrollbar {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
+/* Формы обмена и вывода */
+.exchangeForm, .withdrawForm {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.balanceInfo {
+  padding: 10px;
+  margin-bottom: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+}
+
+.balanceInfo p {
+  margin: 4px 0;
+  font-size: 14px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.exchangeResult {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 15px 0;
+  background: linear-gradient(120deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 215, 0, 0.15) 100%);
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #FFD700;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.tonLogo {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+  background-color: rgba(255, 215, 0, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.tonLogo span {
+  font-weight: bold;
+  color: #FFD700;
+}
+
+.inputWrapper {
+  margin-bottom: 15px;
+}
+
+.inputWrapper label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  display: block;
+  color: #ffffff;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Новые стили для контейнера ввода */
+.inputContainer {
+  position: relative;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.inputContainer input {
+  width: 100%;
+  background-color: rgba(16, 8, 38, 0.8);
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.inputContainer input:focus {
+  border-color: rgba(138, 43, 226, 0.8);
+  outline: none;
+  box-shadow: 0 0 5px rgba(138, 43, 226, 0.4);
+}
+
+/* Стили для кнопки MAX */
+.maxButton {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(to right, #8a2be2, #4b0082);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 5;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.maxButton:hover:not(:disabled) {
+  background: linear-gradient(to right, #9b4dff, #6c2aad);
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.maxButton:disabled {
+  background: linear-gradient(to right, #666, #444);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Стили для метки валюты */
+.currencyLabel {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 8px;
+  background: rgba(25, 10, 40, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  box-shadow: 0 0 8px rgba(138, 43, 226, 0.3);
+}
+
+.actionButton {
+  width: 100%;
+  margin-top: 15px;
+  background: linear-gradient(45deg, #6a47aa, #8A2BE2, #6a47aa);
+  background-size: 200% auto;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 12px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  animation: gradientShift 3s infinite alternate;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+  margin-top: auto; /* Прижимаем кнопку к низу формы */
+  margin-bottom: 5px;
+}
+
+@keyframes gradientShift {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.actionButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.7);
+}
+
+.actionButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.conversionResult {
+  text-align: center;
+  margin: 15px 0;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.conversionResult p {
+  margin: 4px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.errorMessage {
+  color: #ff5252;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 8px;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+}
+
+.successMessage {
+  color: #4caf50;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 8px;
+  padding: 8px;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-height: 700px) {
+  .modalContainer {
+    height: 95%; /* Уменьшаем высоту на маленьких экранах */
+  }
+  
+  .modalContent {
+    padding: 10px;
+  }
+  
+  .balanceInfo {
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .inputWrapper {
+    margin-bottom: 8px;
+  }
+  
+  .actionButton {
+    margin-top: 10px;
+    padding: 10px;
+  }
+}
+
+/* Анимация пульсации кнопки */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+  }
+}
+
+.actionButton:not(:disabled) {
+  animation: pulse 2s infinite, gradientShift 3s infinite alternate;
+}
+
+/* Добавляем стили для info box внизу обоих экранов */
+.exchangeInfo {
+  margin-top: 8px;
+  padding: 6px;
+  font-size: 11px;
+  line-height: 1.2;
+  background: rgba(20, 5, 40, 0.5);
+  border-radius: 8px;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* Корректируем медиа-запросы для адаптивности */
+@media (max-height: 740px) {
+  .modalContainer {
+    height: 430px;
+  }
+  
+  .modalContent {
+    padding: 8px;
+  }
+  
+  .modalHeader {
+    padding: 8px;
+  }
+  
+  .modalHeader h2 {
+    font-size: 18px;
+  }
+}
+
+/* Улучшаем стили для мобильных устройств */
+@media (max-width: 480px) {
+  .modalContainer {
+    width: 95%;
+    max-height: 90vh;
+    margin: 5vh auto;
+    padding: 10px;
+  }
+
+  .modalContent {
+    padding: 10px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .inputField {
+    font-size: 14px;
+    padding: 8px;
+    width: 100%;
+  }
+
+  .maxButton {
+    min-width: 60px;
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .actionButton {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    white-space: normal;
+    height: auto;
+    min-height: 48px;
+    margin-top: 16px;
+  }
+
+  .modalTab {
+    padding: 8px;
+    font-size: 14px;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .withdrawForm {
+    padding: 10px;
+  }
+
+  .balanceInfo {
+    font-size: 12px;
+    padding: 8px;
+    margin-bottom: 12px;
+  }
+
+  .inputWrapper {
+    margin-bottom: 12px;
+  }
+
+  .inputWrapper label {
+    font-size: 14px;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .walletAddressField {
+    font-size: 14px;
+    padding: 8px;
+    width: 100%;
+  }
+
+  .errorMessage,
+  .successMessage {
+    font-size: 12px;
+    padding: 8px;
+    margin: 8px 0;
+  }
+}
+
+/* Стили для вкладок и содержимого */
+.tabContentContainer {
+  padding: 16px;
+  color: #fff;
+}
+
+.cosmicTextContainer {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.goldenText {
+  color: #ffd700;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.cosmicText {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.instructionText {
+  color: #c9a0ff;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.resultContainer {
+  background-color: rgba(60, 20, 80, 0.5);
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.calculationResult {
+  color: #ffd700;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.errorMessage {
+  background-color: rgba(255, 0, 0, 0.2);
+  border: 1px solid rgba(255, 0, 0, 0.4);
+  color: #ff6b6b;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.successMessage {
+  background-color: rgba(0, 255, 0, 0.1);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  color: #4cff4c;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.buttonContainer {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.cosmicButton {
+  background: linear-gradient(to right, #8a2be2, #4b0082);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  transition: all 0.3s ease;
+}
+
+.cosmicButton:hover:not(:disabled) {
+  background: linear-gradient(to right, #9b4dff, #6c2aad);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.7);
+}
+
+.cosmicButton:disabled {
+  background: linear-gradient(to right, #666, #444);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Утилитарные классы для отступов */
+.mb3 {
+  margin-bottom: 12px;
+}
+
+.mb4 {
+  margin-bottom: 16px;
+}
+
+.mt4 {
+  margin-top: 16px;
+}
+
+/* Индикатор загрузки */
+.loadingIndicator {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.loadingSpinner {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(138, 43, 226, 0.3);
+  border-radius: 50%;
+  border-top: 3px solid rgba(138, 43, 226, 0.8);
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Поля ввода */
+.inputField {
+  width: 100%;
+}
+
+.walletAddressField {
+  width: 100%;
+}
+
+/* Исправляем проблему с прокруткой на мобильных устройствах */
+.modalContent {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(90vh - 120px);
+  padding-bottom: 20px;
+}
+
+/* Улучшаем читаемость текста */
+.balanceInfo,
+.withdrawForm label,
+.inputWrapper label {
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Общие улучшения для всех размеров экрана */
+.inputField,
+.walletAddressField {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 8px;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.inputField:focus,
+.walletAddressField:focus {
+  border-color: rgba(138, 43, 226, 0.8);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+  outline: none;
+}
+
+.actionButton {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.6), rgba(106, 71, 170, 0.7));
+  border: 2px solid rgba(138, 43, 226, 0.8);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.actionButton:hover:not(:disabled) {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.8), rgba(106, 71, 170, 0.9));
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+}
+
+.actionButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} 

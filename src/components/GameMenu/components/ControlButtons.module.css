@@ -1,0 +1,52 @@
+.controlButtonsContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.controlButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 0, 255, 0.6);
+  color: white;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+}
+
+.controlButton:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+}
+
+.controlButton:active {
+  transform: scale(0.95);
+}
+
+.soundButton {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(100, 0, 100, 0.3));
+}
+
+.refreshButton {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 100, 100, 0.3));
+}
+
+@media screen and (max-width: 380px) {
+  .controlButtonsContainer {
+    gap: 10px;
+  }
+
+  .controlButton {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+} 

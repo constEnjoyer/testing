@@ -1,0 +1,15 @@
+{
+  "app\\game-room\\page.tsx -> @/components/GameRoom/GameRoomContainer": {
+    "id": "app\\game-room\\page.tsx -> @/components/GameRoom/GameRoomContainer",
+    "files": [
+      "static/css/_app-pages-browser_src_components_GameRoom_GameRoomContainer_tsx.css",
+      "static/chunks/_app-pages-browser_src_components_GameRoom_GameRoomContainer_tsx.js"
+    ]
+  },
+  "core\\init.ts -> eruda": {
+    "id": "core\\init.ts -> eruda",
+    "files": [
+      "static/chunks/_app-pages-browser_node_modules_eruda_eruda_js.js"
+    ]
+  }
+}

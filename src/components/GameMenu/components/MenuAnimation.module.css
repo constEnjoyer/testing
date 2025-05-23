@@ -1,0 +1,12 @@
+.container {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  height: 100%;
+  width: 100%;
+}
+
+.visible {
+  opacity: 1;
+  transform: scale(1);
+} 

@@ -1,0 +1,130 @@
+/* Стили для профиля пользователя */
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  width: 100%;
+  max-width: 400px;
+  margin: 0 auto;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 10px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.userProfile:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(138, 43, 226, 0.3);
+}
+
+/* Контейнер для элементов управления (язык и кошелёк) */
+.controlsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 3px 0 8px;
+}
+
+/* Стили для иконки кошелька */
+.walletIconContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+}
+
+/* Делаем прозрачным фон для кнопки TON Connect */
+.tonConnectButton {
+  margin-top: 5px;
+  transition: transform 0.3s ease;
+}
+
+.tonConnectButton:hover {
+  transform: scale(1.05);
+}
+
+.tonConnectButton > button {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(106, 179, 243, 0.5) !important;
+  backdrop-filter: blur(5px) !important;
+  box-shadow: 0 0 10px rgba(106, 179, 243, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.tonConnectButton > button:hover {
+  border: 1px solid rgba(106, 179, 243, 0.8) !important;
+  box-shadow: 0 0 15px rgba(106, 179, 243, 0.5) !important;
+}
+
+.menuHeader {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  touch-action: none;
+  -ms-touch-action: none;
+  user-select: none;
+  -webkit-touch-callout: none;
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  background: rgba(0, 0, 0, 0.8);
+}
+
+.headerContent {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 8px;
+  height: 45px;
+  border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+.balanceWrapper {
+  position: absolute;
+  top: 40px; /* Поднимаем максимально близко к headerContent */
+  left: 0;
+  right: 0;
+  width: 100%;
+  padding: 0;
+  margin-top: -8px; /* Отрицательный отступ для поднятия выше */
+  background: rgba(0, 0, 0, 0.4);
+  z-index: 9; /* Чуть ниже чем headerContent */
+  border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.2);
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  flex: 1;
+}
+
+.walletIconContainer {
+  margin-left: auto;
+}
+
+.tonConnectButton {
+  margin: 0;
+  transition: transform 0.3s ease;
+}
+
+.tonConnectButton:hover {
+  transform: scale(1.05);
+}
+
+.tonConnectButton > button {
+  background: rgba(0, 0, 0, 0.3) !important;
+  border: 1px solid rgba(106, 179, 243, 0.5) !important;
+  backdrop-filter: blur(5px) !important;
+  box-shadow: 0 0 10px rgba(106, 179, 243, 0.3) !important;
+  transition: all 0.3s ease !important;
+}
+
+.tonConnectButton > button:hover {
+  border: 1px solid rgba(106, 179, 243, 0.8) !important;
+  box-shadow: 0 0 15px rgba(106, 179, 243, 0.5) !important;
+} 

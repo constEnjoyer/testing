@@ -1,0 +1,3317 @@
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameRoom/styles/components.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
+/* Общие стили для оверлеев */
+.components_overlayContainer___Pscg {
+  position: fixed;
+  inset: 0;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: rgba(0, 0, 0, 0.7);
+  z-index: 50;
+  animation: components_fadeIn__c_aAF 0.3s ease-in-out;
+}
+
+.components_overlayContent__Li7KV {
+  background-color: #1e293b; /* bg-slate-800 */
+  padding: 1.5rem;
+  border-radius: 0.5rem;
+  max-width: 28rem;
+  width: 100%;
+  text-align: center;
+}
+
+/* Компонент WaitingOverlay */
+.components_waitingOverlay__RN3vU {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.components_waitingContent__bytzQ {
+  background: rgba(46, 16, 101, 0.9);
+  border: 2px solid #8A2BE2;
+  border-radius: 15px;
+  padding: 20px 15px;
+  text-align: center;
+  color: white;
+  width: 85%;
+  max-width: 320px;
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
+  position: relative;
+}
+
+/* Улучшенные стили для кнопки закрытия */
+.components_closeButton__LFRx0 {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: rgba(138, 43, 226, 0.3);
+  border: 2px solid #8A2BE2;
+  color: #fff;
+  font-size: 24px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  line-height: 1;
+  z-index: 1100; /* Увеличиваем z-index */
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+}
+
+.components_closeButton__LFRx0:hover {
+  background: rgba(138, 43, 226, 0.6);
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.7);
+}
+
+.components_closeButton__LFRx0:active {
+  transform: scale(0.95);
+}
+
+.components_closeButton__LFRx0:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.components_waitingAnimation__acS4L {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 15px;
+}
+
+.components_loader__zU6aK {
+  width: 50px;
+  height: 50px;
+  border: 3px solid #8A2BE2;
+  border-bottom-color: transparent;
+  border-radius: 50%;
+  animation: components_spin__vj9Ta 1.5s linear infinite;
+}
+
+.components_waitingTitle__xMRug {
+  color: #e4c1ff;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 18px;
+  font-weight: 600;
+}
+
+.components_waitingTime__4rX0C {
+  font-size: 16px;
+  color: #ccc;
+  margin: 10px 0;
+}
+
+.components_cancelButton__fKRqk {
+  background: linear-gradient(135deg, #9c27b0, #673ab7);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 8px 16px;
+  font-size: 14px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.components_cancelButton__fKRqk:hover {
+  background: linear-gradient(135deg, #8e24aa, #5e35b1);
+  transform: translateY(-2px);
+}
+
+.components_cancelButton__fKRqk:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Компонент CountdownOverlay */
+.components_countdownContainer__s4iVW {
+  background: rgba(46, 16, 101, 0.9);
+  border: 2px solid #8A2BE2;
+  border-radius: 15px;
+  padding: 30px 20px;
+  text-align: center;
+  color: white;
+  width: 85%;
+  max-width: 320px;
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.components_countdownValue__E1_1Q {
+  font-size: 60px;
+  font-weight: bold;
+  color: #e4c1ff;
+  margin: 15px 0;
+  text-shadow: 0 0 10px rgba(156, 39, 176, 0.8);
+  animation: components_pulse__aXvsa 1s infinite;
+}
+
+.components_countdownText__V_OLk {
+  color: #ccc;
+  margin: 10px 0;
+  font-size: 16px;
+}
+
+/* Компонент ResultModal */
+.components_resultContainer__hqZXg {
+  animation: components_fadeIn__c_aAF 0.5s ease-out;
+}
+
+.components_resultTitle__JxeMR {
+  font-size: 1.875rem;
+  font-weight: 800;
+  margin-bottom: 1rem;
+}
+
+.components_winTitle__47wy7 {
+  color: #10b981; /* text-emerald-500 */
+}
+
+.components_loseTitle__e7Bbb {
+  color: #ef4444; /* text-red-500 */
+}
+
+.components_resultMessage__0uPi8 {
+  font-size: 1.125rem;
+  color: #d1d5db; /* text-gray-300 */
+  margin-bottom: 1.5rem;
+}
+
+.components_resultDetails__oUJ7o {
+  background-color: rgba(0, 0, 0, 0.2);
+  padding: 1rem;
+  border-radius: 0.5rem;
+  margin-bottom: 1.5rem;
+}
+
+.components_playAgainButton__Bg2w9 {
+  background-color: #3b82f6; /* bg-blue-500 */
+  color: white;
+  font-weight: 700;
+  padding: 0.75rem 2rem;
+  border-radius: 0.375rem;
+  transition-property: background-color;
+  transition-duration: 300ms;
+}
+
+.components_playAgainButton__Bg2w9:hover:not(:disabled) {
+  background-color: #2563eb; /* bg-blue-600 */
+}
+
+/* Анимации */
+@keyframes components_spin__vj9Ta {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+@keyframes components_pulse__aXvsa {
+  0% { transform: scale(1); opacity: 1; }
+  50% { transform: scale(1.05); opacity: 0.8; }
+  100% { transform: scale(1); opacity: 1; }
+}
+
+@keyframes components_fadeIn__c_aAF {
+  from {
+    opacity: 0;
+    transform: scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes components_scaleIn__ah9ip {
+  from { transform: scale(0.8); opacity: 0; }
+  to { transform: scale(1); opacity: 1; }
+}
+
+@keyframes components_pulseScale__Tv5go {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Компонент ChanceOverlay */
+.components_chanceOverlay__PQTR7 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.3);
+  z-index: 1000;
+  animation: components_fadeIn__c_aAF 0.3s ease-in-out;
+}
+
+.components_chanceMessage__Jwrfe {
+  display: none;
+}
+
+.components_chanceButton__2gnik {
+  background: linear-gradient(180deg, rgba(138, 43, 226, 0.8) 0%, rgba(75, 0, 130, 0.8) 100%);
+  border: 2px solid rgba(255, 215, 0, 0.8);
+  border-radius: 15px;
+  padding: 20px 70px;
+  text-align: center;
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.6), 0 0 60px rgba(255, 215, 0, 0.4);
+  animation: components_pulseScale__Tv5go 1.5s infinite ease-in-out, components_glow__aCtqE 2s infinite alternate;
+  width: 80%;
+  max-width: 400px;
+}
+
+.components_chanceText__EGx5l {
+  font-size: 40px;
+  font-weight: bold;
+  color: #FFD700;
+  letter-spacing: 2px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+@keyframes components_glow__aCtqE {
+  from {
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.6), 0 0 40px rgba(255, 215, 0, 0.3);
+  }
+  to {
+    box-shadow: 0 0 30px rgba(138, 43, 226, 0.8), 0 0 60px rgba(255, 215, 0, 0.5);
+  }
+}
+
+.components_chanceMessage__Jwrfe h2 {
+  font-size: 28px;
+  color: gold;
+  margin: 10px 0;
+  font-weight: bold;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.6);
+  animation: components_pulseScale__Tv5go 1.5s infinite ease-in-out;
+}
+
+/* Компонент ResultOverlay */
+.components_resultOverlay___Zk4P {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+  animation: components_fadeIn__c_aAF 0.3s ease-in-out;
+}
+
+.components_resultContainer__hqZXg {
+  background: rgba(46, 16, 101, 0.9);
+  border: 2px solid #8A2BE2;
+  border-radius: 15px;
+  padding: 25px 20px;
+  text-align: center;
+  color: white;
+  width: 85%;
+  max-width: 320px;
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
+  animation: components_scaleIn__ah9ip 0.5s ease-out;
+}
+
+.components_resultWin__eRpBj {
+  color: #4ade80;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.components_resultLose__MEfqR {
+  color: #ef4444;
+  font-size: 32px;
+  font-weight: bold;
+}
+
+.components_resultMessage__0uPi8 {
+  margin: 20px 0;
+  font-size: 16px;
+  color: #d1d5db;
+  line-height: 1.4;
+}
+
+.components_resultAmount__9F7Bs {
+  font-size: 24px;
+  color: gold;
+  margin: 15px 0;
+  font-weight: bold;
+}
+
+.components_resultButton__sR7WZ {
+  background: linear-gradient(135deg, #9c27b0, #673ab7);
+  color: white;
+  border: none;
+  border-radius: 25px;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 20px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.components_resultButton__sR7WZ:hover {
+  background: linear-gradient(135deg, #8e24aa, #5e35b1);
+  transform: translateY(-2px);
+}
+
+/* Удаляем полностью все стили для EmergencyReset */ 
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameRoom/styles/GameRoomContainer.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+.GameRoomContainer_container__oC7RT {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  overflow: hidden;
+  background-color: #121420;
+}
+
+/* Фон со звездами */
+.GameRoomContainer_starsBackground__NdLtf {
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/images/room.jpg');
+  background-size: cover;
+  background-position: center;
+  z-index: 0;
+  opacity: 1;
+}
+
+/* Сетка на полу */
+.GameRoomContainer_gridFloor__IUlYk {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 40vh;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0) 0%, 
+    rgba(41, 128, 185, 0.2) 60%, 
+    rgba(41, 128, 185, 0.4) 100%);
+  z-index: 1;
+}
+
+/* Содержимое */
+.GameRoomContainer_content___a7rT {
+  flex: 1;
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 1rem;
+  z-index: 2;
+}
+
+/* Контейнер для колеса */
+.GameRoomContainer_wheelContainer__uIJqN {
+  width: 90%;
+  max-width: 360px;
+  height: 360px;
+  margin: 20px auto;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1;
+}
+
+/* Обертка для решения проблем с z-index */
+.GameRoomContainer_controlsWrapper___2OAI {
+  position: relative;
+  z-index: 100;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  pointer-events: all; /* Гарантирует, что события мыши работают */
+}
+
+/* Кнопка ШАНС */
+.GameRoomContainer_playButtonContainer__MvGMa {
+  position: relative;
+  z-index: 50;
+  width: 80%;
+  max-width: 300px;
+  margin-top: 30px;
+}
+
+.GameRoomContainer_playButton__ft6v8 {
+  background: linear-gradient(180deg, #8036da 0%, #5c1db3 100%);
+  border: 2px solid #a64dff;
+  box-shadow: 0 0 15px rgba(166, 77, 255, 0.6), 0 0 30px rgba(166, 77, 255, 0.3);
+  color: white;
+  font-weight: bold;
+  padding: 16px 24px;
+  border-radius: 50px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  transition: all 0.3s ease;
+  font-size: 18px;
+  width: 100%;
+  text-transform: uppercase;
+  position: relative;
+  overflow: hidden;
+  z-index: 10;
+}
+
+.GameRoomContainer_playButton__ft6v8.GameRoomContainer_disabled___EQX9 {
+  background: linear-gradient(180deg, #5e5e5e 0%, #3d3d3d 100%);
+  border: 2px solid #747474;
+  box-shadow: none;
+  color: #b0b0b0;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.GameRoomContainer_playButton__ft6v8:hover:not(.GameRoomContainer_disabled___EQX9) {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(166, 77, 255, 0.8), 0 0 40px rgba(166, 77, 255, 0.4);
+}
+
+.GameRoomContainer_playButton__ft6v8:active:not(.GameRoomContainer_disabled___EQX9) {
+  transform: translateY(1px);
+  box-shadow: 0 0 10px rgba(166, 77, 255, 0.5), 0 0 20px rgba(166, 77, 255, 0.2);
+}
+
+.GameRoomContainer_playButton__ft6v8::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(45deg, rgba(255, 255, 255, 0) 0%, rgba(255, 255, 255, 0.2) 50%, rgba(255, 255, 255, 0) 100%);
+  transform: translateX(-100%);
+  transition: transform 0.6s;
+}
+
+.GameRoomContainer_playButton__ft6v8:not(:disabled):hover::after {
+  transform: translateX(100%);
+}
+
+.GameRoomContainer_chanceText__jFUzT {
+  font-weight: bold;
+  letter-spacing: 1px;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.GameRoomContainer_btnIcon__1CH4B {
+  filter: drop-shadow(0 0 3px rgba(255, 255, 255, 0.7));
+}
+
+/* Падающие монеты */
+@keyframes GameRoomContainer_falling__mB9V_ {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(100vh) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.GameRoomContainer_coin1__MmnWL, .GameRoomContainer_coin2__cy6Qs, .GameRoomContainer_coin3__9IA7N, .GameRoomContainer_coin4__oDbDU, .GameRoomContainer_coin5__EtxkH {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: url('/images/tonot.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  opacity: 0;
+}
+
+.GameRoomContainer_coin1__MmnWL {
+  left: 15%;
+  animation: GameRoomContainer_falling__mB9V_ 15s ease-in infinite;
+  animation-delay: 2s;
+}
+
+.GameRoomContainer_coin2__cy6Qs {
+  left: 35%;
+  animation: GameRoomContainer_falling__mB9V_ 12s ease-in infinite;
+  animation-delay: 5s;
+}
+
+.GameRoomContainer_coin3__9IA7N {
+  left: 55%;
+  animation: GameRoomContainer_falling__mB9V_ 18s ease-in infinite;
+  animation-delay: 7s;
+}
+
+.GameRoomContainer_coin4__oDbDU {
+  left: 75%;
+  animation: GameRoomContainer_falling__mB9V_ 14s ease-in infinite;
+  animation-delay: 4s;
+}
+
+.GameRoomContainer_coin5__EtxkH {
+  left: 85%;
+  animation: GameRoomContainer_falling__mB9V_ 16s ease-in infinite;
+  animation-delay: 1s;
+}
+
+/* Медиа-запросы */
+@media (max-width: 768px) {
+  .GameRoomContainer_wheelContainer__uIJqN {
+    height: 250px;
+  }
+  
+  .GameRoomContainer_playButton__ft6v8 {
+    font-size: 1rem;
+    padding: 10px 25px;
+  }
+}
+
+@media (max-width: 480px) {
+  .GameRoomContainer_wheelContainer__uIJqN {
+    height: 200px;
+  }
+  
+  .GameRoomContainer_playButton__ft6v8 {
+    font-size: 0.9rem;
+    padding: 8px 20px;
+  }
+}
+
+/* Фон космического пространства */
+.GameRoomContainer_starsBackground__NdLtf::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 0, 255, 0.2) 0%, transparent 60%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Градиент затемнения */
+.GameRoomContainer_starsBackground__NdLtf::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.8) 0%, 
+    rgba(0, 0, 0, 0.4) 20%, 
+    rgba(0, 0, 0, 0.2) 50%, 
+    rgba(0, 0, 0, 0.4) 80%, 
+    rgba(0, 0, 0, 0.8) 100%);
+  pointer-events: none;
+}
+
+/* Кнопка звука */
+.GameRoomContainer_soundButton__73VwN {
+  position: absolute;
+  bottom: 75px;
+  right: 15px;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 0, 255, 0.6);
+  color: white;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+  z-index: 10;
+}
+
+.GameRoomContainer_soundButton__73VwN:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+}
+
+.GameRoomContainer_soundButton__73VwN:active {
+  transform: scale(0.95);
+}
+
+/* Нижняя панель навигации */
+.GameRoomContainer_bottomNavigation__KoU5F {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(19, 26, 41, 0.9);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 10;
+  box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+  border-top: 1px solid rgba(78, 130, 237, 0.2);
+}
+
+.GameRoomContainer_navButton__Y_nN3 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100%;
+  padding: 0 15px;
+  color: #b0bcd7;
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.GameRoomContainer_navButton__Y_nN3:hover, .GameRoomContainer_navButton__Y_nN3.GameRoomContainer_active__jn8Na {
+  color: #ffffff;
+}
+
+.GameRoomContainer_navIcon__C6gdP {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+}
+
+/* Стили для оверлеев состояний игры */
+.GameRoomContainer_overlay__p5oHd {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  backdrop-filter: blur(5px);
+}
+
+.GameRoomContainer_overlayContent___htyu {
+  background: rgba(46, 16, 101, 0.9);
+  border: 2px solid #8A2BE2;
+  border-radius: 15px;
+  padding: 20px 15px;
+  text-align: center;
+  color: white;
+  width: 85%;
+  max-width: 320px;
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.5);
+  position: relative;
+}
+
+.GameRoomContainer_overlayContent___htyu h2 {
+  color: #e4c1ff;
+  margin-top: 0;
+  margin-bottom: 10px;
+  font-size: 20px;
+}
+
+.GameRoomContainer_overlayContent___htyu p {
+  font-size: 14px;
+  margin: 8px 0;
+  line-height: 1.3;
+}
+
+/* Спиннер для ожидания */
+.GameRoomContainer_spinner__I_R7p {
+  width: 50px;
+  height: 50px;
+  border: 4px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  border-top-color: #8A2BE2;
+  margin: 15px auto;
+  animation: GameRoomContainer_spin__Hu8kD 1s linear infinite;
+}
+
+@keyframes GameRoomContainer_spin__Hu8kD {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Кнопка отмены */
+.GameRoomContainer_cancelButton__BOwFr {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: rgba(138, 43, 226, 0.3);
+  border: 1px solid #8A2BE2;
+  color: #fff;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.GameRoomContainer_cancelButton__BOwFr:hover {
+  background: rgba(138, 43, 226, 0.6);
+  transform: scale(1.1);
+}
+
+/* Стили для обратного отсчета */
+.GameRoomContainer_countdown__s1UAt {
+  font-size: 4rem;
+  color: #9c27b0;
+  font-weight: bold;
+  margin: 15px 0;
+  text-shadow: 0 0 10px rgba(156, 39, 176, 0.8);
+  animation: GameRoomContainer_pulse__ULwcj 1s infinite;
+}
+
+@keyframes GameRoomContainer_pulse__ULwcj {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.05); }
+  100% { transform: scale(1); }
+}
+
+/* Стили для результатов игры */
+.GameRoomContainer_winContent__gAU_2 {
+  color: #4caf50;
+}
+
+.GameRoomContainer_loseContent__3piFY {
+  color: #f44336;
+}
+
+.GameRoomContainer_resultTitle__j8QDc {
+  font-size: 28px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.GameRoomContainer_resultAmount__868SQ {
+  font-size: 20px;
+  margin-bottom: 20px;
+}
+
+.GameRoomContainer_closeButton__S_ZrQ {
+  background: #8A2BE2;
+  color: white;
+  border: none;
+  border-radius: 20px;
+  padding: 10px 20px;
+  font-size: 16px;
+  margin-top: 15px;
+  cursor: pointer;
+  transition: all 0.3s;
+}
+
+.GameRoomContainer_closeButton__S_ZrQ:hover {
+  background: #9c27b0;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+@keyframes GameRoomContainer_fadeIn__8MEUA {
+  0% { opacity: 0; }
+  100% { opacity: 1; }
+}
+
+@keyframes GameRoomContainer_fadeOut__aCFpk {
+  0% { opacity: 1; }
+  100% { opacity: 0; visibility: hidden; }
+}
+
+@keyframes GameRoomContainer_glow__USvT_ {
+  from {
+    box-shadow: 0 0 10px rgba(255, 215, 0, 0.5), 0 0 20px rgba(255, 215, 0, 0.2);
+    text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  }
+  to {
+    box-shadow: 0 0 20px rgba(255, 215, 0, 0.8), 0 0 30px rgba(255, 215, 0, 0.5);
+    text-shadow: 0 0 15px rgba(255, 215, 0, 0.8), 0 0 20px rgba(255, 215, 0, 0.5);
+  }
+}
+
+.GameRoomContainer_errorMessage__7UMTh {
+  color: #ff5e5e;
+  font-size: 14px;
+  text-align: center;
+  padding: 10px;
+  background-color: rgba(255, 0, 0, 0.1);
+  border-radius: 8px;
+  border: 1px solid rgba(255, 94, 94, 0.5);
+  margin-top: 10px;
+  width: 100%;
+}
+
+.GameRoomContainer_balanceIndicator__TOYD9 {
+  background-color: rgba(79, 70, 229, 0.2);
+  border: 1px solid rgba(79, 70, 229, 0.4);
+  padding: 8px 16px;
+  border-radius: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  color: white;
+  font-size: 14px;
+  box-shadow: 0 0 10px rgba(79, 70, 229, 0.3);
+  backdrop-filter: blur(4px);
+}
+
+.GameRoomContainer_balanceLabel__6Xdh5 {
+  color: #c4b5fd;
+  font-weight: 500;
+}
+
+.GameRoomContainer_balanceValue__y_mrV {
+  font-weight: bold;
+  font-size: 16px;
+  color: white;
+  text-shadow: 0 0 10px rgba(255, 255, 255, 0.5);
+}
+
+.GameRoomContainer_balanceLoading__YIOeV {
+  color: #c4b5fd;
+  font-style: italic;
+  animation: GameRoomContainer_pulse__ULwcj 1.5s infinite;
+}
+
+@keyframes GameRoomContainer_pulse__ULwcj {
+  0% { opacity: 0.6; }
+  50% { opacity: 1; }
+  100% { opacity: 0.6; }
+}
+
+@keyframes GameRoomContainer_fadeIn__8MEUA {
+  from { opacity: 0; transform: translateY(-10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+.GameRoomContainer_buyMoreButton__gjHQ8 {
+  background: rgba(79, 70, 229, 0.3);
+  color: white;
+  border: 1px solid rgba(79, 70, 229, 0.6);
+  border-radius: 50%;
+  width: 24px;
+  height: 24px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  margin-left: 8px;
+  padding: 0;
+  line-height: 1;
+  transition: all 0.2s ease;
+}
+
+.GameRoomContainer_buyMoreButton__gjHQ8:hover {
+  background: rgba(79, 70, 229, 0.5);
+  transform: scale(1.1);
+  box-shadow: 0 0 8px rgba(79, 70, 229, 0.6);
+}
+
+.GameRoomContainer_chanceButton__sATV2 {
+  background: linear-gradient(180deg, #8B5CF6 0%, #6D28D9 100%);
+  border: none;
+  border-radius: 12px;
+  padding: 12px 24px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 4px 15px rgba(139, 92, 246, 0.3);
+}
+
+.GameRoomContainer_chanceButton__sATV2:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(139, 92, 246, 0.4);
+}
+
+.GameRoomContainer_chanceButton__sATV2:active {
+  transform: translateY(1px);
+}
+
+.GameRoomContainer_chanceButton__sATV2.GameRoomContainer_disabled___EQX9 {
+  opacity: 0.6;
+  cursor: not-allowed;
+  background: linear-gradient(180deg, #6B7280 0%, #4B5563 100%);
+  box-shadow: none;
+}
+
+.GameRoomContainer_buttonContent__ixISm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+}
+
+.GameRoomContainer_ticketIcon__cukG7 {
+  width: 24px;
+  height: 24px;
+  object-fit: contain;
+}
+
+.GameRoomContainer_buttonText__E7Z3C {
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+/* Анимация пульсации */
+@keyframes GameRoomContainer_pulse-glow__Pq9tx {
+  0% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.3),
+                0 0 10px rgba(255, 215, 0, 0.2);
+  }
+  50% {
+    box-shadow: 0 0 8px rgba(255, 215, 0, 0.4),
+                0 0 12px rgba(255, 215, 0, 0.3);
+  }
+  100% {
+    box-shadow: 0 0 5px rgba(255, 215, 0, 0.3),
+                0 0 10px rgba(255, 215, 0, 0.2);
+  }
+}
+
+/* Анимация парения */
+@keyframes GameRoomContainer_floating__f2X8_ {
+  0% {
+    transform: translateX(-50%) translateY(0px);
+  }
+  50% {
+    transform: translateX(-50%) translateY(-3px);
+  }
+  100% {
+    transform: translateX(-50%) translateY(0px);
+  }
+}
+
+/* Обновленные стили для кнопки билета */
+.GameRoomContainer_ticketButton__fUC65 {
+  position: absolute;
+  bottom: 160px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: transparent;
+  border: none;
+  cursor: pointer;
+  padding: 5px;
+  z-index: 2;
+  border-radius: 50%;
+  animation: GameRoomContainer_floating__f2X8_ 3s ease-in-out infinite, GameRoomContainer_pulse-glow__Pq9tx 2s ease-in-out infinite;
+}
+
+.GameRoomContainer_ticketButton__fUC65:hover {
+  animation: none;
+  transform: translateX(-50%) scale(1.05);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.5),
+              0 0 15px rgba(255, 215, 0, 0.3);
+}
+
+.GameRoomContainer_ticketButton__fUC65:active {
+  transform: translateX(-50%) scale(0.95);
+}
+
+.GameRoomContainer_ticketButton__fUC65:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+  filter: grayscale(100%);
+  animation: none;
+}
+
+.GameRoomContainer_ticketIcon__cukG7 {
+  width: 54px;
+  height: 54px;
+  filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.4));
+  transition: all 0.3s ease;
+}
+
+/* Контейнер для всех оверлеев */
+.GameRoomContainer_overlaysContainer__aBOmV {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none; /* По умолчанию не блокируем клики */
+  z-index: 1000;
+}
+
+.GameRoomContainer_overlaysContainer__aBOmV > * {
+  pointer-events: auto; /* Возвращаем обработку кликов для активных оверлеев */
+} 
+/*!************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameRoom/styles/GameHeader.module.css ***!
+  \************************************************************************************************************************************************************************************************************************************************************************************************/
+.GameHeader_header__1cj5t {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 100%;
+  position: relative;
+}
+
+.GameHeader_titleWrapper__Ibiwq {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.GameHeader_title__BG2e6 {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  color: #7e98db;
+  text-shadow: 0 0 10px rgba(78, 130, 237, 0.6);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.GameHeader_subtitle__nnryX {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 5px 0 0 0;
+  padding: 0;
+  color: #b0bcd7;
+  text-shadow: 0 0 5px rgba(78, 130, 237, 0.4);
+}
+
+/* Стили для отображения баланса */
+.GameHeader_balancePanel__bB83B {
+  width: 380px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 0, 255, 0.9);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  margin: 0 auto;
+}
+
+.GameHeader_balanceItem__6n6dC {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 75px;
+  transition: all 0.3s ease;
+  padding: 2px 4px;
+}
+
+.GameHeader_balanceItem__6n6dC:hover {
+  transform: scale(1.05);
+}
+
+.GameHeader_balanceValue__Axikn {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.GameHeader_tokenIcon__9unZu {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Анимация появления заголовка */
+@keyframes GameHeader_fadeInDown__PTuzo {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.GameHeader_title__BG2e6 {
+  animation: GameHeader_fadeInDown__PTuzo 0.5s ease-out forwards;
+}
+
+.GameHeader_subtitle__nnryX {
+  animation: GameHeader_fadeInDown__PTuzo 0.5s ease-out 0.2s forwards;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .GameHeader_title__BG2e6 {
+    font-size: 1.5rem;
+  }
+  
+  .GameHeader_subtitle__nnryX {
+    font-size: 0.9rem;
+  }
+
+  .GameHeader_balancePanel__bB83B {
+    padding: 0 10px;
+  }
+  
+  .GameHeader_balanceValue__Axikn {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .GameHeader_title__BG2e6 {
+    font-size: 1.3rem;
+  }
+  
+  .GameHeader_subtitle__nnryX {
+    font-size: 0.8rem;
+  }
+
+  .GameHeader_balancePanel__bB83B {
+    padding: 0 8px;
+    width: 96%;
+  }
+  
+  .GameHeader_balanceValue__Axikn {
+    font-size: 11px;
+  }
+
+  .GameHeader_balanceItem__6n6dC {
+    min-width: 70px;
+  }
+}
+
+@media (max-width: 380px) {
+  .GameHeader_balancePanel__bB83B {
+    width: 98%;
+    height: 30px;
+    padding: 0 6px;
+  }
+  
+  .GameHeader_balanceItem__6n6dC {
+    min-width: 65px;
+    gap: 3px;
+    padding: 1px 2px;
+  }
+  
+  .GameHeader_balanceValue__Axikn {
+    font-size: 10px;
+  }
+  
+  .GameHeader_tokenIcon__9unZu {
+    width: 14px;
+    height: 14px;
+  }
+} 
+/*!******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameRoom/styles/BottomNavigation.module.css ***!
+  \******************************************************************************************************************************************************************************************************************************************************************************************************/
+.BottomNavigation_bottomNavigation__SsYz_ {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  width: 100%;
+  height: 60px;
+  background: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(10px);
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  z-index: 12000;
+  pointer-events: all;
+  border-top: 1px solid rgba(147, 51, 234, 0.3);
+  box-shadow: 0 -5px 10px rgba(147, 51, 234, 0.15);
+}
+
+.BottomNavigation_navButton__A9VtR {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  padding: 5px 0;
+  color: rgba(255, 255, 255, 0.7);
+  text-decoration: none;
+  font-size: 12px;
+  font-weight: 500;
+  transition: all 0.3s ease;
+  position: relative;
+  background: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.BottomNavigation_navButton__A9VtR:hover {
+  color: #ffffff;
+  transform: translateY(-2px);
+}
+
+.BottomNavigation_navButton__A9VtR.BottomNavigation_active__1dNG9 {
+  color: #ffffff;
+}
+
+.BottomNavigation_navButton__A9VtR.BottomNavigation_active__1dNG9::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 2px;
+  background: linear-gradient(to right, rgba(147, 51, 234, 0.8), rgba(147, 51, 234, 0.4));
+  border-radius: 2px;
+}
+
+.BottomNavigation_navIcon__Tqz6G {
+  width: 24px;
+  height: 24px;
+  margin-bottom: 4px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  filter: drop-shadow(0 0 2px rgba(147, 51, 234, 0.5));
+}
+
+/* Стили для иконок обмена */
+.BottomNavigation_exchangeIconsContainer__mTtuX {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 4px;
+  margin-bottom: 4px;
+}
+
+.BottomNavigation_exchangeNavIcon__wfK8T {
+  width: 20px;
+  height: 20px;
+  filter: drop-shadow(0 0 2px rgba(147, 51, 234, 0.5));
+}
+
+.BottomNavigation_exchangeArrow__4QdLO {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 14px;
+  margin: 0 2px;
+}
+
+/* Стили для иконок истории */
+.BottomNavigation_historyIconsRow__d4rGd {
+  display: flex;
+  align-items: center;
+  gap: 2px;
+  margin-bottom: 4px;
+}
+
+.BottomNavigation_historyToken__5DZl2 {
+  width: 12px;
+  height: 12px;
+  filter: drop-shadow(0 0 2px rgba(147, 51, 234, 0.5));
+}
+
+/* Анимация для активного элемента */
+@keyframes BottomNavigation_pulse__4yWuJ {
+  0% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+  50% {
+    filter: brightness(1.3);
+    transform: scale(1.05);
+  }
+  100% {
+    filter: brightness(1);
+    transform: scale(1);
+  }
+}
+
+.BottomNavigation_navButton__A9VtR.BottomNavigation_active__1dNG9 .BottomNavigation_navIcon__Tqz6G,
+.BottomNavigation_navButton__A9VtR.BottomNavigation_active__1dNG9 .BottomNavigation_exchangeNavIcon__wfK8T,
+.BottomNavigation_navButton__A9VtR.BottomNavigation_active__1dNG9 .BottomNavigation_historyToken__5DZl2 {
+  animation: BottomNavigation_pulse__4yWuJ 2s infinite;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 767px) {
+  .BottomNavigation_bottomNavigation__SsYz_ {
+    height: 55px;
+  }
+  
+  .BottomNavigation_navButton__A9VtR {
+    font-size: 10px;
+  }
+  
+  .BottomNavigation_navIcon__Tqz6G {
+    width: 20px;
+    height: 20px;
+  }
+  
+  .BottomNavigation_exchangeNavIcon__wfK8T {
+    width: 18px;
+    height: 18px;
+  }
+  
+  .BottomNavigation_historyToken__5DZl2 {
+    width: 10px;
+    height: 10px;
+  }
+  
+  .BottomNavigation_exchangeArrow__4QdLO {
+    font-size: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .BottomNavigation_bottomNavigation__SsYz_ {
+    height: 50px;
+  }
+  
+  .BottomNavigation_navButton__A9VtR {
+    font-size: 9px;
+  }
+  
+  .BottomNavigation_navIcon__Tqz6G {
+    width: 18px;
+    height: 18px;
+    margin-bottom: 2px;
+  }
+  
+  .BottomNavigation_exchangeNavIcon__wfK8T {
+    width: 16px;
+    height: 16px;
+  }
+  
+  .BottomNavigation_historyToken__5DZl2 {
+    width: 8px;
+    height: 8px;
+  }
+  
+  .BottomNavigation_exchangeArrow__4QdLO {
+    font-size: 10px;
+    margin: 0 1px;
+  }
+} 
+/*!**************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameRoom/styles/YinYangWheel.module.css ***!
+  \**************************************************************************************************************************************************************************************************************************************************************************************************/
+.YinYangWheel_wheelContainer__qfUbh {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.YinYangWheel_wheel__z4FVi {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 3;
+  transition: transform 0.3s ease;
+  /* Добавляем внутреннее свечение для колеса */
+  filter: drop-shadow(0 0 15px rgba(147, 51, 234, 0.5));
+}
+
+.YinYangWheel_wheelImage__li_48 {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 4;
+}
+
+/* Вращение колеса - 3 оборота с плавным замедлением */
+@keyframes YinYangWheel_spin__RrG9U {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1080deg);
+  }
+}
+
+.YinYangWheel_spinning___tJIs {
+  animation: YinYangWheel_spin__RrG9U 5s ease-out forwards;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* Фиолетовое свечение вокруг колеса */
+.YinYangWheel_purpleGlow__51fp4 {
+  position: absolute;
+  width: 130%;
+  height: 130%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle, 
+    rgba(213, 100, 255, 0.7) 0%, 
+    rgba(126, 60, 240, 0.5) 30%, 
+    rgba(126, 60, 240, 0.2) 60%, 
+    transparent 85%
+  );
+  filter: blur(20px);
+  z-index: 2;
+  animation: YinYangWheel_pulse__Md9KD 3s infinite alternate;
+  transform-origin: center center;
+}
+
+/* Добавляем кольцевую обводку */
+.YinYangWheel_purpleGlow__51fp4::before {
+  content: "";
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  border-radius: 50%;
+  border: 5px solid rgba(213, 137, 255, 0.5);
+  box-shadow:
+    0 0 25px rgba(170, 60, 240, 0.7),
+    inset 0 0 20px rgba(170, 60, 240, 0.7);
+  z-index: 2;
+  animation: YinYangWheel_rotateBorder__BXjru 10s linear infinite;
+}
+
+/* Добавляем вторую обводку с обратным вращением */
+.YinYangWheel_purpleGlow__51fp4::after {
+  content: "";
+  position: absolute;
+  top: -8%;
+  left: -8%;
+  width: 116%;
+  height: 116%;
+  border-radius: 50%;
+  border: 2px solid rgba(132, 85, 238, 0.3);
+  box-shadow:
+    0 0 15px rgba(132, 85, 238, 0.5),
+    inset 0 0 10px rgba(132, 85, 238, 0.5);
+  z-index: 1;
+  animation: YinYangWheel_rotateBorder__BXjru 15s linear infinite reverse;
+}
+
+@keyframes YinYangWheel_rotateBorder__BXjru {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes YinYangWheel_pulse__Md9KD {
+  0% {
+    transform: scale(0.98);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.02);
+    opacity: 0.9;
+  }
+}
+
+/* Анимация пульсации */
+@keyframes YinYangWheel_pulseGlow__8gJmv {
+  0% {
+    box-shadow: 
+      0 0 30px rgba(147, 51, 234, 0.3),
+      0 0 60px rgba(147, 51, 234, 0.2),
+      0 0 90px rgba(147, 51, 234, 0.1);
+    transform: scale(0.98);
+  }
+  50% {
+    box-shadow: 
+      0 0 40px rgba(147, 51, 234, 0.5),
+      0 0 80px rgba(147, 51, 234, 0.3),
+      0 0 120px rgba(147, 51, 234, 0.2);
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 
+      0 0 30px rgba(147, 51, 234, 0.3),
+      0 0 60px rgba(147, 51, 234, 0.2),
+      0 0 90px rgba(147, 51, 234, 0.1);
+    transform: scale(0.98);
+  }
+}
+
+/* Анимация вращения градиента */
+@keyframes YinYangWheel_rotateGradient__1PID5 {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Добавляем подложку с градиентом */
+.YinYangWheel_wheelContainer__qfUbh::before {
+  content: '';
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(147, 51, 234, 0.2),
+    rgba(168, 85, 247, 0.4),
+    rgba(147, 51, 234, 0.6),
+    rgba(168, 85, 247, 0.4),
+    rgba(147, 51, 234, 0.2)
+  );
+  animation: YinYangWheel_rotateGradient__1PID5 10s linear infinite;
+  filter: blur(10px);
+  z-index: 1;
+}
+
+/* Добавляем пульсирующий круг */
+.YinYangWheel_wheelContainer__qfUbh::after {
+  content: '';
+  position: absolute;
+  width: 105%;
+  height: 105%;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgba(147, 51, 234, 0.3);
+  animation: YinYangWheel_pulseGlow__8gJmv 3s ease-in-out infinite;
+  z-index: 2;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .YinYangWheel_wheelContainer__qfUbh {
+    width: 240px;
+    height: 240px;
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .YinYangWheel_wheelContainer__qfUbh {
+    width: 200px;
+    height: 200px;
+    margin: 15px auto;
+  }
+} 
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/ExchangeModal/ExchangeModal.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
+/* Этот файл больше не используется, вся стилизация перенесена в styles.css */ 
+
+/* Модальное окно */
+.ExchangeModal_modalOverlay__JJrw4 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Центрируем окно вертикально как в CHANCE */
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1500;
+  backdrop-filter: blur(4px);
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+/* Добавляем класс-помощник для блокировки прокрутки всей страницы */
+.ExchangeModal_modalOpen__yqyCZ {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.ExchangeModal_modalContainer__0mvZ3 {
+  width: 95%;
+  max-width: 360px; /* Точная ширина для Telegram Mini Apps */
+  /* Делаем высоту точно как в окне CHANCE */
+  height: auto; /* Автоматическая высота для адаптации к контенту */
+  min-height: 500px; /* Минимальная высота */
+  margin: 0 auto;
+  background-color: rgba(13, 6, 32, 0.85);
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  border: 1px solid rgba(138, 43, 226, 0.6);
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.6), 0 0 60px rgba(0, 60, 255, 0.3);
+  overflow: hidden;
+  position: relative;
+  animation: ExchangeModal_modalFadeIn__DmN8N 0.4s ease-out;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Добавляем темный слой поверх фона для лучшей читаемости */
+.ExchangeModal_modalContainer__0mvZ3::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes ExchangeModal_modalFadeIn__DmN8N {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.ExchangeModal_modalHeader__izdHu {
+  flex-shrink: 0; /* Предотвращаем сжатие заголовка */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+  position: relative;
+  background: linear-gradient(180deg, rgba(138, 43, 226, 0.3) 0%, rgba(13, 6, 32, 0) 100%);
+  z-index: 2;
+}
+
+.ExchangeModal_modalHeader__izdHu h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.8), 0 0 20px rgba(138, 43, 226, 0.4), 2px 2px 2px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.5px;
+}
+
+.ExchangeModal_closeButton__a3hfr {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.6), rgba(106, 71, 170, 0.7));
+  border: 2px solid rgba(138, 43, 226, 0.8);
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  z-index: 3;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+
+.ExchangeModal_closeButton__a3hfr:hover {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.8), rgba(106, 71, 170, 0.9));
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.ExchangeModal_closeButton__a3hfr:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+}
+
+/* Вкладки */
+.ExchangeModal_modalTabs__bHXUF {
+  flex-shrink: 0; /* Предотвращаем сжатие табов */
+  display: flex;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.ExchangeModal_modalTab___YzDC {
+  flex: 1;
+  padding: 12px 15px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.ExchangeModal_active__3THrC {
+  background: linear-gradient(180deg, rgba(138, 43, 226, 0.3) 0%, rgba(106, 71, 170, 0.2) 100%);
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+}
+
+.ExchangeModal_modalTab___YzDC.ExchangeModal_active__3THrC::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(138, 43, 226, 0.3), rgba(138, 43, 226, 0.8), rgba(138, 43, 226, 0.3));
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+}
+
+.ExchangeModal_modalTab___YzDC:hover:not(.ExchangeModal_active__3THrC) {
+  background: rgba(138, 43, 226, 0.1);
+}
+
+.ExchangeModal_modalContent__SEJgg {
+  padding: 15px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden !important; /* Принудительно скрываем прокрутку контента */
+  flex: 1; /* Убираем fixed height для контента */
+  display: flex;
+  flex-direction: column;
+}
+
+.ExchangeModal_modalOverlayScrollbar__ICBJs,
+.ExchangeModal_modalContainerScrollbar__FxlaT,
+.ExchangeModal_modalContentScrollbar__KsTbc {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
+/* Формы обмена и вывода */
+.ExchangeModal_exchangeForm__6GCC8, .ExchangeModal_withdrawForm__YK97n {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ExchangeModal_balanceInfo__YLawP {
+  padding: 10px;
+  margin-bottom: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+}
+
+.ExchangeModal_balanceInfo__YLawP p {
+  margin: 4px 0;
+  font-size: 14px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.ExchangeModal_exchangeResult__8zo3m {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 15px 0;
+  background: linear-gradient(120deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 215, 0, 0.15) 100%);
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #FFD700;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.ExchangeModal_tonLogo__QoQPW {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+  background-color: rgba(255, 215, 0, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.ExchangeModal_tonLogo__QoQPW span {
+  font-weight: bold;
+  color: #FFD700;
+}
+
+.ExchangeModal_inputWrapper__ZHSn6 {
+  margin-bottom: 15px;
+}
+
+.ExchangeModal_inputWrapper__ZHSn6 label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  display: block;
+  color: #ffffff;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Новые стили для контейнера ввода */
+.ExchangeModal_inputContainer__qSJtQ {
+  position: relative;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.ExchangeModal_inputContainer__qSJtQ input {
+  width: 100%;
+  background-color: rgba(16, 8, 38, 0.8);
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.ExchangeModal_inputContainer__qSJtQ input:focus {
+  border-color: rgba(138, 43, 226, 0.8);
+  outline: none;
+  box-shadow: 0 0 5px rgba(138, 43, 226, 0.4);
+}
+
+/* Стили для кнопки MAX */
+.ExchangeModal_maxButton__dRM4q {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(to right, #8a2be2, #4b0082);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 5;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.ExchangeModal_maxButton__dRM4q:hover:not(:disabled) {
+  background: linear-gradient(to right, #9b4dff, #6c2aad);
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.ExchangeModal_maxButton__dRM4q:disabled {
+  background: linear-gradient(to right, #666, #444);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Стили для метки валюты */
+.ExchangeModal_currencyLabel__gKyLF {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 8px;
+  background: rgba(25, 10, 40, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  box-shadow: 0 0 8px rgba(138, 43, 226, 0.3);
+}
+
+.ExchangeModal_actionButton__HgmPc {
+  width: 100%;
+  margin-top: 15px;
+  background: linear-gradient(45deg, #6a47aa, #8A2BE2, #6a47aa);
+  background-size: 200% auto;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 12px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  animation: ExchangeModal_gradientShift__dv_k2 3s infinite alternate;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+  margin-top: auto; /* Прижимаем кнопку к низу формы */
+  margin-bottom: 5px;
+}
+
+@keyframes ExchangeModal_gradientShift__dv_k2 {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.ExchangeModal_actionButton__HgmPc:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.7);
+}
+
+.ExchangeModal_actionButton__HgmPc:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.ExchangeModal_conversionResult__tNBD1 {
+  text-align: center;
+  margin: 15px 0;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.ExchangeModal_conversionResult__tNBD1 p {
+  margin: 4px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.ExchangeModal_errorMessage__veApD {
+  color: #ff5252;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 8px;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+}
+
+.ExchangeModal_successMessage__JLPkO {
+  color: #4caf50;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 8px;
+  padding: 8px;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-height: 700px) {
+  .ExchangeModal_modalContainer__0mvZ3 {
+    height: 95%; /* Уменьшаем высоту на маленьких экранах */
+  }
+  
+  .ExchangeModal_modalContent__SEJgg {
+    padding: 10px;
+  }
+  
+  .ExchangeModal_balanceInfo__YLawP {
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .ExchangeModal_inputWrapper__ZHSn6 {
+    margin-bottom: 8px;
+  }
+  
+  .ExchangeModal_actionButton__HgmPc {
+    margin-top: 10px;
+    padding: 10px;
+  }
+}
+
+/* Анимация пульсации кнопки */
+@keyframes ExchangeModal_pulse__W1vXg {
+  0% {
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+  }
+}
+
+.ExchangeModal_actionButton__HgmPc:not(:disabled) {
+  animation: ExchangeModal_pulse__W1vXg 2s infinite, ExchangeModal_gradientShift__dv_k2 3s infinite alternate;
+}
+
+/* Добавляем стили для info box внизу обоих экранов */
+.ExchangeModal_exchangeInfo__51x3E {
+  margin-top: 8px;
+  padding: 6px;
+  font-size: 11px;
+  line-height: 1.2;
+  background: rgba(20, 5, 40, 0.5);
+  border-radius: 8px;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* Корректируем медиа-запросы для адаптивности */
+@media (max-height: 740px) {
+  .ExchangeModal_modalContainer__0mvZ3 {
+    height: 430px;
+  }
+  
+  .ExchangeModal_modalContent__SEJgg {
+    padding: 8px;
+  }
+  
+  .ExchangeModal_modalHeader__izdHu {
+    padding: 8px;
+  }
+  
+  .ExchangeModal_modalHeader__izdHu h2 {
+    font-size: 18px;
+  }
+}
+
+/* Улучшаем стили для мобильных устройств */
+@media (max-width: 480px) {
+  .ExchangeModal_modalContainer__0mvZ3 {
+    width: 95%;
+    max-height: 90vh;
+    margin: 5vh auto;
+    padding: 10px;
+  }
+
+  .ExchangeModal_modalContent__SEJgg {
+    padding: 10px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ExchangeModal_inputField__qarNt {
+    font-size: 14px;
+    padding: 8px;
+    width: 100%;
+  }
+
+  .ExchangeModal_maxButton__dRM4q {
+    min-width: 60px;
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .ExchangeModal_actionButton__HgmPc {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    white-space: normal;
+    height: auto;
+    min-height: 48px;
+    margin-top: 16px;
+  }
+
+  .ExchangeModal_modalTab___YzDC {
+    padding: 8px;
+    font-size: 14px;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .ExchangeModal_withdrawForm__YK97n {
+    padding: 10px;
+  }
+
+  .ExchangeModal_balanceInfo__YLawP {
+    font-size: 12px;
+    padding: 8px;
+    margin-bottom: 12px;
+  }
+
+  .ExchangeModal_inputWrapper__ZHSn6 {
+    margin-bottom: 12px;
+  }
+
+  .ExchangeModal_inputWrapper__ZHSn6 label {
+    font-size: 14px;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .ExchangeModal_walletAddressField__UpRFu {
+    font-size: 14px;
+    padding: 8px;
+    width: 100%;
+  }
+
+  .ExchangeModal_errorMessage__veApD,
+  .ExchangeModal_successMessage__JLPkO {
+    font-size: 12px;
+    padding: 8px;
+    margin: 8px 0;
+  }
+}
+
+/* Стили для вкладок и содержимого */
+.ExchangeModal_tabContentContainer__v6NG3 {
+  padding: 16px;
+  color: #fff;
+}
+
+.ExchangeModal_cosmicTextContainer__qVHfJ {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ExchangeModal_goldenText__igB_p {
+  color: #ffd700;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.ExchangeModal_cosmicText__tc4b3 {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.ExchangeModal_instructionText__kjVoW {
+  color: #c9a0ff;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.ExchangeModal_resultContainer__2HpJ0 {
+  background-color: rgba(60, 20, 80, 0.5);
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.ExchangeModal_calculationResult__WJ_mZ {
+  color: #ffd700;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.ExchangeModal_errorMessage__veApD {
+  background-color: rgba(255, 0, 0, 0.2);
+  border: 1px solid rgba(255, 0, 0, 0.4);
+  color: #ff6b6b;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.ExchangeModal_successMessage__JLPkO {
+  background-color: rgba(0, 255, 0, 0.1);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  color: #4cff4c;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.ExchangeModal_buttonContainer__gAsLc {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.ExchangeModal_cosmicButton__VJFmF {
+  background: linear-gradient(to right, #8a2be2, #4b0082);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  transition: all 0.3s ease;
+}
+
+.ExchangeModal_cosmicButton__VJFmF:hover:not(:disabled) {
+  background: linear-gradient(to right, #9b4dff, #6c2aad);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.7);
+}
+
+.ExchangeModal_cosmicButton__VJFmF:disabled {
+  background: linear-gradient(to right, #666, #444);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Утилитарные классы для отступов */
+.ExchangeModal_mb3__Ht39V {
+  margin-bottom: 12px;
+}
+
+.ExchangeModal_mb4__Tavel {
+  margin-bottom: 16px;
+}
+
+.ExchangeModal_mt4___yN2p {
+  margin-top: 16px;
+}
+
+/* Индикатор загрузки */
+.ExchangeModal_loadingIndicator__zJFVr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.ExchangeModal_loadingSpinner__gehjA {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(138, 43, 226, 0.3);
+  border-radius: 50%;
+  border-top: 3px solid rgba(138, 43, 226, 0.8);
+  animation: ExchangeModal_spin__ohCgM 1s linear infinite;
+}
+
+@keyframes ExchangeModal_spin__ohCgM {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Поля ввода */
+.ExchangeModal_inputField__qarNt {
+  width: 100%;
+}
+
+.ExchangeModal_walletAddressField__UpRFu {
+  width: 100%;
+}
+
+/* Исправляем проблему с прокруткой на мобильных устройствах */
+.ExchangeModal_modalContent__SEJgg {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(90vh - 120px);
+  padding-bottom: 20px;
+}
+
+/* Улучшаем читаемость текста */
+.ExchangeModal_balanceInfo__YLawP,
+.ExchangeModal_withdrawForm__YK97n label,
+.ExchangeModal_inputWrapper__ZHSn6 label {
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Общие улучшения для всех размеров экрана */
+.ExchangeModal_inputField__qarNt,
+.ExchangeModal_walletAddressField__UpRFu {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 8px;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.ExchangeModal_inputField__qarNt:focus,
+.ExchangeModal_walletAddressField__UpRFu:focus {
+  border-color: rgba(138, 43, 226, 0.8);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+  outline: none;
+}
+
+.ExchangeModal_actionButton__HgmPc {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.6), rgba(106, 71, 170, 0.7));
+  border: 2px solid rgba(138, 43, 226, 0.8);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.ExchangeModal_actionButton__HgmPc:hover:not(:disabled) {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.8), rgba(106, 71, 170, 0.9));
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+}
+
+.ExchangeModal_actionButton__HgmPc:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} 
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/Root/Root.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+.Root_loading__p_JjB {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/TicketPurchaseModal.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************/
+/* Модальное окно для покупки билетов */
+.TicketPurchaseModal_ticketModal__ZRbPS {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1500;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  padding: 0;
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.TicketPurchaseModal_ticketModalInner__W_fkf {
+  background-color: rgba(13, 6, 32, 0.85);
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  border: 1px solid rgba(138, 43, 226, 0.6);
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.6), 0 0 60px rgba(0, 60, 255, 0.3);
+  max-width: 320px;
+  width: 90%;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  position: relative;
+  animation: TicketPurchaseModal_modalFadeIn__TwRG2 0.4s ease-out;
+  margin: 0 auto;
+}
+
+@keyframes TicketPurchaseModal_modalFadeIn__TwRG2 {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.TicketPurchaseModal_ticketModalHeader__MoA22 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+  position: relative;
+  background: linear-gradient(180deg, rgba(138, 43, 226, 0.3) 0%, rgba(13, 6, 32, 0) 100%);
+}
+
+.TicketPurchaseModal_ticketModalHeader__MoA22 h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.8), 0 0 20px rgba(138, 43, 226, 0.4), 2px 2px 2px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.5px;
+}
+
+.TicketPurchaseModal_closeButton__GJvPi {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.6), rgba(106, 71, 170, 0.7));
+  border: 2px solid rgba(138, 43, 226, 0.8);
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  z-index: 3;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+
+.TicketPurchaseModal_closeButton__GJvPi:hover {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.8), rgba(106, 71, 170, 0.9));
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.TicketPurchaseModal_closeButton__GJvPi:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+}
+
+.TicketPurchaseModal_ticketModalContent__MZ1Jp {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Улучшаем читаемость текста на космическом фоне */
+.TicketPurchaseModal_ticketModalInner__W_fkf::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Звездная пыль вокруг билета */
+.TicketPurchaseModal_ticketImage__flxQy {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0 10px;
+  position: relative;
+}
+
+.TicketPurchaseModal_ticketImage__flxQy::before {
+  content: '';
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.3) 0%, rgba(138, 43, 226, 0) 70%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: TicketPurchaseModal_pulse__k9NQ3 2s infinite alternate;
+}
+
+@keyframes TicketPurchaseModal_pulse__k9NQ3 {
+  from {
+    opacity: 0.4;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+.TicketPurchaseModal_ticketDescription__YlRim {
+  text-align: center;
+  color: #ffffff;
+  font-size: 13px;
+  margin-bottom: 10px;
+  line-height: 1.3;
+  max-width: 95%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 8px 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Стили для контролов количества билетов */
+.TicketPurchaseModal_ticketAmountControl__MN6w3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px 15px;
+  border-radius: 50px;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
+}
+
+.TicketPurchaseModal_amountBtn__pD_P7 {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.5), rgba(106, 71, 170, 0.6));
+  border: 1px solid rgba(138, 43, 226, 0.7);
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.TicketPurchaseModal_amountBtn__pD_P7:hover {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.7), rgba(106, 71, 170, 0.8));
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+}
+
+.TicketPurchaseModal_ticketAmountInput__tGc1p {
+  width: 60px;
+  height: 32px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(138, 43, 226, 0.5);
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: inset 0 0 10px rgba(138, 43, 226, 0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.TicketPurchaseModal_ticketTotal__faJpQ {
+  margin: 10px 0;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px 15px;
+  border-radius: 50px;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.8), 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.TicketPurchaseModal_purchaseButton__w_1S3 {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 220px;
+  height: 44px;
+  background: linear-gradient(180deg, rgba(142, 45, 226, 0.8) 0%, rgba(74, 0, 224, 0.8) 100%);
+  border-radius: 50px;
+  border: 1px solid rgba(138, 43, 226, 0.7);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+  transition: all 0.3s ease;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.TicketPurchaseModal_purchaseButton__w_1S3:hover {
+  background: linear-gradient(180deg, rgba(162, 55, 246, 0.8) 0%, rgba(94, 10, 244, 0.8) 100%);
+  box-shadow: 0 0 25px rgba(138, 43, 226, 0.7);
+  transform: translateY(-2px);
+}
+
+.TicketPurchaseModal_purchaseButton__w_1S3:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+}
+
+.TicketPurchaseModal_errorMessage__h0jIO {
+  margin-top: 15px;
+  color: #ff5050;
+  background-color: rgba(255, 0, 0, 0.15);
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid rgba(255, 80, 80, 0.3);
+  max-width: 90%;
+}
+
+.TicketPurchaseModal_successMessage__VeObt {
+  margin-top: 15px;
+  color: #50ff50;
+  background-color: rgba(0, 255, 0, 0.15);
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid rgba(80, 255, 80, 0.3);
+  max-width: 90%;
+}
+
+/* Анимация точек загрузки */
+.TicketPurchaseModal_loadingDot__z2qCs {
+  animation: TicketPurchaseModal_loadingAnimation__Bjdqt 1s infinite;
+  animation-fill-mode: both;
+  display: inline-block;
+  margin: 0 2px;
+}
+
+.TicketPurchaseModal_loadingDot__z2qCs:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.TicketPurchaseModal_loadingDot__z2qCs:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes TicketPurchaseModal_loadingAnimation__Bjdqt {
+  0% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+} 
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/HistoryModal/HistoryModal.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************/
+.HistoryModal_historyModalOverlay__8EtUz {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1500;
+  backdrop-filter: blur(4px);
+  padding: 10px;
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.HistoryModal_historyModal__6eNeI {
+  width: 95%;
+  max-width: 400px;
+  background-color: rgba(13, 6, 32, 0.85);
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  border: 1px solid rgba(138, 43, 226, 0.6);
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.6), 0 0 60px rgba(0, 60, 255, 0.3);
+  max-height: calc(100vh - 120px);
+  margin-bottom: 70px;
+  position: relative;
+  animation: HistoryModal_historyModalFadeIn__SVRWs 0.4s ease-out;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Добавляем темный слой поверх фона для лучшей читаемости */
+.HistoryModal_historyModal__6eNeI::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.HistoryModal_historyModalHeader__FpGEb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+  position: relative;
+  background: linear-gradient(180deg, rgba(138, 43, 226, 0.3) 0%, rgba(13, 6, 32, 0) 100%);
+  z-index: 1;
+}
+
+.HistoryModal_historyModalTitle__Sjexc {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
+  text-align: center;
+}
+
+.HistoryModal_closeButton__mU_H_ {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.6), rgba(106, 71, 170, 0.7));
+  border: 2px solid rgba(138, 43, 226, 0.8);
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  z-index: 3;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+
+.HistoryModal_closeButton__mU_H_:hover {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.8), rgba(106, 71, 170, 0.9));
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.HistoryModal_closeButton__mU_H_:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+}
+
+@keyframes HistoryModal_historyModalFadeIn__SVRWs {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.HistoryModal_historyContent__mw_Xa {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.HistoryModal_historyList__XvmjH {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.HistoryModal_historyItem__DVXCt {
+  background-color: rgba(20, 10, 50, 0.7);
+  border-radius: 12px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.HistoryModal_historyItem__DVXCt:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+}
+
+.HistoryModal_historyItem__DVXCt::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.HistoryModal_transactionInfo__rjk1b {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.HistoryModal_historyType__ijhLN {
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 0.95rem;
+  text-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
+}
+
+.HistoryModal_historyDate__RpKD0 {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+}
+
+.HistoryModal_historyDetails__uFqAk {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+
+/* Стили для типов событий */
+.HistoryModal_typeGame__fM1RA {
+  border-left: 4px solid #8a2be2;
+  background: linear-gradient(to right, rgba(138, 43, 226, 0.2), rgba(0, 0, 0, 0));
+}
+
+.HistoryModal_typeExchange__ZemSu {
+  border-left: 4px solid #00a3ff;
+  background: linear-gradient(to right, rgba(0, 163, 255, 0.2), rgba(0, 0, 0, 0));
+}
+
+.HistoryModal_typePurchase__KPVIn, .HistoryModal_typeTicket_purchase__TaTJR {
+  border-left: 4px solid #ffd700;
+  background: linear-gradient(to right, rgba(255, 215, 0, 0.2), rgba(0, 0, 0, 0));
+}
+
+.HistoryModal_typeWithdraw__Y_ZBN {
+  border-left: 4px solid #ff6b6b;
+  background: linear-gradient(to right, rgba(255, 107, 107, 0.2), rgba(0, 0, 0, 0));
+}
+
+/* Состояния загрузки и ошибок */
+.HistoryModal_loadingContainer__jwQxO,
+.HistoryModal_emptyHistory__OVkXy,
+.HistoryModal_errorContainer__lnqp7 {
+  text-align: center;
+  padding: 25px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.HistoryModal_spinner__N0M_c {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(138, 43, 226, 0.2);
+  border-radius: 50%;
+  border-top: 3px solid rgba(138, 43, 226, 0.8);
+  margin: 0 auto 15px;
+  animation: HistoryModal_spin__zC3pE 1s linear infinite;
+}
+
+@keyframes HistoryModal_spin__zC3pE {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.HistoryModal_errorText__MDrC3 {
+  color: #ff6b6b;
+  padding: 12px;
+  background-color: rgba(255, 77, 79, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 77, 79, 0.3);
+  box-shadow: 0 0 15px rgba(255, 77, 79, 0.2);
+}
+
+.HistoryModal_loadMore__W4_co {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.HistoryModal_loadMoreButton__L9lh_ {
+  background: rgba(138, 43, 226, 0.2) !important;
+  border: 1px solid rgba(138, 43, 226, 0.5) !important;
+  color: white !important;
+  padding: 8px 20px !important;
+  border-radius: 30px !important;
+  font-size: 14px !important;
+  transition: all 0.3s ease !important;
+  text-shadow: 0 0 8px rgba(138, 43, 226, 0.8) !important;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.3) !important;
+}
+
+.HistoryModal_loadMoreButton__L9lh_:hover {
+  background: rgba(138, 43, 226, 0.3) !important;
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.5) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 480px) {
+  .HistoryModal_historyModal__6eNeI {
+    width: 92%;
+    max-height: 75vh;
+  }
+  
+  .HistoryModal_historyModalTitle__Sjexc {
+    font-size: 1.2rem;
+  }
+  
+  .HistoryModal_closeButton__mU_H_ {
+    font-size: 1.6rem;
+    right: 12px;
+    top: 10px;
+  }
+  
+  .HistoryModal_historyItem__DVXCt {
+    padding: 10px;
+  }
+  
+  .HistoryModal_historyDetails__uFqAk {
+    font-size: 0.9rem;
+  }
+} 
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameTransition/GameTransition.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/* Стили для анимации перехода в игровую комнату */
+.GameTransition_gameTransition__sb_k5 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Анимация запущена */
+.GameTransition_animationStarted__PeTXf .GameTransition_wheel__ymC_u {
+  animation: GameTransition_wheel-animation__jqVNz 4.8s forwards;
+}
+
+.GameTransition_animationStarted__PeTXf .GameTransition_curtainLeft__7abK5 {
+  animation: GameTransition_curtain-left__JfkWh 4.8s forwards;
+}
+
+.GameTransition_animationStarted__PeTXf .GameTransition_curtainRight__FcKcr {
+  animation: GameTransition_curtain-right__EbIUc 4.8s forwards;
+}
+
+/* Анимация колеса */
+@keyframes GameTransition_wheel-animation__jqVNz {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  30% {
+    transform: scale(1) rotate(720deg);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.2) rotate(1080deg);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0.5) rotate(1440deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) rotate(1440deg);
+  }
+}
+
+/* Контейнер для содержимого анимации */
+.GameTransition_content__WyMUm {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+/* Стили для колеса */
+.GameTransition_wheel__ymC_u {
+  position: absolute;
+  z-index: 20;
+  opacity: 0;
+}
+
+/* Стили для кулис */
+.GameTransition_curtains__7fNx8 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 15;
+}
+
+.GameTransition_curtainLeft__7abK5,
+.GameTransition_curtainRight__FcKcr {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(to bottom, #6b21a8, #4c1d95, #3b0764);
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
+  top: 0;
+}
+
+.GameTransition_curtainLeft__7abK5 {
+  left: 0;
+}
+
+.GameTransition_curtainRight__FcKcr {
+  right: 0;
+}
+
+/* Анимация кулис */
+@keyframes GameTransition_curtain-left__JfkWh {
+  0% {
+    width: 0%;
+  }
+  45% {
+    width: 0%;
+  }
+  60% {
+    width: 50%;
+  }
+  90% {
+    width: 50%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes GameTransition_curtain-right__EbIUc {
+  0% {
+    width: 0%;
+  }
+  45% {
+    width: 0%;
+  }
+  60% {
+    width: 50%;
+  }
+  90% {
+    width: 50%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Стили для анимации перехода в меню */
+.GameTransition_menuTransition__goFTd {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  overflow: hidden;
+  perspective: 1500px;
+}
+
+.GameTransition_menuOverlay__i_tYw {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: GameTransition_fadeIn__oAcjZ 0.3s forwards;
+  z-index: 1;
+}
+
+.GameTransition_menuContent__gGtPv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.GameTransition_menuWheel__ctKRp {
+  animation: GameTransition_spinAndMove__xiim_ 1.5s forwards;
+  filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.8));
+}
+
+/* Темно-фиолетовые ворота (шторы) */
+.GameTransition_menuTransitionAfter__pMsWW {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  display: flex;
+}
+
+/* Левая створка ворот */
+.GameTransition_menuTransitionAfter__pMsWW::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, #3b0764, #4c1d95);
+  box-shadow: 5px 0 20px rgba(59, 7, 100, 0.7);
+  transform: translateX(-100%);
+  animation: GameTransition_doorLeftClose__t8VIx 1s forwards;
+}
+
+/* Правая створка ворот */
+.GameTransition_menuTransitionAfter__pMsWW::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, #3b0764, #4c1d95);
+  box-shadow: -5px 0 20px rgba(59, 7, 100, 0.7);
+  transform: translateX(100%);
+  animation: GameTransition_doorRightClose__8Ebkn 1s forwards;
+}
+
+/* Анимация для левой створки ворот */
+@keyframes GameTransition_doorLeftClose__t8VIx {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Анимация для правой створки ворот */
+@keyframes GameTransition_doorRightClose__8Ebkn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes GameTransition_fadeIn__oAcjZ {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes GameTransition_spinAndMove__xiim_ {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.5);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.1);
+    opacity: 0;
+  }
+} 

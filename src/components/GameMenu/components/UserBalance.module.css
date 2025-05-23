@@ -1,0 +1,172 @@
+/* Стили для отображения баланса пользователя */
+.balanceContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(76, 0, 112, 0.5);
+  border-radius: 12px;
+  padding: 8px 16px;
+  gap: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 8px;
+  width: calc(100% - 16px);
+  max-width: 400px;
+}
+
+.balanceBar {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(76, 0, 112, 0.3);
+  padding: 0 15px;
+  width: 380px; /* Фиксированная ширина как у окна приветствия */
+  height: 30px;
+  border-radius: 12px;
+  margin: 0 auto;
+  border: 2px solid rgba(255, 0, 255, 0.9);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+  position: relative;
+  z-index: 9;
+  backdrop-filter: blur(10px);
+}
+
+.balanceItem {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 70px;
+  transition: all 0.3s ease;
+}
+
+.balanceIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-right: 1px;
+}
+
+.tokenIcon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.balanceItem span {
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: left;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+  padding: 0 2px;
+  min-width: 20px;
+}
+
+.balanceContainer:hover {
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+  border-color: rgba(255, 0, 255, 1);
+  transform: translateY(-1px);
+}
+
+.balanceGroup {
+  display: flex;
+  justify-content: space-around;
+  gap: 2px;
+  width: 100%;
+  padding: 0 16px;
+  flex-wrap: nowrap;
+  height: 100%;
+}
+
+/* Дополнительные стили для обеспечения бесконечного вращения */
+.balanceIcon img {
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  will-change: transform;
+  transform-origin: center center;
+  /* Предотвращаем искажения при анимации */
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: visible;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  width: 20px;
+  height: 20px;
+  animation: coin-spinning 8s linear infinite;
+}
+
+/* Анимация вращения монет в балансе */
+@keyframes coin-spinning {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.balanceValue {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.balanceItem:hover {
+  transform: scale(1.05);
+}
+
+.balanceItem:hover .balanceIcon {
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+}
+
+.balanceItem:hover .balanceValue {
+  background: rgba(106, 179, 243, 0.15);
+  border-color: rgba(106, 179, 243, 0.5);
+  box-shadow: 0 0 5px rgba(106, 179, 243, 0.3);
+}
+
+/* Медиа-запросы для адаптивности */
+@media screen and (max-width: 380px) {
+  .balanceBar {
+    width: 98%;
+    height: 28px;
+    padding: 0 5px;
+  }
+  
+  .balanceItem {
+    min-width: 65px;
+    gap: 3px;
+  }
+  
+  .balanceValue {
+    font-size: 10px;
+  }
+  
+  .tokenIcon {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .balanceBar {
+    width: 98%;
+    height: 26px;
+    padding: 0 4px;
+  }
+  
+  .balanceItem {
+    min-width: 55px;
+    gap: 2px;
+  }
+  
+  .tokenIcon {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .balanceValue {
+    font-size: 9px;
+  }
+} 

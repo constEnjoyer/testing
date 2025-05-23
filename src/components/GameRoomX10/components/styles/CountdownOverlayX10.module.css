@@ -1,0 +1,144 @@
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+.content {
+  width: 100%;
+  max-width: 800px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 20px;
+  padding-top: 20px;
+}
+
+.title {
+  font-size: 32px;
+  color: #ffd700;
+  text-align: center;
+  margin-bottom: 10px;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.countdownContainer {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  z-index: 10;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 5px;
+  width: 300px;
+}
+
+.countdownNumber {
+  font-size: 72px;
+  font-weight: bold;
+  color: #ffd700;
+  text-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+  line-height: 1;
+}
+
+.countdownText {
+  font-size: 20px;
+  color: #ffd700;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+  line-height: 1.2;
+  max-width: 200px;
+  margin: 0 auto;
+}
+
+.playersSection {
+  width: 100%;
+  position: relative;
+  z-index: 5;
+}
+
+.playersCount {
+  margin-top: 1rem;
+  font-size: 1.1rem;
+  color: #FFD700;
+  opacity: 0.9;
+}
+
+/* Новые стили для сетки игроков */
+.playersGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: repeat(5, 1fr);
+  gap: 1rem;
+  margin-top: 2rem;
+  padding: 1rem;
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 0.5rem;
+}
+
+.playerSlot {
+  padding: 0.5rem;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 0.25rem;
+  animation: fadeIn 0.3s ease-out;
+}
+
+.playerName {
+  color: #FFD700;
+  font-size: 1rem;
+  text-shadow: 0 0 5px rgba(255, 215, 0, 0.3);
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+
+@keyframes pulse {
+  0% { transform: scale(1); }
+  50% { transform: scale(1.1); }
+  100% { transform: scale(1); }
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+/* Адаптивность */
+@media (max-width: 768px) {
+  .countdownNumber {
+    font-size: 64px;
+  }
+  
+  .countdownText {
+    font-size: 18px;
+    max-width: 180px;
+  }
+  
+  .title {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 480px) {
+  .countdownNumber {
+    font-size: 56px;
+  }
+  
+  .countdownText {
+    font-size: 16px;
+    max-width: 160px;
+  }
+  
+  .title {
+    font-size: 20px;
+  }
+} 

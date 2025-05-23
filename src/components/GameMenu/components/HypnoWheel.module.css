@@ -1,0 +1,259 @@
+/* Стили для контейнера гипнотического колеса */
+.hypnoWheelContainer {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 10;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+}
+
+/* Когда открыто модальное окно, колесо должно быть скрыто */
+:global(.modal-open) .hypnoWheelContainer,
+:global(.modal-open) .hypnoWheelWrapper,
+:global(.modal-open) .hypnoWheel {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+  transform: scale(0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Базовые стили для обертки колеса */
+.hypnoWheelWrapper {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  width: 300px;
+  height: 300px;
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+  will-change: transform;
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.hypnoWheelWrapper:hover {
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.8); /* Усиливаем свечение при наведении */
+  transform: scale(1.05);
+}
+
+/* Гипно-режим активен */
+.hypnoModeActive .hypnoWheelWrapper {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 0 50px rgba(255, 215, 0, 1);
+  opacity: 1;
+  max-width: min(70vw, 300px);
+  max-height: min(70vw, 300px);
+}
+
+/* Выход из гипно-режима */
+.hypnoWheelContainer:not(.hypnoModeActive) .hypnoWheelWrapper {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 1;
+  width: 300px;
+  height: 300px;
+}
+
+/* Свечение */
+.hypnoWheelWrapper::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 215, 0, 0.5) 0%,
+    rgba(255, 215, 0, 0.3) 40%,
+    transparent 60%
+  );
+  z-index: -1;
+  pointer-events: none;
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+/* Само колесо */
+.hypnoWheel {
+  width: 100%;
+  height: 100%;
+  animation: rotate 60s linear infinite;
+  display: block;
+  will-change: transform;
+}
+
+/* Гипно-режим - ТОЛЬКО черный фон и колесо по центру */
+.hypnoModeActive {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Запрещаем активацию гипно-режима, когда открыто модальное окно */
+:global(.modal-open) .hypnoModeActive {
+  display: none !important;
+}
+
+/* Анимация вращения */
+@keyframes rotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Анимации */
+@keyframes pulse {
+  0% {
+    box-shadow: 0 0 70px 10px rgba(138, 43, 226, 0.8), 0 0 30px 5px rgba(255, 0, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 100px 20px rgba(138, 43, 226, 1), 0 0 50px 10px rgba(255, 0, 255, 0.9);
+  }
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .hypnoWheelWrapper {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .hypnoModeActive .hypnoWheelWrapper {
+    width: min(80vw, 250px);
+    height: min(80vw, 250px);
+  }
+}
+
+@media (max-width: 480px) {
+  .hypnoWheelWrapper {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 375px) {
+  .hypnoWheelWrapper {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .hypnoModeActive .hypnoWheelWrapper {
+    width: 75vmin;
+    height: 75vmin;
+  }
+}
+
+/* Стиль для телефонов в портретной ориентации */
+@media (max-width: 768px) and (orientation: portrait) {
+  .hypnoModeActive {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .hypnoModeActive .hypnoWheelWrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85vmin;
+    height: 85vmin;
+    max-width: 85vmin;
+    max-height: 85vmin;
+    margin: 0;
+  }
+}
+
+/* Особые правила для iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  .hypnoModeActive {
+    height: -webkit-fill-available;
+  }
+  
+  .hypnoModeActive .hypnoWheelWrapper {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.hypnoModeActive::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  z-index: -2;
+  pointer-events: none;
+}
+
+.hypnoModeActive::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to right,
+    transparent 0%,
+    transparent 25%,
+    rgba(0, 0, 0, 0.5) 35%,
+    rgba(0, 0, 0, 0.5) 65%,
+    transparent 75%,
+    transparent 100%
+  );
+  z-index: -1;
+  pointer-events: none;
+} 

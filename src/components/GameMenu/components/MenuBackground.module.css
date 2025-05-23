@@ -1,0 +1,202 @@
+.menuStarsBackground {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Специальные стили, когда активирован гипно-режим */
+:global(body.hypno-active) .menuStarsBackground {
+  transition: all 0.5s ease;
+}
+
+@keyframes spaceSwirl {
+  from {
+    background-position: center;
+    transform: scale(1);
+  }
+  50% {
+    background-position: 51% 51%;
+    transform: scale(1.05);
+  }
+  to {
+    background-position: center;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .menuStarsBackground {
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+  }
+}
+
+/* Эффект подсветки только для обычного режима, не для чистого режима */
+.menuStarsBackground:not(.cleanMode)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 0, 255, 0.2) 0%, transparent 60%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes falling-coin {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(100vh + 100px)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.coin1, .coin2, .coin3, .coin4, .coin5,
+.coin6, .coin7, .coin8, .coin9, .coin10 {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: url('/images/tonot.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  opacity: 0.7;
+  animation: falling-coin 15s infinite linear;
+  animation-delay: var(--delay, 0s);
+  top: -30px;
+  left: var(--left, 10%);
+}
+
+/* Градиент затемнения только для обычного режима */
+.menuStarsBackground:not(.cleanMode)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.8) 0%, 
+    rgba(0, 0, 0, 0.4) 20%, 
+    rgba(0, 0, 0, 0.2) 50%, 
+    rgba(0, 0, 0, 0.4) 80%, 
+    rgba(0, 0, 0, 0.8) 100%);
+  pointer-events: none;
+}
+
+/* В чистом режиме, добавим только очень легкое затемнение по краям */
+.cleanMode::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.3) 0%, 
+    rgba(0, 0, 0, 0.1) 20%, 
+    rgba(0, 0, 0, 0) 40%, 
+    rgba(0, 0, 0, 0) 60%, 
+    rgba(0, 0, 0, 0.1) 80%, 
+    rgba(0, 0, 0, 0.3) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.coin1 {
+  --delay: 0s;
+  --left: 10%;
+  animation-duration: 15s;
+}
+
+.coin2 {
+  --delay: 2s;
+  --left: 25%;
+  animation-duration: 18s;
+}
+
+.coin3 {
+  --delay: 1s;
+  --left: 40%;
+  animation-duration: 13s;
+}
+
+.coin4 {
+  --delay: 4s;
+  --left: 55%;
+  animation-duration: 16s;
+}
+
+.coin5 {
+  --delay: 3s;
+  --left: 70%;
+  animation-duration: 14s;
+}
+
+.coin6 {
+  --delay: 5s;
+  --left: 85%;
+  animation-duration: 17s;
+}
+
+.coin7 {
+  --delay: 7s;
+  --left: 15%;
+  animation-duration: 19s;
+}
+
+.coin8 {
+  --delay: 6s;
+  --left: 30%;
+  animation-duration: 15s;
+}
+
+.coin9 {
+  --delay: 8s;
+  --left: 60%;
+  animation-duration: 16s;
+}
+
+.coin10 {
+  --delay: 9s;
+  --left: 75%;
+  animation-duration: 14s;
+}
+
+.twinklingStars {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Стили для чистого режима */
+.cleanMode {
+  opacity: 1; /* Убираем прозрачность, чтобы фон был ярким */
+  transition: opacity 0.5s ease;
+} 

@@ -1,0 +1,57 @@
+.gameMenuPage {
+  touch-action: none;
+  -ms-touch-action: none;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.gameMenu {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0;
+  padding-top: calc(45px + 22px);
+  padding-bottom: 70px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: white;
+  z-index: 1;
+  gap: 10px;
+  -webkit-overflow-scrolling: touch;
+  height: 100vh;
+  max-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Стили для чистого режима */
+.cleanMode .gameMenu {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Адаптивность для маленьких экранов */
+@media screen and (max-width: 380px) {
+  .gameMenu {
+    padding-top: calc(45px + 22px);
+    padding-bottom: 60px;
+    gap: 6px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .gameMenu {
+    padding-top: calc(40px + 22px);
+    padding-bottom: 55px;
+    gap: 5px;
+  }
+} 

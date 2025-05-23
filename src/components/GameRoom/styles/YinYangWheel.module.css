@@ -1,0 +1,201 @@
+.wheelContainer {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: 30px auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  z-index: 3;
+  transition: transform 0.3s ease;
+  /* Добавляем внутреннее свечение для колеса */
+  filter: drop-shadow(0 0 15px rgba(147, 51, 234, 0.5));
+}
+
+.wheelImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  position: relative;
+  z-index: 4;
+}
+
+/* Вращение колеса - 3 оборота с плавным замедлением */
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(1080deg);
+  }
+}
+
+.spinning {
+  animation: spin 5s ease-out forwards;
+  transform-origin: center center;
+  will-change: transform;
+}
+
+/* Фиолетовое свечение вокруг колеса */
+.purpleGlow {
+  position: absolute;
+  width: 130%;
+  height: 130%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle, 
+    rgba(213, 100, 255, 0.7) 0%, 
+    rgba(126, 60, 240, 0.5) 30%, 
+    rgba(126, 60, 240, 0.2) 60%, 
+    transparent 85%
+  );
+  filter: blur(20px);
+  z-index: 2;
+  animation: pulse 3s infinite alternate;
+  transform-origin: center center;
+}
+
+/* Добавляем кольцевую обводку */
+.purpleGlow::before {
+  content: "";
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  border-radius: 50%;
+  border: 5px solid rgba(213, 137, 255, 0.5);
+  box-shadow:
+    0 0 25px rgba(170, 60, 240, 0.7),
+    inset 0 0 20px rgba(170, 60, 240, 0.7);
+  z-index: 2;
+  animation: rotateBorder 10s linear infinite;
+}
+
+/* Добавляем вторую обводку с обратным вращением */
+.purpleGlow::after {
+  content: "";
+  position: absolute;
+  top: -8%;
+  left: -8%;
+  width: 116%;
+  height: 116%;
+  border-radius: 50%;
+  border: 2px solid rgba(132, 85, 238, 0.3);
+  box-shadow:
+    0 0 15px rgba(132, 85, 238, 0.5),
+    inset 0 0 10px rgba(132, 85, 238, 0.5);
+  z-index: 1;
+  animation: rotateBorder 15s linear infinite reverse;
+}
+
+@keyframes rotateBorder {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes pulse {
+  0% {
+    transform: scale(0.98);
+    opacity: 0.7;
+  }
+  100% {
+    transform: scale(1.02);
+    opacity: 0.9;
+  }
+}
+
+/* Анимация пульсации */
+@keyframes pulseGlow {
+  0% {
+    box-shadow: 
+      0 0 30px rgba(147, 51, 234, 0.3),
+      0 0 60px rgba(147, 51, 234, 0.2),
+      0 0 90px rgba(147, 51, 234, 0.1);
+    transform: scale(0.98);
+  }
+  50% {
+    box-shadow: 
+      0 0 40px rgba(147, 51, 234, 0.5),
+      0 0 80px rgba(147, 51, 234, 0.3),
+      0 0 120px rgba(147, 51, 234, 0.2);
+    transform: scale(1);
+  }
+  100% {
+    box-shadow: 
+      0 0 30px rgba(147, 51, 234, 0.3),
+      0 0 60px rgba(147, 51, 234, 0.2),
+      0 0 90px rgba(147, 51, 234, 0.1);
+    transform: scale(0.98);
+  }
+}
+
+/* Анимация вращения градиента */
+@keyframes rotateGradient {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Добавляем подложку с градиентом */
+.wheelContainer::before {
+  content: '';
+  position: absolute;
+  width: 110%;
+  height: 110%;
+  border-radius: 50%;
+  background: conic-gradient(
+    from 0deg,
+    rgba(147, 51, 234, 0.2),
+    rgba(168, 85, 247, 0.4),
+    rgba(147, 51, 234, 0.6),
+    rgba(168, 85, 247, 0.4),
+    rgba(147, 51, 234, 0.2)
+  );
+  animation: rotateGradient 10s linear infinite;
+  filter: blur(10px);
+  z-index: 1;
+}
+
+/* Добавляем пульсирующий круг */
+.wheelContainer::after {
+  content: '';
+  position: absolute;
+  width: 105%;
+  height: 105%;
+  border-radius: 50%;
+  background: transparent;
+  border: 2px solid rgba(147, 51, 234, 0.3);
+  animation: pulseGlow 3s ease-in-out infinite;
+  z-index: 2;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .wheelContainer {
+    width: 240px;
+    height: 240px;
+    margin: 20px auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .wheelContainer {
+    width: 200px;
+    height: 200px;
+    margin: 15px auto;
+  }
+} 

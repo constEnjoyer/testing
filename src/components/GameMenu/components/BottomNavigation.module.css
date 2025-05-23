@@ -1,0 +1,111 @@
+.bottomNav {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  border-top: 1px solid rgba(255, 0, 255, 0.3);
+  box-shadow: 0 -5px 10px rgba(255, 0, 255, 0.15);
+  z-index: 1200;
+  padding: 5px 0;
+  transition: all 0.3s ease;
+  height: 50px;
+}
+
+.bottomNavItem {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.bottomNavItem:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.bottomNavItem.active {
+  color: white;
+}
+
+.bottomNavItem.active::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 2px;
+  background: linear-gradient(to right, #FF00FF, #00BFFF);
+  border-radius: 2px;
+}
+
+.bottomNavIcon {
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.bottomNavText {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Специальные стили для иконки обмена */
+.exchangeIconsContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.exchangeNavIcon {
+  width: 20px;
+  height: 20px;
+}
+
+.exchangeArrow {
+  margin: 0 2px;
+  font-size: 14px;
+}
+
+/* Специальные стили для иконок истории */
+.historyIconsRow {
+  display: flex;
+  gap: 2px;
+}
+
+.historyToken {
+  width: 12px;
+  height: 12px;
+}
+
+/* Скрытие в гипно-режиме */
+.hiddenInHypnoMode {
+  display: none;
+}
+
+/* Адаптивность для маленьких экранов */
+@media screen and (max-width: 320px) {
+  .bottomNav {
+    height: 45px;
+    padding: 3px 0;
+  }
+  
+  .bottomNavText {
+    font-size: 8px;
+  }
+} 

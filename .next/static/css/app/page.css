@@ -1,0 +1,4157 @@
+/*!*******************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/Root/Root.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************/
+.Root_loading__p_JjB {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+} 
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/UserBalance.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
+/* Стили для отображения баланса пользователя */
+.UserBalance_balanceContainer___YkVS {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(76, 0, 112, 0.5);
+  border-radius: 12px;
+  padding: 8px 16px;
+  gap: 16px;
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 8px;
+  width: calc(100% - 16px);
+  max-width: 400px;
+}
+
+.UserBalance_balanceBar__FOOwg {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: rgba(76, 0, 112, 0.3);
+  padding: 0 15px;
+  width: 380px; /* Фиксированная ширина как у окна приветствия */
+  height: 30px;
+  border-radius: 12px;
+  margin: 0 auto;
+  border: 2px solid rgba(255, 0, 255, 0.9);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+  position: relative;
+  z-index: 9;
+  backdrop-filter: blur(10px);
+}
+
+.UserBalance_balanceItem__U6U16 {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  min-width: 70px;
+  transition: all 0.3s ease;
+}
+
+.UserBalance_balanceIcon__5HBNz {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 18px;
+  height: 18px;
+  margin-right: 1px;
+}
+
+.UserBalance_tokenIcon__1JEB4 {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+}
+
+.UserBalance_balanceItem__U6U16 span {
+  color: white;
+  font-weight: 500;
+  font-size: 14px;
+  text-align: left;
+  text-shadow: 0 0 4px rgba(255, 255, 255, 0.3);
+  padding: 0 2px;
+  min-width: 20px;
+}
+
+.UserBalance_balanceContainer___YkVS:hover {
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.7);
+  border-color: rgba(255, 0, 255, 1);
+  transform: translateY(-1px);
+}
+
+.UserBalance_balanceGroup__LrO64 {
+  display: flex;
+  justify-content: space-around;
+  gap: 2px;
+  width: 100%;
+  padding: 0 16px;
+  flex-wrap: nowrap;
+  height: 100%;
+}
+
+/* Дополнительные стили для обеспечения бесконечного вращения */
+.UserBalance_balanceIcon__5HBNz img {
+  transform-style: preserve-3d;
+  backface-visibility: visible;
+  will-change: transform;
+  transform-origin: center center;
+  /* Предотвращаем искажения при анимации */
+  -webkit-transform-style: preserve-3d;
+  -webkit-backface-visibility: visible;
+  -webkit-perspective: 1000;
+  perspective: 1000;
+  width: 20px;
+  height: 20px;
+  animation: UserBalance_coin-spinning__41rfN 8s linear infinite;
+}
+
+/* Анимация вращения монет в балансе */
+@keyframes UserBalance_coin-spinning__41rfN {
+  from {
+    transform: rotateY(0deg);
+  }
+  to {
+    transform: rotateY(360deg);
+  }
+}
+
+.UserBalance_balanceValue__4xLJz {
+  color: #fff;
+  font-size: 11px;
+  font-weight: 500;
+}
+
+.UserBalance_balanceItem__U6U16:hover {
+  transform: scale(1.05);
+}
+
+.UserBalance_balanceItem__U6U16:hover .UserBalance_balanceIcon__5HBNz {
+  filter: drop-shadow(0 0 5px rgba(255, 255, 255, 0.8));
+}
+
+.UserBalance_balanceItem__U6U16:hover .UserBalance_balanceValue__4xLJz {
+  background: rgba(106, 179, 243, 0.15);
+  border-color: rgba(106, 179, 243, 0.5);
+  box-shadow: 0 0 5px rgba(106, 179, 243, 0.3);
+}
+
+/* Медиа-запросы для адаптивности */
+@media screen and (max-width: 380px) {
+  .UserBalance_balanceBar__FOOwg {
+    width: 98%;
+    height: 28px;
+    padding: 0 5px;
+  }
+  
+  .UserBalance_balanceItem__U6U16 {
+    min-width: 65px;
+    gap: 3px;
+  }
+  
+  .UserBalance_balanceValue__4xLJz {
+    font-size: 10px;
+  }
+  
+  .UserBalance_tokenIcon__1JEB4 {
+    width: 14px;
+    height: 14px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .UserBalance_balanceBar__FOOwg {
+    width: 98%;
+    height: 26px;
+    padding: 0 4px;
+  }
+  
+  .UserBalance_balanceItem__U6U16 {
+    min-width: 55px;
+    gap: 2px;
+  }
+  
+  .UserBalance_tokenIcon__1JEB4 {
+    width: 12px;
+    height: 12px;
+  }
+  
+  .UserBalance_balanceValue__4xLJz {
+    font-size: 9px;
+  }
+} 
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/WelcomeMessage.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+/* Стили для приветственного сообщения */
+.WelcomeMessage_welcomeMessageContainer__zxm_o {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 380px;
+  margin: 10px auto;
+  text-align: center;
+  padding: 8px 15px;
+  z-index: 2;
+  border: 2px solid rgba(255, 0, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  animation: WelcomeMessage_floatUpDown__BDrDw 3s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+@keyframes WelcomeMessage_floatUpDown__BDrDw {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+  }
+  50% {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+  }
+}
+
+.WelcomeMessage_welcomeMessage__jhgwe {
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.WelcomeMessage_welcomeMessage__jhgwe h1 {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  color: #fff;
+  font-weight: bold;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.WelcomeMessage_welcomeMessage__jhgwe h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #6aF3FF;
+  margin: 0;
+  padding: 0;
+  text-shadow: 
+    0 0 5px rgba(106, 243, 255, 0.6), 
+    0 0 10px rgba(106, 243, 255, 0.4);
+  letter-spacing: 2px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.WelcomeMessage_welcomeMessage__jhgwe p {
+  font-size: 12px;
+  color: #fff;
+  font-style: italic;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  margin: 0;
+  padding: 3px 8px;
+  background: rgba(106, 179, 243, 0.15);
+  border-radius: 8px;
+  display: inline-block;
+  border: 1px solid rgba(106, 179, 243, 0.3);
+  box-shadow: 0 0 10px rgba(106, 179, 243, 0.2);
+  max-width: 90%;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.WelcomeMessage_welcomeMessageContainer__zxm_o:hover {
+  animation-play-state: paused;
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
+  border-color: rgba(255, 0, 255, 1);
+}
+
+.WelcomeMessage_welcomeMessageContainer__zxm_o:hover .WelcomeMessage_welcomeMessage__jhgwe h2 {
+  color: #8aF3FF;
+  text-shadow: 
+    0 0 8px rgba(106, 243, 255, 0.8), 
+    0 0 15px rgba(106, 243, 255, 0.6);
+}
+
+.WelcomeMessage_welcomeMessageContainer__zxm_o:hover .WelcomeMessage_welcomeMessage__jhgwe p {
+  background: rgba(106, 179, 243, 0.2);
+  border-color: rgba(106, 179, 243, 0.4);
+  box-shadow: 0 0 15px rgba(106, 179, 243, 0.3);
+}
+
+/* Добавим медиа-запросы для еще более компактного отображения на маленьких экранах */
+@media screen and (max-width: 380px) {
+  .WelcomeMessage_welcomeMessageContainer__zxm_o {
+    margin: 8px auto;
+    padding: 6px 10px;
+  }
+  
+  .WelcomeMessage_welcomeMessage__jhgwe {
+    gap: 1px;
+  }
+  
+  .WelcomeMessage_welcomeMessage__jhgwe h1 {
+    font-size: 12px;
+  }
+  
+  .WelcomeMessage_welcomeMessage__jhgwe h2 {
+    font-size: 20px;
+  }
+  
+  .WelcomeMessage_welcomeMessage__jhgwe p {
+    font-size: 10px;
+    padding: 2px 5px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .WelcomeMessage_welcomeMessageContainer__zxm_o {
+    margin: 6px auto;
+    padding: 4px 8px;
+  }
+  
+  .WelcomeMessage_welcomeMessage__jhgwe {
+    gap: 0;
+  }
+  
+  .WelcomeMessage_welcomeMessage__jhgwe h1 {
+    font-size: 10px;
+  }
+  
+  .WelcomeMessage_welcomeMessage__jhgwe h2 {
+    font-size: 16px;
+  }
+  
+  .WelcomeMessage_welcomeMessage__jhgwe p {
+    font-size: 9px;
+    padding: 1px 3px;
+  }
+} 
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/TicketPurchaseModal.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************************/
+/* Модальное окно для покупки билетов */
+.TicketPurchaseModal_ticketModal__ZRbPS {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1500;
+  background-color: rgba(0, 0, 0, 0.8);
+  backdrop-filter: blur(4px);
+  padding: 0;
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.TicketPurchaseModal_ticketModalInner__W_fkf {
+  background-color: rgba(13, 6, 32, 0.85);
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  border: 1px solid rgba(138, 43, 226, 0.6);
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.6), 0 0 60px rgba(0, 60, 255, 0.3);
+  max-width: 320px;
+  width: 90%;
+  max-height: calc(100vh - 40px);
+  overflow-y: auto;
+  position: relative;
+  animation: TicketPurchaseModal_modalFadeIn__TwRG2 0.4s ease-out;
+  margin: 0 auto;
+}
+
+@keyframes TicketPurchaseModal_modalFadeIn__TwRG2 {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.TicketPurchaseModal_ticketModalHeader__MoA22 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+  position: relative;
+  background: linear-gradient(180deg, rgba(138, 43, 226, 0.3) 0%, rgba(13, 6, 32, 0) 100%);
+}
+
+.TicketPurchaseModal_ticketModalHeader__MoA22 h3 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 18px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.8), 0 0 20px rgba(138, 43, 226, 0.4), 2px 2px 2px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.5px;
+}
+
+.TicketPurchaseModal_closeButton__GJvPi {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.6), rgba(106, 71, 170, 0.7));
+  border: 2px solid rgba(138, 43, 226, 0.8);
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  z-index: 3;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+
+.TicketPurchaseModal_closeButton__GJvPi:hover {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.8), rgba(106, 71, 170, 0.9));
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.TicketPurchaseModal_closeButton__GJvPi:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+}
+
+.TicketPurchaseModal_ticketModalContent__MZ1Jp {
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  position: relative;
+  z-index: 1;
+}
+
+/* Улучшаем читаемость текста на космическом фоне */
+.TicketPurchaseModal_ticketModalInner__W_fkf::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+/* Звездная пыль вокруг билета */
+.TicketPurchaseModal_ticketImage__flxQy {
+  display: flex;
+  justify-content: center;
+  margin: 5px 0 10px;
+  position: relative;
+}
+
+.TicketPurchaseModal_ticketImage__flxQy::before {
+  content: '';
+  position: absolute;
+  width: 90px;
+  height: 90px;
+  background: radial-gradient(ellipse at center, rgba(138, 43, 226, 0.3) 0%, rgba(138, 43, 226, 0) 70%);
+  border-radius: 50%;
+  z-index: -1;
+  animation: TicketPurchaseModal_pulse__k9NQ3 2s infinite alternate;
+}
+
+@keyframes TicketPurchaseModal_pulse__k9NQ3 {
+  from {
+    opacity: 0.4;
+    transform: scale(0.98);
+  }
+  to {
+    opacity: 0.8;
+    transform: scale(1.02);
+  }
+}
+
+.TicketPurchaseModal_ticketDescription__YlRim {
+  text-align: center;
+  color: #ffffff;
+  font-size: 13px;
+  margin-bottom: 10px;
+  line-height: 1.3;
+  max-width: 95%;
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 8px 10px;
+  border-radius: 10px;
+  backdrop-filter: blur(3px);
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.6);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  text-shadow: 0 0 10px rgba(0, 0, 0, 0.8);
+}
+
+/* Стили для контролов количества билетов */
+.TicketPurchaseModal_ticketAmountControl__MN6w3 {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  margin: 10px 0;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px 15px;
+  border-radius: 50px;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.2);
+}
+
+.TicketPurchaseModal_amountBtn__pD_P7 {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.5), rgba(106, 71, 170, 0.6));
+  border: 1px solid rgba(138, 43, 226, 0.7);
+  color: #fff;
+  font-size: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+  font-weight: bold;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.TicketPurchaseModal_amountBtn__pD_P7:hover {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.7), rgba(106, 71, 170, 0.8));
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+}
+
+.TicketPurchaseModal_ticketAmountInput__tGc1p {
+  width: 60px;
+  height: 32px;
+  text-align: center;
+  background-color: rgba(0, 0, 0, 0.5);
+  border: 1px solid rgba(138, 43, 226, 0.5);
+  border-radius: 10px;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  box-shadow: inset 0 0 10px rgba(138, 43, 226, 0.3);
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.TicketPurchaseModal_ticketTotal__faJpQ {
+  margin: 10px 0;
+  text-align: center;
+  color: #fff;
+  font-weight: bold;
+  background: rgba(0, 0, 0, 0.6);
+  padding: 8px 15px;
+  border-radius: 50px;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.8), 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.TicketPurchaseModal_purchaseButton__w_1S3 {
+  margin-top: 10px;
+  width: 100%;
+  max-width: 220px;
+  height: 44px;
+  background: linear-gradient(180deg, rgba(142, 45, 226, 0.8) 0%, rgba(74, 0, 224, 0.8) 100%);
+  border-radius: 50px;
+  border: 1px solid rgba(138, 43, 226, 0.7);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.5);
+  transition: all 0.3s ease;
+  font-size: 15px;
+  font-weight: bold;
+  text-transform: uppercase;
+  color: white;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  margin-bottom: 5px;
+}
+
+.TicketPurchaseModal_purchaseButton__w_1S3:hover {
+  background: linear-gradient(180deg, rgba(162, 55, 246, 0.8) 0%, rgba(94, 10, 244, 0.8) 100%);
+  box-shadow: 0 0 25px rgba(138, 43, 226, 0.7);
+  transform: translateY(-2px);
+}
+
+.TicketPurchaseModal_purchaseButton__w_1S3:active {
+  transform: translateY(1px);
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.4);
+}
+
+.TicketPurchaseModal_errorMessage__h0jIO {
+  margin-top: 15px;
+  color: #ff5050;
+  background-color: rgba(255, 0, 0, 0.15);
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid rgba(255, 80, 80, 0.3);
+  max-width: 90%;
+}
+
+.TicketPurchaseModal_successMessage__VeObt {
+  margin-top: 15px;
+  color: #50ff50;
+  background-color: rgba(0, 255, 0, 0.15);
+  padding: 10px 15px;
+  border-radius: 8px;
+  text-align: center;
+  font-size: 14px;
+  border: 1px solid rgba(80, 255, 80, 0.3);
+  max-width: 90%;
+}
+
+/* Анимация точек загрузки */
+.TicketPurchaseModal_loadingDot__z2qCs {
+  animation: TicketPurchaseModal_loadingAnimation__Bjdqt 1s infinite;
+  animation-fill-mode: both;
+  display: inline-block;
+  margin: 0 2px;
+}
+
+.TicketPurchaseModal_loadingDot__z2qCs:nth-child(2) {
+  animation-delay: 0.2s;
+}
+
+.TicketPurchaseModal_loadingDot__z2qCs:nth-child(3) {
+  animation-delay: 0.4s;
+}
+
+@keyframes TicketPurchaseModal_loadingAnimation__Bjdqt {
+  0% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+  50% {
+    opacity: 1;
+    transform: translateY(-5px);
+  }
+  100% {
+    opacity: 0.2;
+    transform: translateY(0);
+  }
+} 
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/HypnoWheel.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+/* Стили для контейнера гипнотического колеса */
+.HypnoWheel_hypnoWheelContainer__l0ACz {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  padding: 0;
+  transition: all 0.3s ease;
+  cursor: pointer;
+  z-index: 10;
+  margin: 0 auto;
+  width: 100%;
+  max-width: 200px;
+}
+
+/* Когда открыто модальное окно, колесо должно быть скрыто */
+.modal-open .HypnoWheel_hypnoWheelContainer__l0ACz,
+.modal-open .HypnoWheel_hypnoWheelWrapper__9y7_4,
+.modal-open .HypnoWheel_hypnoWheel__i3CHP {
+  visibility: hidden !important;
+  opacity: 0 !important;
+  pointer-events: none !important;
+  z-index: -1 !important;
+  transform: scale(0.1) !important;
+  transition: all 0.3s ease !important;
+}
+
+/* Базовые стили для обертки колеса */
+.HypnoWheel_hypnoWheelWrapper__9y7_4 {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  width: 300px;
+  height: 300px;
+  background-color: transparent;
+  border-radius: 50%;
+  padding: 0;
+  margin: 0;
+  box-shadow: 0 0 25px rgba(255, 215, 0, 0.6);
+  will-change: transform;
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.HypnoWheel_hypnoWheelWrapper__9y7_4:hover {
+  box-shadow: 0 0 35px rgba(255, 215, 0, 0.8); /* Усиливаем свечение при наведении */
+  transform: scale(1.05);
+}
+
+/* Гипно-режим активен */
+.HypnoWheel_hypnoModeActive__O_vVm .HypnoWheel_hypnoWheelWrapper__9y7_4 {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(1);
+  width: 300px;
+  height: 300px;
+  box-shadow: 0 0 50px rgba(255, 215, 0, 1);
+  opacity: 1;
+  max-width: min(70vw, 300px);
+  max-height: min(70vw, 300px);
+}
+
+/* Выход из гипно-режима */
+.HypnoWheel_hypnoWheelContainer__l0ACz:not(.HypnoWheel_hypnoModeActive__O_vVm) .HypnoWheel_hypnoWheelWrapper__9y7_4 {
+  position: fixed;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%) scale(0.5);
+  opacity: 1;
+  width: 300px;
+  height: 300px;
+}
+
+/* Свечение */
+.HypnoWheel_hypnoWheelWrapper__9y7_4::before {
+  content: '';
+  position: absolute;
+  top: -4px;
+  left: -4px;
+  right: -4px;
+  bottom: -4px;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle at center,
+    rgba(255, 215, 0, 0.5) 0%,
+    rgba(255, 215, 0, 0.3) 40%,
+    transparent 60%
+  );
+  z-index: -1;
+  pointer-events: none;
+  transition: all 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+  will-change: transform, opacity;
+}
+
+/* Само колесо */
+.HypnoWheel_hypnoWheel__i3CHP {
+  width: 100%;
+  height: 100%;
+  animation: HypnoWheel_rotate__9BsAq 60s linear infinite;
+  display: block;
+  will-change: transform;
+}
+
+/* Гипно-режим - ТОЛЬКО черный фон и колесо по центру */
+.HypnoWheel_hypnoModeActive__O_vVm {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  margin: 0;
+  padding: 0;
+  overflow: hidden;
+  box-sizing: border-box;
+  transition: opacity 1.2s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Запрещаем активацию гипно-режима, когда открыто модальное окно */
+.modal-open .HypnoWheel_hypnoModeActive__O_vVm {
+  display: none !important;
+}
+
+/* Анимация вращения */
+@keyframes HypnoWheel_rotate__9BsAq {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Анимации */
+@keyframes HypnoWheel_pulse__fF_wb {
+  0% {
+    box-shadow: 0 0 70px 10px rgba(138, 43, 226, 0.8), 0 0 30px 5px rgba(255, 0, 255, 0.6);
+  }
+  100% {
+    box-shadow: 0 0 100px 20px rgba(138, 43, 226, 1), 0 0 50px 10px rgba(255, 0, 255, 0.9);
+  }
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .HypnoWheel_hypnoWheelWrapper__9y7_4 {
+    width: 250px;
+    height: 250px;
+  }
+  
+  .HypnoWheel_hypnoModeActive__O_vVm .HypnoWheel_hypnoWheelWrapper__9y7_4 {
+    width: min(80vw, 250px);
+    height: min(80vw, 250px);
+  }
+}
+
+@media (max-width: 480px) {
+  .HypnoWheel_hypnoWheelWrapper__9y7_4 {
+    width: 200px;
+    height: 200px;
+  }
+}
+
+/* Очень маленькие экраны */
+@media (max-width: 375px) {
+  .HypnoWheel_hypnoWheelWrapper__9y7_4 {
+    width: 180px;
+    height: 180px;
+  }
+  
+  .HypnoWheel_hypnoModeActive__O_vVm .HypnoWheel_hypnoWheelWrapper__9y7_4 {
+    width: 75vmin;
+    height: 75vmin;
+  }
+}
+
+/* Стиль для телефонов в портретной ориентации */
+@media (max-width: 768px) and (orientation: portrait) {
+  .HypnoWheel_hypnoModeActive__O_vVm {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .HypnoWheel_hypnoModeActive__O_vVm .HypnoWheel_hypnoWheelWrapper__9y7_4 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 85vmin;
+    height: 85vmin;
+    max-width: 85vmin;
+    max-height: 85vmin;
+    margin: 0;
+  }
+}
+
+/* Особые правила для iOS Safari */
+@supports (-webkit-touch-callout: none) {
+  .HypnoWheel_hypnoModeActive__O_vVm {
+    height: -webkit-fill-available;
+  }
+  
+  .HypnoWheel_hypnoModeActive__O_vVm .HypnoWheel_hypnoWheelWrapper__9y7_4 {
+    position: fixed;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+}
+
+.HypnoWheel_hypnoModeActive__O_vVm::before {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background-color: rgba(0, 0, 0, 0.3);
+  backdrop-filter: blur(1px);
+  -webkit-backdrop-filter: blur(1px);
+  z-index: -2;
+  pointer-events: none;
+}
+
+.HypnoWheel_hypnoModeActive__O_vVm::after {
+  content: '';
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(to right,
+    transparent 0%,
+    transparent 25%,
+    rgba(0, 0, 0, 0.5) 35%,
+    rgba(0, 0, 0, 0.5) 65%,
+    transparent 75%,
+    transparent 100%
+  );
+  z-index: -1;
+  pointer-events: none;
+} 
+/*!*************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/ExchangeModal/ExchangeModal.module.css ***!
+  \*************************************************************************************************************************************************************************************************************************************************************************************************/
+/* Этот файл больше не используется, вся стилизация перенесена в styles.css */ 
+
+/* Модальное окно */
+.ExchangeModal_modalOverlay__JJrw4 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center; /* Центрируем окно вертикально как в CHANCE */
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1500;
+  backdrop-filter: blur(4px);
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+  overflow: hidden;
+}
+
+/* Добавляем класс-помощник для блокировки прокрутки всей страницы */
+.ExchangeModal_modalOpen__yqyCZ {
+  overflow: hidden !important;
+  position: fixed;
+  width: 100%;
+  height: 100%;
+}
+
+.ExchangeModal_modalContainer__0mvZ3 {
+  width: 95%;
+  max-width: 360px; /* Точная ширина для Telegram Mini Apps */
+  /* Делаем высоту точно как в окне CHANCE */
+  height: auto; /* Автоматическая высота для адаптации к контенту */
+  min-height: 500px; /* Минимальная высота */
+  margin: 0 auto;
+  background-color: rgba(13, 6, 32, 0.85);
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  border: 1px solid rgba(138, 43, 226, 0.6);
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.6), 0 0 60px rgba(0, 60, 255, 0.3);
+  overflow: hidden;
+  position: relative;
+  animation: ExchangeModal_modalFadeIn__DmN8N 0.4s ease-out;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Добавляем темный слой поверх фона для лучшей читаемости */
+.ExchangeModal_modalContainer__0mvZ3::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 20px;
+  z-index: 0;
+  pointer-events: none;
+}
+
+@keyframes ExchangeModal_modalFadeIn__DmN8N {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.ExchangeModal_modalHeader__izdHu {
+  flex-shrink: 0; /* Предотвращаем сжатие заголовка */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 12px;
+  border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+  position: relative;
+  background: linear-gradient(180deg, rgba(138, 43, 226, 0.3) 0%, rgba(13, 6, 32, 0) 100%);
+  z-index: 2;
+}
+
+.ExchangeModal_modalHeader__izdHu h2 {
+  margin: 0;
+  color: #ffffff;
+  font-size: 20px;
+  font-weight: bold;
+  text-align: center;
+  text-shadow: 0 0 10px rgba(138, 43, 226, 0.8), 0 0 20px rgba(138, 43, 226, 0.4), 2px 2px 2px rgba(0, 0, 0, 0.8);
+  letter-spacing: 0.5px;
+}
+
+.ExchangeModal_closeButton__a3hfr {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.6), rgba(106, 71, 170, 0.7));
+  border: 2px solid rgba(138, 43, 226, 0.8);
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  z-index: 3;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+
+.ExchangeModal_closeButton__a3hfr:hover {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.8), rgba(106, 71, 170, 0.9));
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.ExchangeModal_closeButton__a3hfr:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+}
+
+/* Вкладки */
+.ExchangeModal_modalTabs__bHXUF {
+  flex-shrink: 0; /* Предотвращаем сжатие табов */
+  display: flex;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.5);
+  border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+  position: relative;
+  z-index: 2;
+}
+
+.ExchangeModal_modalTab___YzDC {
+  flex: 1;
+  padding: 12px 15px;
+  text-align: center;
+  color: #ffffff;
+  font-weight: bold;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.ExchangeModal_active__3THrC {
+  background: linear-gradient(180deg, rgba(138, 43, 226, 0.3) 0%, rgba(106, 71, 170, 0.2) 100%);
+  color: #ffffff;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.3);
+}
+
+.ExchangeModal_modalTab___YzDC.ExchangeModal_active__3THrC::after {
+  content: '';
+  position: absolute;
+  bottom: -1px;
+  left: 0;
+  width: 100%;
+  height: 3px;
+  background: linear-gradient(90deg, rgba(138, 43, 226, 0.3), rgba(138, 43, 226, 0.8), rgba(138, 43, 226, 0.3));
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+}
+
+.ExchangeModal_modalTab___YzDC:hover:not(.ExchangeModal_active__3THrC) {
+  background: rgba(138, 43, 226, 0.1);
+}
+
+.ExchangeModal_modalContent__SEJgg {
+  padding: 15px;
+  position: relative;
+  z-index: 1;
+  overflow: hidden !important; /* Принудительно скрываем прокрутку контента */
+  flex: 1; /* Убираем fixed height для контента */
+  display: flex;
+  flex-direction: column;
+}
+
+.ExchangeModal_modalOverlayScrollbar__ICBJs,
+.ExchangeModal_modalContainerScrollbar__FxlaT,
+.ExchangeModal_modalContentScrollbar__KsTbc {
+  width: 0 !important;
+  height: 0 !important;
+  display: none !important;
+}
+
+/* Формы обмена и вывода */
+.ExchangeModal_exchangeForm__6GCC8, .ExchangeModal_withdrawForm__YK97n {
+  position: relative;
+  z-index: 1;
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+}
+
+.ExchangeModal_balanceInfo__YLawP {
+  padding: 10px;
+  margin-bottom: 10px;
+  background: rgba(0, 0, 0, 0.6);
+  border-radius: 12px;
+  text-align: center;
+  color: #fff;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.4);
+  font-size: 14px;
+}
+
+.ExchangeModal_balanceInfo__YLawP p {
+  margin: 4px 0;
+  font-size: 14px;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.ExchangeModal_exchangeResult__8zo3m {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin: 15px 0;
+  background: linear-gradient(120deg, rgba(212, 175, 55, 0.1) 0%, rgba(255, 215, 0, 0.15) 100%);
+  padding: 12px;
+  border-radius: 10px;
+  font-size: 1rem;
+  color: #FFD700;
+  border: 1px solid rgba(212, 175, 55, 0.3);
+}
+
+.ExchangeModal_tonLogo__QoQPW {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 5px;
+  background-color: rgba(255, 215, 0, 0.1);
+  padding: 10px;
+  border-radius: 8px;
+  border: 1px solid rgba(212, 175, 55, 0.2);
+}
+
+.ExchangeModal_tonLogo__QoQPW span {
+  font-weight: bold;
+  color: #FFD700;
+}
+
+.ExchangeModal_inputWrapper__ZHSn6 {
+  margin-bottom: 15px;
+}
+
+.ExchangeModal_inputWrapper__ZHSn6 label {
+  margin-bottom: 8px;
+  font-size: 14px;
+  display: block;
+  color: #ffffff;
+  font-weight: 500;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Новые стили для контейнера ввода */
+.ExchangeModal_inputContainer__qSJtQ {
+  position: relative;
+  width: 100%;
+  margin-bottom: 16px;
+}
+
+.ExchangeModal_inputContainer__qSJtQ input {
+  width: 100%;
+  background-color: rgba(16, 8, 38, 0.8);
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  color: #fff;
+  padding: 12px;
+  border-radius: 8px;
+  font-size: 16px;
+  transition: all 0.3s ease;
+}
+
+.ExchangeModal_inputContainer__qSJtQ input:focus {
+  border-color: rgba(138, 43, 226, 0.8);
+  outline: none;
+  box-shadow: 0 0 5px rgba(138, 43, 226, 0.4);
+}
+
+/* Стили для кнопки MAX */
+.ExchangeModal_maxButton__dRM4q {
+  position: absolute;
+  right: 8px;
+  top: 50%;
+  transform: translateY(-50%);
+  background: linear-gradient(to right, #8a2be2, #4b0082);
+  color: white;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  font-size: 12px;
+  font-weight: bold;
+  cursor: pointer;
+  z-index: 5;
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+  transition: all 0.3s ease;
+  text-transform: uppercase;
+}
+
+.ExchangeModal_maxButton__dRM4q:hover:not(:disabled) {
+  background: linear-gradient(to right, #9b4dff, #6c2aad);
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.7);
+  transform: translateY(-50%) scale(1.05);
+}
+
+.ExchangeModal_maxButton__dRM4q:disabled {
+  background: linear-gradient(to right, #666, #444);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Стили для метки валюты */
+.ExchangeModal_currencyLabel__gKyLF {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  padding: 5px 8px;
+  background: rgba(25, 10, 40, 0.3);
+  border-radius: 8px;
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  box-shadow: 0 0 8px rgba(138, 43, 226, 0.3);
+}
+
+.ExchangeModal_actionButton__HgmPc {
+  width: 100%;
+  margin-top: 15px;
+  background: linear-gradient(45deg, #6a47aa, #8A2BE2, #6a47aa);
+  background-size: 200% auto;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 12px;
+  padding: 12px;
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  cursor: pointer;
+  transition: all 0.5s ease;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  animation: ExchangeModal_gradientShift__dv_k2 3s infinite alternate;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.8);
+  letter-spacing: 1px;
+  margin-top: auto; /* Прижимаем кнопку к низу формы */
+  margin-bottom: 5px;
+}
+
+@keyframes ExchangeModal_gradientShift__dv_k2 {
+  0% {
+    background-position: 0% 50%;
+  }
+  100% {
+    background-position: 100% 50%;
+  }
+}
+
+.ExchangeModal_actionButton__HgmPc:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.7);
+}
+
+.ExchangeModal_actionButton__HgmPc:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.ExchangeModal_conversionResult__tNBD1 {
+  text-align: center;
+  margin: 15px 0;
+  padding: 12px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 10px;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  color: #ffffff;
+  font-weight: bold;
+}
+
+.ExchangeModal_conversionResult__tNBD1 p {
+  margin: 4px 0;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+.ExchangeModal_errorMessage__veApD {
+  color: #ff5252;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  background: rgba(255, 0, 0, 0.1);
+  border: 1px solid rgba(255, 0, 0, 0.3);
+  border-radius: 8px;
+  padding: 8px;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+}
+
+.ExchangeModal_successMessage__JLPkO {
+  color: #4caf50;
+  text-align: center;
+  margin-top: 10px;
+  font-size: 14px;
+  background: rgba(76, 175, 80, 0.1);
+  border: 1px solid rgba(76, 175, 80, 0.3);
+  border-radius: 8px;
+  padding: 8px;
+  text-shadow: 0 0 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-height: 700px) {
+  .ExchangeModal_modalContainer__0mvZ3 {
+    height: 95%; /* Уменьшаем высоту на маленьких экранах */
+  }
+  
+  .ExchangeModal_modalContent__SEJgg {
+    padding: 10px;
+  }
+  
+  .ExchangeModal_balanceInfo__YLawP {
+    padding: 8px;
+    margin-bottom: 8px;
+  }
+  
+  .ExchangeModal_inputWrapper__ZHSn6 {
+    margin-bottom: 8px;
+  }
+  
+  .ExchangeModal_actionButton__HgmPc {
+    margin-top: 10px;
+    padding: 10px;
+  }
+}
+
+/* Анимация пульсации кнопки */
+@keyframes ExchangeModal_pulse__W1vXg {
+  0% {
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+  }
+  50% {
+    box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+  }
+  100% {
+    box-shadow: 0 0 10px rgba(138, 43, 226, 0.5);
+  }
+}
+
+.ExchangeModal_actionButton__HgmPc:not(:disabled) {
+  animation: ExchangeModal_pulse__W1vXg 2s infinite, ExchangeModal_gradientShift__dv_k2 3s infinite alternate;
+}
+
+/* Добавляем стили для info box внизу обоих экранов */
+.ExchangeModal_exchangeInfo__51x3E {
+  margin-top: 8px;
+  padding: 6px;
+  font-size: 11px;
+  line-height: 1.2;
+  background: rgba(20, 5, 40, 0.5);
+  border-radius: 8px;
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  color: rgba(255, 255, 255, 0.9);
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.5);
+}
+
+/* Корректируем медиа-запросы для адаптивности */
+@media (max-height: 740px) {
+  .ExchangeModal_modalContainer__0mvZ3 {
+    height: 430px;
+  }
+  
+  .ExchangeModal_modalContent__SEJgg {
+    padding: 8px;
+  }
+  
+  .ExchangeModal_modalHeader__izdHu {
+    padding: 8px;
+  }
+  
+  .ExchangeModal_modalHeader__izdHu h2 {
+    font-size: 18px;
+  }
+}
+
+/* Улучшаем стили для мобильных устройств */
+@media (max-width: 480px) {
+  .ExchangeModal_modalContainer__0mvZ3 {
+    width: 95%;
+    max-height: 90vh;
+    margin: 5vh auto;
+    padding: 10px;
+  }
+
+  .ExchangeModal_modalContent__SEJgg {
+    padding: 10px;
+    overflow-y: auto;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .ExchangeModal_inputField__qarNt {
+    font-size: 14px;
+    padding: 8px;
+    width: 100%;
+  }
+
+  .ExchangeModal_maxButton__dRM4q {
+    min-width: 60px;
+    padding: 8px;
+    font-size: 12px;
+  }
+
+  .ExchangeModal_actionButton__HgmPc {
+    width: 100%;
+    padding: 12px;
+    font-size: 14px;
+    white-space: normal;
+    height: auto;
+    min-height: 48px;
+    margin-top: 16px;
+  }
+
+  .ExchangeModal_modalTab___YzDC {
+    padding: 8px;
+    font-size: 14px;
+    white-space: normal;
+    line-height: 1.2;
+  }
+
+  .ExchangeModal_withdrawForm__YK97n {
+    padding: 10px;
+  }
+
+  .ExchangeModal_balanceInfo__YLawP {
+    font-size: 12px;
+    padding: 8px;
+    margin-bottom: 12px;
+  }
+
+  .ExchangeModal_inputWrapper__ZHSn6 {
+    margin-bottom: 12px;
+  }
+
+  .ExchangeModal_inputWrapper__ZHSn6 label {
+    font-size: 14px;
+    margin-bottom: 4px;
+    display: block;
+  }
+
+  .ExchangeModal_walletAddressField__UpRFu {
+    font-size: 14px;
+    padding: 8px;
+    width: 100%;
+  }
+
+  .ExchangeModal_errorMessage__veApD,
+  .ExchangeModal_successMessage__JLPkO {
+    font-size: 12px;
+    padding: 8px;
+    margin: 8px 0;
+  }
+}
+
+/* Стили для вкладок и содержимого */
+.ExchangeModal_tabContentContainer__v6NG3 {
+  padding: 16px;
+  color: #fff;
+}
+
+.ExchangeModal_cosmicTextContainer__qVHfJ {
+  margin-bottom: 20px;
+  text-align: center;
+}
+
+.ExchangeModal_goldenText__igB_p {
+  color: #ffd700;
+  font-size: 18px;
+  font-weight: bold;
+  margin-bottom: 8px;
+  text-shadow: 0 0 5px rgba(0, 0, 0, 0.5), 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+.ExchangeModal_cosmicText__tc4b3 {
+  color: #fff;
+  font-size: 14px;
+  margin-bottom: 8px;
+}
+
+.ExchangeModal_instructionText__kjVoW {
+  color: #c9a0ff;
+  font-size: 14px;
+  text-align: center;
+  margin-bottom: 16px;
+}
+
+.ExchangeModal_resultContainer__2HpJ0 {
+  background-color: rgba(60, 20, 80, 0.5);
+  border: 1px solid rgba(138, 43, 226, 0.4);
+  border-radius: 8px;
+  padding: 12px;
+  margin-top: 16px;
+  margin-bottom: 16px;
+  text-align: center;
+}
+
+.ExchangeModal_calculationResult__WJ_mZ {
+  color: #ffd700;
+  font-size: 16px;
+  font-weight: 500;
+}
+
+.ExchangeModal_errorMessage__veApD {
+  background-color: rgba(255, 0, 0, 0.2);
+  border: 1px solid rgba(255, 0, 0, 0.4);
+  color: #ff6b6b;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.ExchangeModal_successMessage__JLPkO {
+  background-color: rgba(0, 255, 0, 0.1);
+  border: 1px solid rgba(0, 255, 0, 0.3);
+  color: #4cff4c;
+  padding: 8px 12px;
+  border-radius: 6px;
+  margin-top: 16px;
+  font-size: 14px;
+  text-align: center;
+}
+
+.ExchangeModal_buttonContainer__gAsLc {
+  display: flex;
+  justify-content: center;
+  margin-top: 20px;
+}
+
+.ExchangeModal_cosmicButton__VJFmF {
+  background: linear-gradient(to right, #8a2be2, #4b0082);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 28px;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  transition: all 0.3s ease;
+}
+
+.ExchangeModal_cosmicButton__VJFmF:hover:not(:disabled) {
+  background: linear-gradient(to right, #9b4dff, #6c2aad);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.7);
+}
+
+.ExchangeModal_cosmicButton__VJFmF:disabled {
+  background: linear-gradient(to right, #666, #444);
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+/* Утилитарные классы для отступов */
+.ExchangeModal_mb3__Ht39V {
+  margin-bottom: 12px;
+}
+
+.ExchangeModal_mb4__Tavel {
+  margin-bottom: 16px;
+}
+
+.ExchangeModal_mt4___yN2p {
+  margin-top: 16px;
+}
+
+/* Индикатор загрузки */
+.ExchangeModal_loadingIndicator__zJFVr {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 10px;
+}
+
+.ExchangeModal_loadingSpinner__gehjA {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(138, 43, 226, 0.3);
+  border-radius: 50%;
+  border-top: 3px solid rgba(138, 43, 226, 0.8);
+  animation: ExchangeModal_spin__ohCgM 1s linear infinite;
+}
+
+@keyframes ExchangeModal_spin__ohCgM {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+/* Поля ввода */
+.ExchangeModal_inputField__qarNt {
+  width: 100%;
+}
+
+.ExchangeModal_walletAddressField__UpRFu {
+  width: 100%;
+}
+
+/* Исправляем проблему с прокруткой на мобильных устройствах */
+.ExchangeModal_modalContent__SEJgg {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  max-height: calc(90vh - 120px);
+  padding-bottom: 20px;
+}
+
+/* Улучшаем читаемость текста */
+.ExchangeModal_balanceInfo__YLawP,
+.ExchangeModal_withdrawForm__YK97n label,
+.ExchangeModal_inputWrapper__ZHSn6 label {
+  color: #ffffff;
+  text-shadow: 1px 1px 2px rgba(0, 0, 0, 0.8);
+}
+
+/* Общие улучшения для всех размеров экрана */
+.ExchangeModal_inputField__qarNt,
+.ExchangeModal_walletAddressField__UpRFu {
+  background: rgba(0, 0, 0, 0.3);
+  border: 1px solid rgba(138, 43, 226, 0.3);
+  border-radius: 8px;
+  color: #fff;
+  transition: all 0.3s ease;
+}
+
+.ExchangeModal_inputField__qarNt:focus,
+.ExchangeModal_walletAddressField__UpRFu:focus {
+  border-color: rgba(138, 43, 226, 0.8);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+  outline: none;
+}
+
+.ExchangeModal_actionButton__HgmPc {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.6), rgba(106, 71, 170, 0.7));
+  border: 2px solid rgba(138, 43, 226, 0.8);
+  border-radius: 8px;
+  color: #fff;
+  cursor: pointer;
+  font-weight: bold;
+  transition: all 0.3s ease;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+}
+
+.ExchangeModal_actionButton__HgmPc:hover:not(:disabled) {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.8), rgba(106, 71, 170, 0.9));
+  transform: scale(1.02);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+}
+
+.ExchangeModal_actionButton__HgmPc:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+} 
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/HistoryModal/HistoryModal.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************/
+.HistoryModal_historyModalOverlay__8EtUz {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1500;
+  backdrop-filter: blur(4px);
+  padding: 10px;
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+}
+
+.HistoryModal_historyModal__6eNeI {
+  width: 95%;
+  max-width: 400px;
+  background-color: rgba(13, 6, 32, 0.85);
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+  border-radius: 20px;
+  border: 1px solid rgba(138, 43, 226, 0.6);
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.6), 0 0 60px rgba(0, 60, 255, 0.3);
+  max-height: calc(100vh - 120px);
+  margin-bottom: 70px;
+  position: relative;
+  animation: HistoryModal_historyModalFadeIn__SVRWs 0.4s ease-out;
+  overflow: hidden;
+  display: flex;
+  flex-direction: column;
+}
+
+/* Добавляем темный слой поверх фона для лучшей читаемости */
+.HistoryModal_historyModal__6eNeI::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.4);
+  pointer-events: none;
+  z-index: 0;
+}
+
+.HistoryModal_historyModalHeader__FpGEb {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 15px;
+  border-bottom: 1px solid rgba(138, 43, 226, 0.3);
+  position: relative;
+  background: linear-gradient(180deg, rgba(138, 43, 226, 0.3) 0%, rgba(13, 6, 32, 0) 100%);
+  z-index: 1;
+}
+
+.HistoryModal_historyModalTitle__Sjexc {
+  margin: 0;
+  color: #ffffff;
+  font-size: 1.3rem;
+  font-weight: bold;
+  text-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
+  text-align: center;
+}
+
+.HistoryModal_closeButton__mU_H_ {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.6), rgba(106, 71, 170, 0.7));
+  border: 2px solid rgba(138, 43, 226, 0.8);
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  z-index: 3;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+
+.HistoryModal_closeButton__mU_H_:hover {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.8), rgba(106, 71, 170, 0.9));
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.HistoryModal_closeButton__mU_H_:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+}
+
+@keyframes HistoryModal_historyModalFadeIn__SVRWs {
+  from {
+    opacity: 0;
+    transform: scale(0.9) translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.HistoryModal_historyContent__mw_Xa {
+  flex: 1;
+  overflow-y: auto;
+  padding: 15px;
+  position: relative;
+  z-index: 1;
+}
+
+.HistoryModal_historyList__XvmjH {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+
+.HistoryModal_historyItem__DVXCt {
+  background-color: rgba(20, 10, 50, 0.7);
+  border-radius: 12px;
+  padding: 12px;
+  border-left: 3px solid transparent;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
+  position: relative;
+  overflow: hidden;
+  transition: all 0.3s ease;
+}
+
+.HistoryModal_historyItem__DVXCt:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 15px rgba(138, 43, 226, 0.3);
+}
+
+.HistoryModal_historyItem__DVXCt::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.1) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.HistoryModal_transactionInfo__rjk1b {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 8px;
+  align-items: center;
+}
+
+.HistoryModal_historyType__ijhLN {
+  font-weight: bold;
+  color: #ffffff;
+  font-size: 0.95rem;
+  text-shadow: 0 0 8px rgba(138, 43, 226, 0.8);
+}
+
+.HistoryModal_historyDate__RpKD0 {
+  color: rgba(255, 255, 255, 0.6);
+  font-size: 0.8rem;
+}
+
+.HistoryModal_historyDetails__uFqAk {
+  color: rgba(255, 255, 255, 0.85);
+  line-height: 1.4;
+  font-size: 0.95rem;
+}
+
+/* Стили для типов событий */
+.HistoryModal_typeGame__fM1RA {
+  border-left: 4px solid #8a2be2;
+  background: linear-gradient(to right, rgba(138, 43, 226, 0.2), rgba(0, 0, 0, 0));
+}
+
+.HistoryModal_typeExchange__ZemSu {
+  border-left: 4px solid #00a3ff;
+  background: linear-gradient(to right, rgba(0, 163, 255, 0.2), rgba(0, 0, 0, 0));
+}
+
+.HistoryModal_typePurchase__KPVIn, .HistoryModal_typeTicket_purchase__TaTJR {
+  border-left: 4px solid #ffd700;
+  background: linear-gradient(to right, rgba(255, 215, 0, 0.2), rgba(0, 0, 0, 0));
+}
+
+.HistoryModal_typeWithdraw__Y_ZBN {
+  border-left: 4px solid #ff6b6b;
+  background: linear-gradient(to right, rgba(255, 107, 107, 0.2), rgba(0, 0, 0, 0));
+}
+
+/* Состояния загрузки и ошибок */
+.HistoryModal_loadingContainer__jwQxO,
+.HistoryModal_emptyHistory__OVkXy,
+.HistoryModal_errorContainer__lnqp7 {
+  text-align: center;
+  padding: 25px;
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 0.9rem;
+  position: relative;
+}
+
+.HistoryModal_spinner__N0M_c {
+  width: 40px;
+  height: 40px;
+  border: 3px solid rgba(138, 43, 226, 0.2);
+  border-radius: 50%;
+  border-top: 3px solid rgba(138, 43, 226, 0.8);
+  margin: 0 auto 15px;
+  animation: HistoryModal_spin__zC3pE 1s linear infinite;
+}
+
+@keyframes HistoryModal_spin__zC3pE {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.HistoryModal_errorText__MDrC3 {
+  color: #ff6b6b;
+  padding: 12px;
+  background-color: rgba(255, 77, 79, 0.1);
+  border-radius: 10px;
+  text-align: center;
+  font-size: 0.9rem;
+  border: 1px solid rgba(255, 77, 79, 0.3);
+  box-shadow: 0 0 15px rgba(255, 77, 79, 0.2);
+}
+
+.HistoryModal_loadMore__W4_co {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 15px;
+}
+
+.HistoryModal_loadMoreButton__L9lh_ {
+  background: rgba(138, 43, 226, 0.2) !important;
+  border: 1px solid rgba(138, 43, 226, 0.5) !important;
+  color: white !important;
+  padding: 8px 20px !important;
+  border-radius: 30px !important;
+  font-size: 14px !important;
+  transition: all 0.3s ease !important;
+  text-shadow: 0 0 8px rgba(138, 43, 226, 0.8) !important;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.3) !important;
+}
+
+.HistoryModal_loadMoreButton__L9lh_:hover {
+  background: rgba(138, 43, 226, 0.3) !important;
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.5) !important;
+  transform: translateY(-2px) !important;
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 480px) {
+  .HistoryModal_historyModal__6eNeI {
+    width: 92%;
+    max-height: 75vh;
+  }
+  
+  .HistoryModal_historyModalTitle__Sjexc {
+    font-size: 1.2rem;
+  }
+  
+  .HistoryModal_closeButton__mU_H_ {
+    font-size: 1.6rem;
+    right: 12px;
+    top: 10px;
+  }
+  
+  .HistoryModal_historyItem__DVXCt {
+    padding: 10px;
+  }
+  
+  .HistoryModal_historyDetails__uFqAk {
+    font-size: 0.9rem;
+  }
+} 
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/MenuContainer.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+.MenuContainer_gameMenuPage__Fc1am {
+  touch-action: none;
+  -ms-touch-action: none;
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background-color: transparent;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 100%;
+  box-sizing: border-box;
+}
+
+.MenuContainer_gameMenu__VH1bJ {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  padding: 0;
+  padding-top: calc(45px + 22px);
+  padding-bottom: 70px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: white;
+  z-index: 1;
+  gap: 10px;
+  -webkit-overflow-scrolling: touch;
+  height: 100vh;
+  max-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Стили для чистого режима */
+.MenuContainer_cleanMode__3R485 .MenuContainer_gameMenu__VH1bJ {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Адаптивность для маленьких экранов */
+@media screen and (max-width: 380px) {
+  .MenuContainer_gameMenu__VH1bJ {
+    padding-top: calc(45px + 22px);
+    padding-bottom: 60px;
+    gap: 6px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .MenuContainer_gameMenu__VH1bJ {
+    padding-top: calc(40px + 22px);
+    padding-bottom: 55px;
+    gap: 5px;
+  }
+} 
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/MenuBackground.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+.MenuBackground_menuStarsBackground__whIKQ {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: black;
+  background-image: url('/images/space.jpg');
+  background-size: cover;
+  background-position: center;
+  background-attachment: fixed;
+  overflow: hidden;
+  z-index: 0;
+  opacity: 1;
+  transition: opacity 0.5s ease;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+/* Специальные стили, когда активирован гипно-режим */
+body.hypno-active .MenuBackground_menuStarsBackground__whIKQ {
+  transition: all 0.5s ease;
+}
+
+@keyframes MenuBackground_spaceSwirl__oTMpl {
+  from {
+    background-position: center;
+    transform: scale(1);
+  }
+  50% {
+    background-position: 51% 51%;
+    transform: scale(1.05);
+  }
+  to {
+    background-position: center;
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 768px) {
+  .MenuBackground_menuStarsBackground__whIKQ {
+    background-attachment: scroll;
+    background-position: center center;
+    background-size: cover;
+  }
+}
+
+/* Эффект подсветки только для обычного режима, не для чистого режима */
+.MenuBackground_menuStarsBackground__whIKQ:not(.MenuBackground_cleanMode__mE5bB)::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: radial-gradient(circle at center, rgba(255, 0, 255, 0.2) 0%, transparent 60%);
+  z-index: 1;
+  pointer-events: none;
+}
+
+@keyframes MenuBackground_falling-coin__HYHfj {
+  0% {
+    transform: translateY(-100px) rotate(0deg);
+    opacity: 0;
+  }
+  10% {
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(calc(100vh + 100px)) rotate(360deg);
+    opacity: 0;
+  }
+}
+
+.MenuBackground_coin1__jqLL9, .MenuBackground_coin2__7_qYn, .MenuBackground_coin3__95xle, .MenuBackground_coin4__EW5pB, .MenuBackground_coin5__ATmN6,
+.MenuBackground_coin6__HwUHt, .MenuBackground_coin7__XTB0r, .MenuBackground_coin8__5KosH, .MenuBackground_coin9__PBWnn, .MenuBackground_coin10__VWaBv {
+  position: absolute;
+  width: 30px;
+  height: 30px;
+  background-image: url('/images/tonot.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  z-index: 1;
+  opacity: 0.7;
+  animation: MenuBackground_falling-coin__HYHfj 15s infinite linear;
+  animation-delay: var(--delay, 0s);
+  top: -30px;
+  left: var(--left, 10%);
+}
+
+/* Градиент затемнения только для обычного режима */
+.MenuBackground_menuStarsBackground__whIKQ:not(.MenuBackground_cleanMode__mE5bB)::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.8) 0%, 
+    rgba(0, 0, 0, 0.4) 20%, 
+    rgba(0, 0, 0, 0.2) 50%, 
+    rgba(0, 0, 0, 0.4) 80%, 
+    rgba(0, 0, 0, 0.8) 100%);
+  pointer-events: none;
+}
+
+/* В чистом режиме, добавим только очень легкое затемнение по краям */
+.MenuBackground_cleanMode__mE5bB::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(to bottom, 
+    rgba(0, 0, 0, 0.3) 0%, 
+    rgba(0, 0, 0, 0.1) 20%, 
+    rgba(0, 0, 0, 0) 40%, 
+    rgba(0, 0, 0, 0) 60%, 
+    rgba(0, 0, 0, 0.1) 80%, 
+    rgba(0, 0, 0, 0.3) 100%);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.MenuBackground_coin1__jqLL9 {
+  --delay: 0s;
+  --left: 10%;
+  animation-duration: 15s;
+}
+
+.MenuBackground_coin2__7_qYn {
+  --delay: 2s;
+  --left: 25%;
+  animation-duration: 18s;
+}
+
+.MenuBackground_coin3__95xle {
+  --delay: 1s;
+  --left: 40%;
+  animation-duration: 13s;
+}
+
+.MenuBackground_coin4__EW5pB {
+  --delay: 4s;
+  --left: 55%;
+  animation-duration: 16s;
+}
+
+.MenuBackground_coin5__ATmN6 {
+  --delay: 3s;
+  --left: 70%;
+  animation-duration: 14s;
+}
+
+.MenuBackground_coin6__HwUHt {
+  --delay: 5s;
+  --left: 85%;
+  animation-duration: 17s;
+}
+
+.MenuBackground_coin7__XTB0r {
+  --delay: 7s;
+  --left: 15%;
+  animation-duration: 19s;
+}
+
+.MenuBackground_coin8__5KosH {
+  --delay: 6s;
+  --left: 30%;
+  animation-duration: 15s;
+}
+
+.MenuBackground_coin9__PBWnn {
+  --delay: 8s;
+  --left: 60%;
+  animation-duration: 16s;
+}
+
+.MenuBackground_coin10__VWaBv {
+  --delay: 9s;
+  --left: 75%;
+  animation-duration: 14s;
+}
+
+.MenuBackground_twinklingStars__gauzy {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1;
+  pointer-events: none;
+}
+
+/* Стили для чистого режима */
+.MenuBackground_cleanMode__mE5bB {
+  opacity: 1; /* Убираем прозрачность, чтобы фон был ярким */
+  transition: opacity 0.5s ease;
+} 
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/MiniHomeButton.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+.MiniHomeButton_miniHomeButtonContainer__snxco {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.MiniHomeButton_miniHomeButton__UfiQn {
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.MiniHomeButton_miniHomeIcon__anJZC {
+  width: 100%;
+  height: 100%;
+  animation: MiniHomeButton_spin-wheel__BeCWs 15s linear infinite;
+}
+
+@keyframes MiniHomeButton_spin-wheel__BeCWs {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.MiniHomeButton_miniHomeButtonContainer__snxco:hover .MiniHomeButton_miniHomeButton__UfiQn {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.MiniHomeButton_miniHomeButtonContainer__snxco:hover .MiniHomeButton_miniHomeIcon__anJZC {
+  animation-duration: 5s;
+}
+
+.MiniHomeButton_spinningImage__jr8Cf {
+  animation: MiniHomeButton_rotateMiniWheel__P_h_d 8s linear infinite;
+}
+
+@keyframes MiniHomeButton_rotateMiniWheel__P_h_d {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Используется в GameMenu для показа кнопки в чистом режиме */
+.MiniHomeButton_visible__oMMLU {
+  opacity: 1;
+  pointer-events: auto;
+} 
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/StarGenerator.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+.StarGenerator_star__1fvFb {
+  position: absolute;
+  background-color: white;
+  border-radius: 50%;
+  opacity: 0.7;
+  animation: StarGenerator_twinkle__gPhVH 5s infinite ease-in-out;
+}
+
+@keyframes StarGenerator_twinkle__gPhVH {
+  0%, 100% {
+    opacity: 0.2;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1);
+  }
+} 
+/*!*****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/MenuContent.module.css ***!
+  \*****************************************************************************************************************************************************************************************************************************************************************************************************/
+.MenuContent_gameMenu__cXkFM {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  min-height: 100vh;
+  padding: 0;
+  padding-top: 45px;
+  padding-bottom: 70px;
+  overflow-y: auto;
+  overflow-x: hidden;
+  color: white;
+  z-index: 1;
+  gap: 8px;
+  -webkit-overflow-scrolling: touch;
+  height: 100vh;
+  max-height: 100vh;
+  box-sizing: border-box;
+}
+
+/* Стили для чистого режима */
+.MenuContent_cleanMode__VAh_u {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+/* Верхняя секция (профиль и баланс) */
+.MenuContent_topSection__QGXrR {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 8px;
+  padding-bottom: 5px;
+  position: relative;
+  z-index: 30;
+  margin-top: 5px;
+}
+
+/* Центральная секция (колесо и приветствие) */
+.MenuContent_centerSection__vyq_A {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  flex-grow: 1;
+  justify-content: flex-start;
+  gap: 12px;
+  padding-top: 0;
+  position: relative;
+  margin-top: -15px;
+}
+
+/* Нижняя секция (кнопки и контролы) */
+.MenuContent_bottomSection__EKxRh {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 15px;
+  margin-bottom: 20px;
+}
+
+.MenuContent_profileSection__PyWft {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 5px;
+}
+
+.MenuContent_balanceSection__qPfeh {
+  width: 90%;
+  max-width: 400px;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+  position: relative;
+  z-index: 25;
+  margin-top: 40px;
+}
+
+.MenuContent_welcomeSection__25d2D {
+  width: 100%;
+  text-align: center;
+  margin: 0;
+  padding: 5px 0;
+  position: relative;
+  z-index: 20;
+  transform: translateY(0);
+}
+
+/* Адаптивность для мобильных устройств */
+@media screen and (max-width: 480px) {
+  .MenuContent_gameMenu__cXkFM {
+    padding-top: 40px;
+  }
+
+  .MenuContent_balanceSection__qPfeh {
+    margin-top: 35px;
+  }
+}
+
+/* Адаптивность для маленьких экранов */
+@media screen and (max-width: 380px) {
+  .MenuContent_gameMenu__cXkFM {
+    padding-top: 35px;
+  }
+
+  .MenuContent_balanceSection__qPfeh {
+    margin-top: 30px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .MenuContent_gameMenu__cXkFM {
+    padding-top: 30px;
+  }
+
+  .MenuContent_balanceSection__qPfeh {
+    margin-top: 25px;
+  }
+} 
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/HeaderProfile.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+.HeaderProfile_headerProfileBlock__Tqb4k {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+  box-shadow: 0 5px 10px rgba(255, 0, 255, 0.15);
+  border-radius: 0;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  transition: all 0.3s ease;
+  height: 40px;
+}
+
+/* Стили для аватара пользователя */
+.HeaderProfile_profileAvatar__qEIOw {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+  border: 1px solid rgba(255, 0, 255, 0.5);
+}
+
+.HeaderProfile_profileAvatar__qEIOw img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.HeaderProfile_defaultAvatar__upsPs {
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.HeaderProfile_defaultAvatar__upsPs span {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Стили для имени пользователя */
+.HeaderProfile_profileName__iAnG6 {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 10px;
+}
+
+/* Стили для кнопки кошелька */
+.HeaderProfile_walletButtonContainer__ifXmp {
+  margin-left: 10px;
+}
+
+.HeaderProfile_tonConnectButton__0sgvd {
+  max-width: 120px;
+}
+
+.HeaderProfile_tonConnectButton__0sgvd > button {
+  font-size: 12px !important;
+  padding: 6px 10px !important;
+  border-radius: 5px !important;
+  background: linear-gradient(45deg, #FF00FF, #00BFFF) !important;
+  border: none !important;
+}
+
+/* Стили для скрытия в разных режимах */
+.HeaderProfile_hiddenInHypnoMode__1yIZE,
+.HeaderProfile_hiddenInCleanMode__G1dGb {
+  display: none;
+}
+
+/* Стили для кликабельных элементов */
+.HeaderProfile_clickable__vAngX {
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.HeaderProfile_clickable__vAngX:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.HeaderProfile_clickable__vAngX:active {
+  transform: scale(0.95);
+}
+
+/* Адаптивность */
+@media screen and (max-width: 320px) {
+  .HeaderProfile_headerProfileBlock__Tqb4k {
+    height: 35px;
+    padding: 4px;
+  }
+  
+  .HeaderProfile_profileAvatar__qEIOw {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .HeaderProfile_profileName__iAnG6 {
+    font-size: 12px;
+  }
+} 
+/*!***********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/ProfileModal/ProfileModal.module.css ***!
+  \***********************************************************************************************************************************************************************************************************************************************************************************************/
+.ProfileModal_modalOverlay__2kbce {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.ProfileModal_modalContent__roSL7 {
+  width: 90%;
+  max-width: 500px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.85);
+  background-image: url('/images/profilemodal.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.ProfileModal_modalContent__roSL7::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/images/profilemodal.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 1;
+  z-index: -1;
+  border-radius: 14px;
+}
+
+.ProfileModal_modalHeader__iQUDH {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+  padding-bottom: 10px;
+}
+
+.ProfileModal_modalHeader__iQUDH h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.ProfileModal_closeButton__7lnLF {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.6), rgba(106, 71, 170, 0.7));
+  border: 2px solid rgba(138, 43, 226, 0.8);
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  z-index: 3;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+
+.ProfileModal_closeButton__7lnLF:hover {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.8), rgba(106, 71, 170, 0.9));
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.ProfileModal_closeButton__7lnLF:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+}
+
+.ProfileModal_userProfile__ZGtcJ {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid rgba(255, 0, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.ProfileModal_userAvatar__eECmJ {
+  margin-right: 16px;
+}
+
+.ProfileModal_avatarImage__XyOby {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.ProfileModal_defaultAvatar__wY9DA, .ProfileModal_smallDefaultAvatar__zJXyB {
+  background: linear-gradient(45deg, #4970B3, #3A5A91);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+.ProfileModal_defaultAvatar__wY9DA {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #ff00ff, #00bfff);
+  border-radius: 50%;
+  margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: bold;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.ProfileModal_smallDefaultAvatar__zJXyB {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #ff00ff, #00bfff);
+  border-radius: 50%;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: white;
+  font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.ProfileModal_userName__hKL8F {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.ProfileModal_loadingSpinner__Mxdzo {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.ProfileModal_spinner__JX9_3 {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #4970B3;
+  width: 40px;
+  height: 40px;
+  animation: ProfileModal_spin__9iG91 1s linear infinite;
+}
+
+@keyframes ProfileModal_spin__9iG91 {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.ProfileModal_errorMessage__PKPVv {
+  color: #FF6B6B;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(255, 107, 107, 0.1);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.ProfileModal_retryButton__W2Z3g {
+  background-color: #4970B3;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.ProfileModal_retryButton__W2Z3g:hover {
+  background-color: #3A5A91;
+}
+
+.ProfileModal_referralSection__U5qwS {
+  margin-bottom: 24px;
+}
+
+.ProfileModal_referralSection__U5qwS h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+}
+
+.ProfileModal_referralLinkContainer__4rwmL {
+  display: flex;
+  margin-bottom: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.ProfileModal_referralLink__2IGOy {
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  outline: none;
+  margin: 5px auto;
+  word-break: break-all;
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+}
+
+.ProfileModal_copyButton__jzUVA {
+  background: linear-gradient(45deg, #9932CC, #8A2BE2);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  margin: 10px auto;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s;
+  font-weight: 600;
+  display: block;
+  width: auto;
+}
+
+.ProfileModal_copyButton__jzUVA:hover {
+  background: linear-gradient(45deg, #8A2BE2, #9932CC);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(153, 50, 204, 0.4);
+}
+
+.ProfileModal_copyButton__jzUVA:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(153, 50, 204, 0.4);
+}
+
+.ProfileModal_statsSection__RuL65 {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  text-align: center;
+}
+
+.ProfileModal_statItem__me8_0 {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.ProfileModal_statLabel__3UC5L {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 5px;
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.ProfileModal_statValue__z2hGV {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 600px) {
+  .ProfileModal_modalContent__roSL7 {
+    width: 95%;
+    padding: 15px;
+  }
+  
+  .ProfileModal_statsSection__RuL65 {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 8px;
+  }
+  
+  .ProfileModal_statLabel__3UC5L {
+    font-size: 12px;
+  }
+  
+  .ProfileModal_statValue__z2hGV {
+    font-size: 16px;
+  }
+
+  .ProfileModal_channelButton__NVPNr, 
+  .ProfileModal_copyButton__jzUVA, 
+  .ProfileModal_claimButton__B0OIB, 
+  .ProfileModal_retryButton__W2Z3g {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .ProfileModal_referralLinkContainer__4rwmL {
+    flex-direction: column;
+  }
+
+  .ProfileModal_referralLink__2IGOy {
+    margin-bottom: 8px;
+    width: 100%;
+  }
+
+  .ProfileModal_copyButton__jzUVA {
+    width: 100%;
+  }
+}
+
+.ProfileModal_bonusSection__F4v3g {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+.ProfileModal_pendingBonus__qs88D {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.ProfileModal_claimButton__B0OIB {
+  background: linear-gradient(45deg, #FFD700, #DAA520);
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  margin: 5px auto;
+  display: block;
+  width: auto;
+}
+
+.ProfileModal_claimButton__B0OIB:hover {
+  background: linear-gradient(45deg, #DAA520, #FFD700);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(218, 165, 32, 0.4);
+}
+
+.ProfileModal_claimButton__B0OIB:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(218, 165, 32, 0.4);
+}
+
+.ProfileModal_claimButton__B0OIB:disabled {
+  background: linear-gradient(45deg, #888888, #666666);
+  color: #AAAAAA;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.ProfileModal_referralsListSection__YyB8I {
+  margin-bottom: 24px;
+}
+
+.ProfileModal_referralsListSection__YyB8I h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+}
+
+.ProfileModal_referralsList__2vq4V {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  padding: 15px;
+  max-height: 300px;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+.ProfileModal_referralItem__gP177 {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 0, 255, 0.1);
+}
+
+.ProfileModal_referralItem__gP177:last-child {
+  border-bottom: none;
+}
+
+.ProfileModal_validReferral___cMF8 {
+  background-color: rgba(0, 255, 0, 0.05);
+}
+
+.ProfileModal_referralAvatar___KddL {
+  margin-right: 10px;
+}
+
+.ProfileModal_referralAvatar___KddL img {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.ProfileModal_referralName__llbVE {
+  flex: 1;
+  text-align: left;
+}
+
+.ProfileModal_referralStatus__COsz7 {
+  margin-left: 10px;
+}
+
+.ProfileModal_statusIndicators__osqYk {
+  display: flex;
+  margin-top: 5px;
+}
+
+.ProfileModal_statusDot__YnFLq {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: rgba(60, 60, 60, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.ProfileModal_statusDot__YnFLq.ProfileModal_completed__nU_Q7 {
+  background-color: rgba(0, 180, 0, 0.3);
+  border-color: rgba(0, 255, 0, 0.5);
+  color: #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.ProfileModal_statusDot__YnFLq span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+}
+
+.ProfileModal_progressSection__5TXJx {
+  margin-bottom: 24px;
+}
+
+.ProfileModal_progressSection__5TXJx h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+}
+
+.ProfileModal_progressBar__fiyk4 {
+  height: 10px;
+  background-color: #333333;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
+.ProfileModal_progressFill__fr94c {
+  height: 100%;
+  background: linear-gradient(45deg, #9932CC, #8A2BE2);
+  border-radius: 5px;
+}
+
+.ProfileModal_progressText__Ep2sy {
+  font-size: 0.9rem;
+  color: #CCCCCC;
+}
+
+.ProfileModal_noData___wVKT {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.ProfileModal_channelSection__BP20K {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+.ProfileModal_channelContainer__JAWLl {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.ProfileModal_channelStatus__ZTLOB {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.ProfileModal_channelName__8_DP6 {
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+}
+
+.ProfileModal_channelButton__NVPNr {
+  background: linear-gradient(45deg, #9932CC, #8A2BE2);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  margin: 5px auto;
+  display: block;
+  width: auto;
+}
+
+.ProfileModal_channelButton__NVPNr:hover {
+  background: linear-gradient(45deg, #8A2BE2, #9932CC);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(153, 50, 204, 0.4);
+}
+
+.ProfileModal_channelButton__NVPNr:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(153, 50, 204, 0.4);
+}
+
+.ProfileModal_channelButton__NVPNr:disabled {
+  background: linear-gradient(45deg, #888888, #666666);
+  color: #AAAAAA;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Стили для скроллбара */
+.ProfileModal_modalContent__roSL7::-webkit-scrollbar {
+  width: 8px;
+}
+
+.ProfileModal_modalContent__roSL7::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.ProfileModal_modalContent__roSL7::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #9932CC, #8A2BE2);
+  border-radius: 8px;
+} 
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/BottomNavigation.module.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************/
+.BottomNavigation_bottomNav__zc3iM {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  background: rgba(0, 0, 0, 0.8);
+  border-top: 1px solid rgba(255, 0, 255, 0.3);
+  box-shadow: 0 -5px 10px rgba(255, 0, 255, 0.15);
+  z-index: 1200;
+  padding: 5px 0;
+  transition: all 0.3s ease;
+  height: 50px;
+}
+
+.BottomNavigation_bottomNavItem__jw_mJ {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  flex: 1;
+  height: 100%;
+  color: rgba(255, 255, 255, 0.7);
+  cursor: pointer;
+  transition: all 0.3s ease;
+  position: relative;
+}
+
+.BottomNavigation_bottomNavItem__jw_mJ:hover {
+  color: white;
+  transform: translateY(-2px);
+}
+
+.BottomNavigation_bottomNavItem__jw_mJ.BottomNavigation_active__2L_gO {
+  color: white;
+}
+
+.BottomNavigation_bottomNavItem__jw_mJ.BottomNavigation_active__2L_gO::after {
+  content: '';
+  position: absolute;
+  bottom: -5px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 16px;
+  height: 2px;
+  background: linear-gradient(to right, #FF00FF, #00BFFF);
+  border-radius: 2px;
+}
+
+.BottomNavigation_bottomNavIcon__IvkYu {
+  margin-bottom: 2px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+}
+
+.BottomNavigation_bottomNavText__duV6n {
+  font-size: 10px;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  white-space: nowrap;
+  text-align: center;
+}
+
+/* Специальные стили для иконки обмена */
+.BottomNavigation_exchangeIconsContainer__ZbZaI {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.BottomNavigation_exchangeNavIcon__T3Zek {
+  width: 20px;
+  height: 20px;
+}
+
+.BottomNavigation_exchangeArrow__lMIsE {
+  margin: 0 2px;
+  font-size: 14px;
+}
+
+/* Специальные стили для иконок истории */
+.BottomNavigation_historyIconsRow__M28d_ {
+  display: flex;
+  gap: 2px;
+}
+
+.BottomNavigation_historyToken__Um_7w {
+  width: 12px;
+  height: 12px;
+}
+
+/* Скрытие в гипно-режиме */
+.BottomNavigation_hiddenInHypnoMode__2Ch8i {
+  display: none;
+}
+
+/* Адаптивность для маленьких экранов */
+@media screen and (max-width: 320px) {
+  .BottomNavigation_bottomNav__zc3iM {
+    height: 45px;
+    padding: 3px 0;
+  }
+  
+  .BottomNavigation_bottomNavText__duV6n {
+    font-size: 8px;
+  }
+} 
+/*!****************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/GameButton.module.css ***!
+  \****************************************************************************************************************************************************************************************************************************************************************************************************/
+.GameButton_gameButton__un_t3 {
+  margin-top: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 300px;
+  position: relative;
+  transform: scale(1);
+  transition: all 0.3s ease;
+  animation: GameButton_button-pulse__b5iuV 2s infinite ease-in-out;
+}
+
+.GameButton_gameButtonCleanMode__AOm_4 {
+  margin-top: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  max-width: 300px;
+  position: relative;
+  transform: scale(0.8);
+  transition: all 0.3s ease;
+  animation: GameButton_button-pulse__b5iuV 2s infinite ease-in-out;
+}
+
+.GameButton_gameButtonLink__at4uf {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 10px 20px;
+  background: linear-gradient(45deg, rgba(255, 0, 255, 0.8), rgba(0, 191, 255, 0.8));
+  color: white;
+  border: none;
+  border-radius: 30px;
+  cursor: pointer;
+  font-size: 18px;
+  font-weight: bold;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.5), 
+              0 0 30px rgba(0, 191, 255, 0.3);
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  width: 100%;
+  max-width: 250px;
+  transition: all 0.3s ease;
+  position: relative;
+  outline: none;
+}
+
+.GameButton_gameButtonLink__at4uf:hover {
+  transform: translateY(-3px) scale(1.02);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.7), 
+              0 0 40px rgba(0, 191, 255, 0.4);
+}
+
+.GameButton_gameButtonLink__at4uf:active {
+  transform: translateY(1px) scale(0.98);
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3), 
+              0 0 20px rgba(0, 191, 255, 0.2);
+}
+
+.GameButton_templeIcon__A5Fgy {
+  margin-left: 10px;
+  animation: GameButton_rotate-icon__BWnh_ 10s linear infinite;
+}
+
+@keyframes GameButton_rotate-icon__BWnh_ {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes GameButton_button-pulse__b5iuV {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.03);
+  }
+}
+
+@media screen and (max-width: 380px) {
+  .GameButton_gameButtonLink__at4uf {
+    font-size: 16px;
+    padding: 8px 16px;
+  }
+  
+  .GameButton_templeIcon__A5Fgy {
+    width: 20px;
+    height: 20px;
+  }
+}
+
+/* Стили для контейнера дополнительных кнопок */
+.GameButton_modeButtons__l8kEU {
+  position: absolute;
+  top: -80px;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 20px;
+  opacity: 0;
+  visibility: hidden;
+  transition: all 0.3s ease;
+}
+
+.GameButton_modeButtons__l8kEU.GameButton_visible__dAm4J {
+  opacity: 1;
+  visibility: visible;
+  top: -60px;
+}
+
+/* Стили для кнопок x2 и x10 */
+.GameButton_modeButton__iBLcw {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, rgba(255, 0, 255, 0.8), rgba(0, 191, 255, 0.8));
+  border: none;
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+  transition: all 0.3s ease;
+  transform: scale(0);
+  animation: GameButton_mode-button-appear__XgRhe 0.3s forwards;
+}
+
+.GameButton_modeButton__iBLcw:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+}
+
+.GameButton_modeButton__iBLcw:active {
+  transform: scale(0.95);
+}
+
+/* Анимация появления кнопок */
+@keyframes GameButton_mode-button-appear__XgRhe {
+  0% {
+    transform: scale(0) translateY(20px);
+  }
+  100% {
+    transform: scale(1) translateY(0);
+  }
+} 
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/ControlButtons.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+.ControlButtons_controlButtonsContainer__eBYlj {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 15px;
+  margin-top: 10px;
+}
+
+.ControlButtons_controlButton__JMUS2 {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.4);
+  border: 1px solid rgba(255, 0, 255, 0.6);
+  color: white;
+  font-size: 18px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+}
+
+.ControlButtons_controlButton__JMUS2:hover {
+  transform: scale(1.1);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+}
+
+.ControlButtons_controlButton__JMUS2:active {
+  transform: scale(0.95);
+}
+
+.ControlButtons_soundButton__pAuML {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(100, 0, 100, 0.3));
+}
+
+.ControlButtons_refreshButton__kL7EP {
+  background: linear-gradient(135deg, rgba(0, 0, 0, 0.5), rgba(0, 100, 100, 0.3));
+}
+
+@media screen and (max-width: 380px) {
+  .ControlButtons_controlButtonsContainer__eBYlj {
+    gap: 10px;
+  }
+
+  .ControlButtons_controlButton__JMUS2 {
+    width: 36px;
+    height: 36px;
+    font-size: 16px;
+  }
+} 
+/*!********************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/LanguageToggle.module.css ***!
+  \********************************************************************************************************************************************************************************************************************************************************************************************************/
+.LanguageToggle_languageToggle__v_Q1j {
+  width: 32px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.6);
+  color: white;
+  font-size: 14px;
+  font-weight: bold;
+  border: 1px solid rgba(255, 0, 255, 0.5);
+  cursor: pointer;
+  outline: none;
+  border-radius: 50%;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+  margin-left: 10px;
+  box-shadow: 0 0 10px rgba(255, 0, 255, 0.3);
+  transition: all 0.2s ease;
+  position: relative;
+  top: 0;
+}
+
+.LanguageToggle_languageToggle__v_Q1j:hover {
+  transform: scale(1.05);
+  background: rgba(128, 0, 128, 0.3);
+  border-color: rgba(255, 0, 255, 0.8);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.5);
+}
+
+.LanguageToggle_languageToggle__v_Q1j:active {
+  transform: scale(0.95);
+  background: rgba(128, 0, 128, 0.5);
+} 
+/*!***************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameTransition/GameTransition.module.css ***!
+  \***************************************************************************************************************************************************************************************************************************************************************************************************/
+/* Стили для анимации перехода в игровую комнату */
+.GameTransition_gameTransition__sb_k5 {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: rgba(0, 0, 0, 0.9);
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  opacity: 1;
+  transition: opacity 0.5s ease-in-out;
+}
+
+/* Анимация запущена */
+.GameTransition_animationStarted__PeTXf .GameTransition_wheel__ymC_u {
+  animation: GameTransition_wheel-animation__jqVNz 4.8s forwards;
+}
+
+.GameTransition_animationStarted__PeTXf .GameTransition_curtainLeft__7abK5 {
+  animation: GameTransition_curtain-left__JfkWh 4.8s forwards;
+}
+
+.GameTransition_animationStarted__PeTXf .GameTransition_curtainRight__FcKcr {
+  animation: GameTransition_curtain-right__EbIUc 4.8s forwards;
+}
+
+/* Анимация колеса */
+@keyframes GameTransition_wheel-animation__jqVNz {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+  }
+  10% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+  30% {
+    transform: scale(1) rotate(720deg);
+  }
+  40% {
+    opacity: 1;
+    transform: scale(1.2) rotate(1080deg);
+  }
+  50% {
+    opacity: 0;
+    transform: scale(0.5) rotate(1440deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) rotate(1440deg);
+  }
+}
+
+/* Контейнер для содержимого анимации */
+.GameTransition_content__WyMUm {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+}
+
+/* Стили для колеса */
+.GameTransition_wheel__ymC_u {
+  position: absolute;
+  z-index: 20;
+  opacity: 0;
+}
+
+/* Стили для кулис */
+.GameTransition_curtains__7fNx8 {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 15;
+}
+
+.GameTransition_curtainLeft__7abK5,
+.GameTransition_curtainRight__FcKcr {
+  position: absolute;
+  width: 0%;
+  height: 100%;
+  background: linear-gradient(to bottom, #6b21a8, #4c1d95, #3b0764);
+  box-shadow: 0 0 30px rgba(138, 43, 226, 0.6);
+  top: 0;
+}
+
+.GameTransition_curtainLeft__7abK5 {
+  left: 0;
+}
+
+.GameTransition_curtainRight__FcKcr {
+  right: 0;
+}
+
+/* Анимация кулис */
+@keyframes GameTransition_curtain-left__JfkWh {
+  0% {
+    width: 0%;
+  }
+  45% {
+    width: 0%;
+  }
+  60% {
+    width: 50%;
+  }
+  90% {
+    width: 50%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+@keyframes GameTransition_curtain-right__EbIUc {
+  0% {
+    width: 0%;
+  }
+  45% {
+    width: 0%;
+  }
+  60% {
+    width: 50%;
+  }
+  90% {
+    width: 50%;
+  }
+  100% {
+    width: 100%;
+  }
+}
+
+/* Стили для анимации перехода в меню */
+.GameTransition_menuTransition__goFTd {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 1000;
+  overflow: hidden;
+  perspective: 1500px;
+}
+
+.GameTransition_menuOverlay__i_tYw {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.8);
+  animation: GameTransition_fadeIn__oAcjZ 0.3s forwards;
+  z-index: 1;
+}
+
+.GameTransition_menuContent__gGtPv {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 2;
+}
+
+.GameTransition_menuWheel__ctKRp {
+  animation: GameTransition_spinAndMove__xiim_ 1.5s forwards;
+  filter: drop-shadow(0 0 20px rgba(138, 43, 226, 0.8));
+}
+
+/* Темно-фиолетовые ворота (шторы) */
+.GameTransition_menuTransitionAfter__pMsWW {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 3;
+  display: flex;
+}
+
+/* Левая створка ворот */
+.GameTransition_menuTransitionAfter__pMsWW::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to right, #3b0764, #4c1d95);
+  box-shadow: 5px 0 20px rgba(59, 7, 100, 0.7);
+  transform: translateX(-100%);
+  animation: GameTransition_doorLeftClose__t8VIx 1s forwards;
+}
+
+/* Правая створка ворот */
+.GameTransition_menuTransitionAfter__pMsWW::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(to left, #3b0764, #4c1d95);
+  box-shadow: -5px 0 20px rgba(59, 7, 100, 0.7);
+  transform: translateX(100%);
+  animation: GameTransition_doorRightClose__8Ebkn 1s forwards;
+}
+
+/* Анимация для левой створки ворот */
+@keyframes GameTransition_doorLeftClose__t8VIx {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+/* Анимация для правой створки ворот */
+@keyframes GameTransition_doorRightClose__8Ebkn {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(0);
+  }
+}
+
+@keyframes GameTransition_fadeIn__oAcjZ {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes GameTransition_spinAndMove__xiim_ {
+  0% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.5);
+  }
+  100% {
+    transform: rotate(360deg) scale(0.1);
+    opacity: 0;
+  }
+} 
+/*!*********************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/IntroScreen/IntroScreen.module.css ***!
+  \*********************************************************************************************************************************************************************************************************************************************************************************************/
+.IntroScreen_screen__1jA2m {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+  transition: opacity 0.5s ease;
+}
+
+.IntroScreen_fadeOut__1xtrp {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.IntroScreen_content__5w3hH {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transition: transform 0.8s ease-in-out;
+}
+
+.IntroScreen_animating__eRqbA .IntroScreen_content__5w3hH {
+  transform: scale(0.8);
+}
+
+/* Стили для монеты */
+.IntroScreen_coin__Z2zLX {
+  margin-bottom: 20px;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+  transition: all 0.8s ease-in-out;
+  position: relative;
+}
+
+.IntroScreen_coin__Z2zLX img {
+  width: 200px;
+  height: 200px;
+  object-fit: contain;
+  animation: IntroScreen_subtle-float__ymw8e 3s infinite alternate ease-in-out;
+}
+
+@keyframes IntroScreen_subtle-float__ymw8e {
+  0% {
+    transform: translateY(0) rotate(0deg);
+  }
+  100% {
+    transform: translateY(-5px) rotate(2deg);
+  }
+}
+
+/* Анимация монеты при клике */
+.IntroScreen_coinAnimate__g_5b9 {
+  animation: IntroScreen_fade-rotate__VIyqw 1s forwards;
+  filter: drop-shadow(0 0 30px rgba(255, 215, 0, 0.9));
+}
+
+@keyframes IntroScreen_fade-rotate__VIyqw {
+  0% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+  40% {
+    transform: scale(1.3) rotate(45deg);
+    filter: drop-shadow(0 0 60px rgba(255, 215, 0, 1));
+    opacity: 1;
+  }
+  100% {
+    transform: scale(0.2) rotate(180deg);
+    filter: drop-shadow(0 0 0px rgba(255, 215, 0, 0));
+    opacity: 0;
+  }
+}
+
+/* Стили для надписи TONOTCHANCE */
+.IntroScreen_chance__ZoOed {
+  margin-top: 15px;
+  transition: all 0.8s ease-in-out;
+}
+
+.IntroScreen_chance__ZoOed h2 {
+  font-size: 36px;
+  font-weight: bold;
+  color: #ffffff;
+  text-shadow: 0 0 20px rgba(255, 255, 255, 0.8), 0 0 40px rgba(106, 243, 255, 0.6);
+  letter-spacing: 2px;
+  background: linear-gradient(to right, #ffffff, #6af3ff, #ffffff);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  padding: 0 10px;
+}
+
+/* Анимация надписи TONOTCHANCE при клике */
+.IntroScreen_chanceAnimate__dB0R1 {
+  animation: IntroScreen_fade-down__uZ9NZ 1.5s forwards;
+}
+
+@keyframes IntroScreen_fade-down__uZ9NZ {
+  0% {
+    transform: translateY(0);
+    opacity: 1;
+  }
+  100% {
+    transform: translateY(40px);
+    opacity: 0;
+  }
+}
+
+/* Подсказка "Нажмите для начала" */
+.IntroScreen_tapHint__ocp4H {
+  position: absolute;
+  bottom: 60px;
+  text-align: center;
+  animation: IntroScreen_pulse-opacity__V143_ 2s infinite;
+}
+
+.IntroScreen_tapHint__ocp4H p {
+  color: rgba(255, 255, 255, 0.7);
+  font-size: 18px;
+  font-style: italic;
+}
+
+@keyframes IntroScreen_pulse-opacity__V143_ {
+  0%, 100% {
+    opacity: 0.5;
+  }
+  50% {
+    opacity: 1;
+  }
+}
+
+/* Эффект кулис/занавеса */
+.IntroScreen_curtains__0ZfaF {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  z-index: 2;
+  pointer-events: none;
+  overflow: hidden;
+}
+
+.IntroScreen_curtainLeft__qmLua, .IntroScreen_curtainRight__JtE_H {
+  position: absolute;
+  top: 0;
+  height: 100%;
+  width: 50%;
+  background: linear-gradient(to bottom, #ffd700, #e6b800, #bb9600);
+  box-shadow: 0 0 30px rgba(255, 215, 0, 0.6);
+  transition: transform 0.5s ease;
+}
+
+.IntroScreen_curtainLeft__qmLua {
+  left: 0;
+  transform-origin: right center;
+  transform: translateX(0);
+  animation: IntroScreen_slide-left-out__XH_9e 1.8s cubic-bezier(0.86, 0, 0.07, 1) forwards 0.2s;
+}
+
+.IntroScreen_curtainRight__JtE_H {
+  right: 0;
+  transform-origin: left center;
+  transform: translateX(0);
+  animation: IntroScreen_slide-right-out__13jDN 1.8s cubic-bezier(0.86, 0, 0.07, 1) forwards 0.2s;
+}
+
+@keyframes IntroScreen_slide-left-out__XH_9e {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+@keyframes IntroScreen_slide-right-out__13jDN {
+  0% {
+    transform: translateX(0);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+} 
+/*!**********************************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/AgeVerificationModal/styles/AgeVerificationModal.module.css ***!
+  \**********************************************************************************************************************************************************************************************************************************************************************************************************************/
+.AgeVerificationModal_overlay__iXgrG {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.85);
+  backdrop-filter: blur(5px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: AgeVerificationModal_fadeIn__ThiR2 0.3s ease-out;
+}
+
+.AgeVerificationModal_modal__ShPWg {
+  background: #1a1a1a;
+  border: 2px solid #ffd700;
+  border-radius: 16px;
+  padding: 24px;
+  width: 90%;
+  max-width: 400px;
+  animation: AgeVerificationModal_slideIn__nfxOL 0.3s ease-out;
+}
+
+.AgeVerificationModal_content__P5BBF {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+}
+
+.AgeVerificationModal_title__cT3pU {
+  color: #ffd700;
+  font-size: 24px;
+  margin-bottom: 16px;
+  font-weight: 600;
+}
+
+.AgeVerificationModal_message__rXE75 {
+  color: #fff;
+  font-size: 16px;
+  line-height: 1.5;
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+.AgeVerificationModal_warning__ab0zX {
+  color: #ff6b6b;
+  font-size: 14px;
+  line-height: 1.4;
+  margin-bottom: 24px;
+  padding: 12px;
+  border: 1px solid rgba(255, 107, 107, 0.3);
+  border-radius: 8px;
+  background: rgba(255, 107, 107, 0.1);
+}
+
+.AgeVerificationModal_buttons__C0Ofj {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  margin-top: 8px;
+}
+
+.AgeVerificationModal_confirmButton__yFD_H {
+  background: linear-gradient(90deg, #FFD700, #FFA500);
+  color: #000;
+  border: none;
+  padding: 12px 32px;
+  border-radius: 8px;
+  font-weight: 600;
+  font-size: 16px;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+  min-width: 200px;
+}
+
+.AgeVerificationModal_confirmButton__yFD_H:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(255, 215, 0, 0.3);
+}
+
+@keyframes AgeVerificationModal_fadeIn__ThiR2 {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes AgeVerificationModal_slideIn__nfxOL {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Адаптивность для мобильных устройств */
+@media (max-width: 480px) {
+  .AgeVerificationModal_modal__ShPWg {
+    padding: 20px;
+  }
+
+  .AgeVerificationModal_title__cT3pU {
+    font-size: 20px;
+  }
+
+  .AgeVerificationModal_message__rXE75 {
+    font-size: 14px;
+  }
+
+  .AgeVerificationModal_warning__ab0zX {
+    font-size: 13px;
+  }
+
+  .AgeVerificationModal_confirmButton__yFD_H {
+    width: 100%;
+  }
+} 
+/*!*******************************************************************************************************************************************************************************************************************************************************************************************************!*\
+  !*** css ./node_modules/next/dist/build/webpack/loaders/css-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[2]!./node_modules/next/dist/build/webpack/loaders/postcss-loader/src/index.js??ruleSet[1].rules[13].oneOf[7].use[3]!./src/components/GameMenu/components/MenuAnimation.module.css ***!
+  \*******************************************************************************************************************************************************************************************************************************************************************************************************/
+.MenuAnimation_container__FQqaD {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: opacity 0.8s ease-out, transform 0.8s ease-out;
+  height: 100%;
+  width: 100%;
+}
+
+.MenuAnimation_visible___n6lq {
+  opacity: 1;
+  transform: scale(1);
+} 

@@ -1,0 +1,168 @@
+.header {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-bottom: 10px;
+  width: 100%;
+  position: relative;
+}
+
+.titleWrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 100%;
+  padding: 0.5rem;
+  text-align: center;
+}
+
+.title {
+  font-size: 1.8rem;
+  font-weight: bold;
+  margin: 0;
+  padding: 0;
+  color: #7e98db;
+  text-shadow: 0 0 10px rgba(78, 130, 237, 0.6);
+  letter-spacing: 2px;
+  text-transform: uppercase;
+}
+
+.subtitle {
+  font-size: 1rem;
+  font-weight: 400;
+  margin: 5px 0 0 0;
+  padding: 0;
+  color: #b0bcd7;
+  text-shadow: 0 0 5px rgba(78, 130, 237, 0.4);
+}
+
+/* Стили для отображения баланса */
+.balancePanel {
+  width: 380px;
+  height: 32px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border: 2px solid rgba(255, 0, 255, 0.9);
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+  border-radius: 12px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 12px;
+  margin: 0 auto;
+}
+
+.balanceItem {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  min-width: 75px;
+  transition: all 0.3s ease;
+  padding: 2px 4px;
+}
+
+.balanceItem:hover {
+  transform: scale(1.05);
+}
+
+.balanceValue {
+  color: #fff;
+  font-size: 12px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.tokenIcon {
+  width: 16px;
+  height: 16px;
+  object-fit: contain;
+  flex-shrink: 0;
+}
+
+/* Анимация появления заголовка */
+@keyframes fadeInDown {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.title {
+  animation: fadeInDown 0.5s ease-out forwards;
+}
+
+.subtitle {
+  animation: fadeInDown 0.5s ease-out 0.2s forwards;
+  opacity: 0;
+  animation-fill-mode: forwards;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.5rem;
+  }
+  
+  .subtitle {
+    font-size: 0.9rem;
+  }
+
+  .balancePanel {
+    padding: 0 10px;
+  }
+  
+  .balanceValue {
+    font-size: 11px;
+  }
+}
+
+@media (max-width: 480px) {
+  .title {
+    font-size: 1.3rem;
+  }
+  
+  .subtitle {
+    font-size: 0.8rem;
+  }
+
+  .balancePanel {
+    padding: 0 8px;
+    width: 96%;
+  }
+  
+  .balanceValue {
+    font-size: 11px;
+  }
+
+  .balanceItem {
+    min-width: 70px;
+  }
+}
+
+@media (max-width: 380px) {
+  .balancePanel {
+    width: 98%;
+    height: 30px;
+    padding: 0 6px;
+  }
+  
+  .balanceItem {
+    min-width: 65px;
+    gap: 3px;
+    padding: 1px 2px;
+  }
+  
+  .balanceValue {
+    font-size: 10px;
+  }
+  
+  .tokenIcon {
+    width: 14px;
+    height: 14px;
+  }
+} 

@@ -1,0 +1,120 @@
+.headerProfileBlock {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  width: 100%;
+  max-width: 100%;
+  margin: 0;
+  background: rgba(0, 0, 0, 0.8);
+  border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+  box-shadow: 0 5px 10px rgba(255, 0, 255, 0.15);
+  border-radius: 0;
+  padding: 5px;
+  align-items: center;
+  justify-content: center;
+  z-index: 1200;
+  transition: all 0.3s ease;
+  height: 40px;
+}
+
+/* Стили для аватара пользователя */
+.profileAvatar {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin-right: 10px;
+  border: 1px solid rgba(255, 0, 255, 0.5);
+}
+
+.profileAvatar img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.defaultAvatar {
+  width: 100%;
+  height: 100%;
+  background-color: #333;
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.defaultAvatar span {
+  color: white;
+  font-size: 16px;
+  font-weight: bold;
+}
+
+/* Стили для имени пользователя */
+.profileName {
+  flex: 1;
+  text-align: center;
+  font-size: 14px;
+  font-weight: bold;
+  color: white;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  padding: 0 10px;
+}
+
+/* Стили для кнопки кошелька */
+.walletButtonContainer {
+  margin-left: 10px;
+}
+
+.tonConnectButton {
+  max-width: 120px;
+}
+
+.tonConnectButton > button {
+  font-size: 12px !important;
+  padding: 6px 10px !important;
+  border-radius: 5px !important;
+  background: linear-gradient(45deg, #FF00FF, #00BFFF) !important;
+  border: none !important;
+}
+
+/* Стили для скрытия в разных режимах */
+.hiddenInHypnoMode,
+.hiddenInCleanMode {
+  display: none;
+}
+
+/* Стили для кликабельных элементов */
+.clickable {
+  cursor: pointer;
+  transition: transform 0.2s, opacity 0.2s;
+}
+
+.clickable:hover {
+  opacity: 0.8;
+  transform: scale(1.05);
+}
+
+.clickable:active {
+  transform: scale(0.95);
+}
+
+/* Адаптивность */
+@media screen and (max-width: 320px) {
+  .headerProfileBlock {
+    height: 35px;
+    padding: 4px;
+  }
+  
+  .profileAvatar {
+    width: 30px;
+    height: 30px;
+  }
+  
+  .profileName {
+    font-size: 12px;
+  }
+} 

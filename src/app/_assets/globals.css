@@ -1,0 +1,42 @@
+body {
+  background: var(--tg-theme-secondary-bg-color, white);
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  height: 100%;
+  min-height: 100vh;
+  /* Важно для Telegram Desktop */
+  min-height: -webkit-fill-available;
+}
+
+html {
+  height: 100%;
+  /* Исправление проблем с высотой в мобильных браузерах */
+  height: -webkit-fill-available;
+}
+
+*, *:before, *:after {
+  box-sizing: border-box;
+}
+
+/* Исправление проблем позиционирования в Telegram Desktop */
+@media (min-width: 768px) {
+  body {
+    max-width: 100vw;
+    max-height: 100vh;
+  }
+}
+
+/* Для лучшей интеграции в Telegram Desktop */
+:root {
+  --tg-viewport-stable-height: 100vh;
+}
+
+/* Исправляем проблемы с высотой в iOS */
+@supports (-webkit-touch-callout: none) {
+  body, html {
+    height: -webkit-fill-available;
+  }
+}

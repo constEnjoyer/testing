@@ -1,0 +1,15 @@
+{
+  "url": "https://tonot-chance.vercel.app",
+  "name": "TONOTCHANCE",
+  "iconUrl": "https://tonot-chance.vercel.app/images/tonot.png",
+  "termsOfUseUrl": "https://tonot-chance.vercel.app/terms",
+  "privacyPolicyUrl": "https://tonot-chance.vercel.app/privacy",
+  "manifestVersion": 2,
+  "permissions": [
+    "tonTransfer"
+  ],
+  "version": "1.0.0",
+  "description": "Игра, где всегда есть шанс",
+  "supportEmail": "support@tonotchance.com",
+  "redirectUrl": "https://t.me/tonotchance_bot/app"
+}

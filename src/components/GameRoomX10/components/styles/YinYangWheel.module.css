@@ -1,0 +1,277 @@
+.wheelContainer {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 300px;
+  height: 300px;
+  z-index: 1000;
+}
+
+/* Основное свечение вокруг колеса */
+.wheelContainer::before {
+  content: '';
+  position: absolute;
+  top: -15%;
+  left: -15%;
+  width: 130%;
+  height: 130%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 215, 0, 0.3) 0%,
+    rgba(255, 215, 0, 0.2) 30%,
+    rgba(255, 215, 0, 0.1) 60%,
+    transparent 80%
+  );
+  filter: blur(15px);
+  opacity: 0;
+  z-index: -1;
+}
+
+/* Вращающаяся золотая обводка */
+.wheelContainer::after {
+  content: '';
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  border-radius: 50%;
+  border: 2px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 
+    0 0 20px rgba(255, 215, 0, 0.4),
+    inset 0 0 15px rgba(255, 215, 0, 0.4);
+  opacity: 0;
+  z-index: -1;
+}
+
+.wheel {
+  width: 100%;
+  height: 100%;
+  background-image: url('/images/x10-Yin-Yang-wheel.png');
+  background-size: contain;
+  background-repeat: no-repeat;
+  background-position: center;
+  opacity: 0;
+  transform: scale(0.5) rotate(0deg);
+  filter: drop-shadow(0 0 10px rgba(255, 215, 0, 0.5));
+}
+
+/* Анимация пульсации свечения */
+@keyframes pulseGlow {
+  0%, 100% {
+    opacity: 0.8;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.05);
+  }
+}
+
+/* Анимация вращения обводки */
+@keyframes rotateGlow {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Фаза появления - 4 секунды */
+.wheel.wheel_appear {
+  animation: wheelAppear 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes wheelAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.5) rotate(0deg);
+  }
+  50% {
+    opacity: 0.8;
+    transform: scale(0.8) rotate(180deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(360deg);
+  }
+}
+
+/* Фаза вращения - 7 секунд */
+.wheel.wheel_spin {
+  opacity: 1;
+  animation: wheelSpin 7s cubic-bezier(0.1, 0.1, 0.1, 1) forwards;
+  filter: drop-shadow(0 0 15px rgba(255, 215, 0, 0.7));
+}
+
+.wheel.wheel_spin::after {
+  content: '';
+  position: absolute;
+  top: -5%;
+  left: -5%;
+  width: 110%;
+  height: 110%;
+  border-radius: 50%;
+  background: radial-gradient(
+    circle,
+    rgba(255, 215, 0, 0.4) 0%,
+    rgba(255, 215, 0, 0.2) 40%,
+    transparent 70%
+  );
+  filter: blur(10px);
+  animation: spinGlow 2s ease-in-out infinite;
+  opacity: 1;
+}
+
+@keyframes spinGlow {
+  0%, 100% {
+    opacity: 0.7;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 1;
+    transform: scale(1.1);
+  }
+}
+
+@keyframes wheelSpin {
+  0% {
+    transform: rotate(360deg);
+  }
+  100% {
+    transform: rotate(5040deg);
+  }
+}
+
+/* Фаза исчезновения - 2 секунды */
+.wheel.wheel_disappear {
+  animation: wheelDisappear 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes wheelDisappear {
+  0% {
+    opacity: 1;
+    transform: scale(1) rotate(2880deg);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.5) rotate(3060deg);
+  }
+}
+
+.wheelImage {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+  transform: rotate(0deg);
+  transition: transform 0.4s ease-in-out;
+}
+
+.wheelImage.spinning {
+  animation: wheelSpin 7s cubic-bezier(0.25, 0.1, 0.25, 1) forwards;
+}
+
+/* Добавляем свечение */
+.glow {
+  position: absolute;
+  top: -10%;
+  left: -10%;
+  width: 120%;
+  height: 120%;
+  background: radial-gradient(circle, rgba(255,215,0,0.2) 0%, rgba(255,215,0,0) 70%);
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.4s ease-in-out;
+}
+
+.wheel.wheel_appear .glow,
+.wheel.wheel_spin .glow {
+  opacity: 1;
+}
+
+.wheel.disappear {
+  opacity: 0;
+  transform: scale(0.5);
+  animation: wheelDisappear 0.4s ease-in forwards;
+}
+
+@keyframes wheelAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes wheelDisappear {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.1);
+  }
+}
+
+/* Анимации для фазы появления */
+.wheel.wheel_appear + .wheelContainer::before {
+  animation: glowAppear 4s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+             pulseGlow 2s ease-in-out infinite;
+}
+
+.wheel.wheel_appear + .wheelContainer::after {
+  animation: glowAppear 4s cubic-bezier(0.4, 0, 0.2, 1) forwards,
+             rotateGlow 10s linear infinite;
+}
+
+/* Анимации для фазы вращения */
+.wheel.wheel_spin + .wheelContainer::before,
+.wheel.wheel_spin + .wheelContainer::after {
+  opacity: 1;
+}
+
+/* Анимации для фазы исчезновения */
+.wheel.wheel_disappear + .wheelContainer::before {
+  animation: glowDisappear 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+.wheel.wheel_disappear + .wheelContainer::after {
+  animation: glowDisappear 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+}
+
+@keyframes glowAppear {
+  0% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes glowDisappear {
+  0% {
+    opacity: 1;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(0.9);
+  }
+  100% {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+} 

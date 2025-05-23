@@ -1,0 +1,156 @@
+/* Стили для приветственного сообщения */
+.welcomeMessageContainer {
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  max-width: 380px;
+  margin: 10px auto;
+  text-align: center;
+  padding: 8px 15px;
+  z-index: 2;
+  border: 2px solid rgba(255, 0, 255, 0.9);
+  border-radius: 12px;
+  box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+  background: rgba(0, 0, 0, 0.5);
+  cursor: pointer;
+  animation: floatUpDown 3s ease-in-out infinite;
+  will-change: transform, box-shadow;
+}
+
+@keyframes floatUpDown {
+  0%, 100% {
+    transform: translateY(0);
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.6);
+  }
+  50% {
+    transform: translateY(-3px);
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.8);
+  }
+}
+
+.welcomeMessage {
+  text-align: center;
+  width: 100%;
+  margin: 0;
+  padding: 0;
+  position: relative;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 2px;
+}
+
+.welcomeMessage h1 {
+  font-size: 14px;
+  margin: 0;
+  padding: 0;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  color: #fff;
+  font-weight: bold;
+  line-height: 1.1;
+  white-space: nowrap;
+}
+
+.welcomeMessage h2 {
+  font-size: 24px;
+  font-weight: bold;
+  color: #6aF3FF;
+  margin: 0;
+  padding: 0;
+  text-shadow: 
+    0 0 5px rgba(106, 243, 255, 0.6), 
+    0 0 10px rgba(106, 243, 255, 0.4);
+  letter-spacing: 2px;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.welcomeMessage p {
+  font-size: 12px;
+  color: #fff;
+  font-style: italic;
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  margin: 0;
+  padding: 3px 8px;
+  background: rgba(106, 179, 243, 0.15);
+  border-radius: 8px;
+  display: inline-block;
+  border: 1px solid rgba(106, 179, 243, 0.3);
+  box-shadow: 0 0 10px rgba(106, 179, 243, 0.2);
+  max-width: 90%;
+  line-height: 1.2;
+  white-space: nowrap;
+}
+
+.welcomeMessageContainer:hover {
+  animation-play-state: paused;
+  transform: translateY(-3px);
+  box-shadow: 0 0 25px rgba(255, 0, 255, 0.8);
+  border-color: rgba(255, 0, 255, 1);
+}
+
+.welcomeMessageContainer:hover .welcomeMessage h2 {
+  color: #8aF3FF;
+  text-shadow: 
+    0 0 8px rgba(106, 243, 255, 0.8), 
+    0 0 15px rgba(106, 243, 255, 0.6);
+}
+
+.welcomeMessageContainer:hover .welcomeMessage p {
+  background: rgba(106, 179, 243, 0.2);
+  border-color: rgba(106, 179, 243, 0.4);
+  box-shadow: 0 0 15px rgba(106, 179, 243, 0.3);
+}
+
+/* Добавим медиа-запросы для еще более компактного отображения на маленьких экранах */
+@media screen and (max-width: 380px) {
+  .welcomeMessageContainer {
+    margin: 8px auto;
+    padding: 6px 10px;
+  }
+  
+  .welcomeMessage {
+    gap: 1px;
+  }
+  
+  .welcomeMessage h1 {
+    font-size: 12px;
+  }
+  
+  .welcomeMessage h2 {
+    font-size: 20px;
+  }
+  
+  .welcomeMessage p {
+    font-size: 10px;
+    padding: 2px 5px;
+  }
+}
+
+@media screen and (max-width: 320px) {
+  .welcomeMessageContainer {
+    margin: 6px auto;
+    padding: 4px 8px;
+  }
+  
+  .welcomeMessage {
+    gap: 0;
+  }
+  
+  .welcomeMessage h1 {
+    font-size: 10px;
+  }
+  
+  .welcomeMessage h2 {
+    font-size: 16px;
+  }
+  
+  .welcomeMessage p {
+    font-size: 9px;
+    padding: 1px 3px;
+  }
+} 

@@ -1,0 +1,77 @@
+.soundButton {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background: rgba(0, 0, 0, 0.6);
+  border: 2px solid rgba(255, 215, 0, 0.4);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  font-size: 20px;
+  color: #FFD700;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.2);
+  backdrop-filter: blur(4px);
+  position: relative;
+  overflow: hidden;
+}
+
+.soundButton::before {
+  content: '';
+  position: absolute;
+  top: -2px;
+  left: -2px;
+  right: -2px;
+  bottom: -2px;
+  border-radius: 50%;
+  background: linear-gradient(45deg, transparent, rgba(255, 215, 0, 0.2), transparent);
+  animation: borderRotate 4s linear infinite;
+  z-index: -1;
+}
+
+.soundButton:hover {
+  background: rgba(0, 0, 0, 0.8);
+  border-color: rgba(255, 215, 0, 0.8);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.4);
+  transform: scale(1.05);
+}
+
+.soundButton:active {
+  transform: scale(0.95);
+}
+
+.icon {
+  filter: drop-shadow(0 0 3px rgba(255, 215, 0, 0.6));
+}
+
+.muted .icon {
+  opacity: 0.6;
+}
+
+@keyframes borderRotate {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@media (max-width: 768px) {
+  .soundButton {
+    width: 36px;
+    height: 36px;
+    font-size: 18px;
+    border-width: 1.5px;
+  }
+}
+
+@media (max-width: 480px) {
+  .soundButton {
+    width: 32px;
+    height: 32px;
+    font-size: 16px;
+    border-width: 1.5px;
+  }
+} 

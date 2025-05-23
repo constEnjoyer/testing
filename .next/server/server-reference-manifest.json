@@ -1,0 +1,26 @@
+{
+  "node": {
+    "62381f556639583517cd7a6461554968382b66f0": {
+      "workers": {
+        "app/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Cconst%5C%5CDesktop%5C%5Ctonotchance-main%5C%5Csrc%5C%5Ccore%5C%5Ci18n%5C%5Clocale.ts%22%2C%5B%22getLocale%22%2C%22setLocale%22%5D%5D%5D&__client_imported__=!",
+        "app/game-room/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Cconst%5C%5CDesktop%5C%5Ctonotchance-main%5C%5Csrc%5C%5Ccore%5C%5Ci18n%5C%5Clocale.ts%22%2C%5B%22getLocale%22%2C%22setLocale%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/page": "rsc",
+        "app/game-room/page": "rsc"
+      }
+    },
+    "ece1c4eec4bd0398fc43a0b8ff8f63ae483b1a99": {
+      "workers": {
+        "app/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Cconst%5C%5CDesktop%5C%5Ctonotchance-main%5C%5Csrc%5C%5Ccore%5C%5Ci18n%5C%5Clocale.ts%22%2C%5B%22getLocale%22%2C%22setLocale%22%5D%5D%5D&__client_imported__=!",
+        "app/game-room/page": "(rsc)/./node_modules/next/dist/build/webpack/loaders/next-flight-action-entry-loader.js?actions=%5B%5B%22C%3A%5C%5CUsers%5C%5Cconst%5C%5CDesktop%5C%5Ctonotchance-main%5C%5Csrc%5C%5Ccore%5C%5Ci18n%5C%5Clocale.ts%22%2C%5B%22getLocale%22%2C%22setLocale%22%5D%5D%5D&__client_imported__=!"
+      },
+      "layer": {
+        "app/page": "rsc",
+        "app/game-room/page": "rsc"
+      }
+    }
+  },
+  "edge": {},
+  "encryptionKey": "nU7HudkBJ12l2Do9s2RJeFb7S6G6ig9EAJMeAuVSnKU="
+}

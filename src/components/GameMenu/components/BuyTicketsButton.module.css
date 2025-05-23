@@ -1,0 +1,89 @@
+.buyTicketsButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 80%;
+  margin: 10px auto;
+  padding: 12px !important;
+  background: linear-gradient(135deg, rgba(138, 43, 226, 0.8), rgba(106, 71, 170, 0.9));
+  border-radius: 50px !important;
+  border: 1px solid rgba(255, 255, 255, 0.2) !important;
+  position: relative;
+  overflow: hidden;
+  z-index: 1;
+  transition: all 0.3s ease !important;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.3) !important;
+}
+
+.buyTicketsButton::before {
+  content: '';
+  position: absolute;
+  top: -10px;
+  left: -10px;
+  right: -10px;
+  bottom: -10px;
+  z-index: -1;
+  background: radial-gradient(circle at center, rgba(138, 43, 226, 0.3), transparent 70%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.buyTicketsButton::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(135deg, rgba(106, 71, 170, 0.5), rgba(138, 43, 226, 0.5));
+  opacity: 0;
+  z-index: -2;
+  transition: opacity 0.3s ease;
+}
+
+.buyTicketsButton span {
+  color: white;
+  font-weight: bold;
+  font-size: 16px;
+  letter-spacing: 0.5px;
+  position: relative;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
+}
+
+.buyTicketsButton span::before,
+.buyTicketsButton span::after {
+  content: '🎫';
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.buyTicketsButton span::before {
+  left: -25px;
+}
+
+.buyTicketsButton span::after {
+  right: -25px;
+}
+
+.buyTicketsButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.5) !important;
+  background: linear-gradient(135deg, rgba(148, 53, 236, 0.8), rgba(116, 81, 180, 0.9));
+}
+
+.buyTicketsButton:hover::before {
+  opacity: 1;
+}
+
+.buyTicketsButton:hover::after {
+  opacity: 1;
+}
+
+.buyTicketsButton:hover span::before,
+.buyTicketsButton:hover span::after {
+  filter: brightness(1.2) drop-shadow(0 0 8px rgba(255, 255, 255, 0.8));
+  transition: all 0.3s ease;
+} 

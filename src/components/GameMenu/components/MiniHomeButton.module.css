@@ -1,0 +1,63 @@
+.miniHomeButtonContainer {
+  position: fixed;
+  left: 20px;
+  bottom: 20px;
+  z-index: 1000;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.miniHomeButton {
+  width: 50px;
+  height: 50px;
+  background: rgba(0, 0, 0, 0.5);
+  border-radius: 50%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 0 15px rgba(255, 215, 0, 0.3);
+  transition: all 0.3s ease;
+}
+
+.miniHomeIcon {
+  width: 100%;
+  height: 100%;
+  animation: spin-wheel 15s linear infinite;
+}
+
+@keyframes spin-wheel {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.miniHomeButtonContainer:hover .miniHomeButton {
+  transform: scale(1.1);
+  box-shadow: 0 0 20px rgba(255, 215, 0, 0.5);
+}
+
+.miniHomeButtonContainer:hover .miniHomeIcon {
+  animation-duration: 5s;
+}
+
+.spinningImage {
+  animation: rotateMiniWheel 8s linear infinite;
+}
+
+@keyframes rotateMiniWheel {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+/* Используется в GameMenu для показа кнопки в чистом режиме */
+.visible {
+  opacity: 1;
+  pointer-events: auto;
+} 

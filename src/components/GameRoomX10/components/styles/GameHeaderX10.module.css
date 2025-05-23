@@ -1,0 +1,133 @@
+.header {
+  width: 100%;
+  padding: 12px 20px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  background: rgba(0, 0, 0, 0.4);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.2);
+  z-index: 10;
+}
+
+.titleContainer {
+  text-align: center;
+  margin-bottom: 0;
+}
+
+.title {
+  font-size: 11px;
+  font-weight: 700;
+  color: #FFD700;
+  text-shadow: 0 2px 4px rgba(0, 0, 0, 0.3);
+  margin: 0;
+  line-height: 1;
+  letter-spacing: 0.5px;
+}
+
+.subtitle {
+  font-size: 9px;
+  color: rgba(255, 215, 0, 0.8);
+  margin: 2px 0 0;
+  font-style: italic;
+  letter-spacing: 0.3px;
+  line-height: 1;
+}
+
+.balancePanel {
+  display: inline-flex;
+  align-items: center;
+  gap: 25px;
+  padding: 8px 20px;
+  background: rgba(0, 0, 0, 0.4);
+  border-radius: 30px;
+  margin: 0 auto;
+  border: 1px solid rgba(255, 215, 0, 0.3);
+  box-shadow: 0 0 10px rgba(255, 215, 0, 0.2),
+              inset 0 0 8px rgba(255, 215, 0, 0.1);
+}
+
+.balanceItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: none;
+  padding: 0;
+  border: none;
+  border-radius: 0;
+}
+
+.balanceValue {
+  font-size: 16px;
+  font-weight: 600;
+  color: #FFD700;
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.5);
+  min-width: 35px;
+  text-align: right;
+}
+
+.tokenIcon {
+  width: 32px;
+  height: 32px;
+  object-fit: contain;
+  filter: drop-shadow(0 0 2px rgba(255, 215, 0, 0.5));
+  transform: translateZ(0);
+  will-change: transform;
+  image-rendering: auto;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 768px) {
+  .header {
+    padding: 15px;
+  }
+
+  .title {
+    font-size: 24px;
+  }
+
+  .subtitle {
+    font-size: 14px;
+  }
+
+  .balancePanel {
+    padding: 6px 15px;
+    gap: 20px;
+  }
+
+  .balanceValue {
+    font-size: 14px;
+    min-width: 30px;
+  }
+
+  .tokenIcon {
+    width: 28px;
+    height: 28px;
+  }
+}
+
+@media (max-width: 480px) {
+  .header {
+    padding: 12px;
+  }
+
+  .balancePanel {
+    padding: 4px 12px;
+    gap: 15px;
+  }
+
+  .balanceValue {
+    font-size: 13px;
+    min-width: 25px;
+  }
+
+  .tokenIcon {
+    width: 25px;
+    height: 25px;
+  }
+} 

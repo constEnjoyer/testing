@@ -1,0 +1,7 @@
+{
+  "/page": "app/page.js",
+  "/api/user-data/route": "app/api/user-data/route.js",
+  "/game-room/page": "app/game-room/page.js",
+  "/api/telegram-user/route": "app/api/telegram-user/route.js",
+  "/api/user-history/route": "app/api/user-history/route.js"
+}

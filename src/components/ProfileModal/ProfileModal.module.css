@@ -1,0 +1,595 @@
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  backdrop-filter: blur(3px);
+}
+
+.modalContent {
+  width: 90%;
+  max-width: 500px;
+  max-height: 85vh;
+  overflow-y: auto;
+  background-color: rgba(0, 0, 0, 0.85);
+  background-image: url('/images/profilemodal.png');
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-blend-mode: overlay;
+  border-radius: 12px;
+  box-shadow: 0 5px 20px rgba(0, 0, 0, 0.8);
+  padding: 20px;
+  color: #fff;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  position: relative;
+  scrollbar-width: thin;
+  scrollbar-color: rgba(255, 255, 255, 0.2) transparent;
+}
+
+.modalContent::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url('/images/profilemodal.png');
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  opacity: 1;
+  z-index: -1;
+  border-radius: 14px;
+}
+
+.modalHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(255, 0, 255, 0.3);
+  padding-bottom: 10px;
+}
+
+.modalHeader h2 {
+  margin: 0;
+  font-size: 1.5rem;
+  font-weight: 600;
+}
+
+.closeButton {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.6), rgba(106, 71, 170, 0.7));
+  border: 2px solid rgba(138, 43, 226, 0.8);
+  color: #fff;
+  font-size: 24px;
+  font-weight: bold;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  padding: 0;
+  z-index: 3;
+  box-shadow: 0 0 15px rgba(138, 43, 226, 0.5);
+  text-shadow: 0 0 5px rgba(255, 255, 255, 0.5);
+  line-height: 1;
+}
+
+.closeButton:hover {
+  background: linear-gradient(145deg, rgba(138, 43, 226, 0.8), rgba(106, 71, 170, 0.9));
+  transform: scale(1.1) rotate(90deg);
+  box-shadow: 0 0 20px rgba(138, 43, 226, 0.8);
+  border-color: rgba(255, 255, 255, 0.9);
+}
+
+.closeButton:active {
+  transform: scale(0.95);
+  box-shadow: 0 0 10px rgba(138, 43, 226, 0.3);
+}
+
+.userProfile {
+  display: flex;
+  align-items: center;
+  margin-bottom: 24px;
+  background-color: rgba(0, 0, 0, 0.6);
+  border-radius: 10px;
+  padding: 15px;
+  border: 1px solid rgba(255, 0, 255, 0.2);
+  backdrop-filter: blur(5px);
+}
+
+.userAvatar {
+  margin-right: 16px;
+}
+
+.avatarImage {
+  border-radius: 50%;
+  object-fit: cover;
+}
+
+.defaultAvatar, .smallDefaultAvatar {
+  background: linear-gradient(45deg, #4970B3, #3A5A91);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+.defaultAvatar {
+  width: 50px;
+  height: 50px;
+  background: linear-gradient(135deg, #ff00ff, #00bfff);
+  border-radius: 50%;
+  margin-right: 15px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.2rem;
+  color: white;
+  font-weight: bold;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+}
+
+.smallDefaultAvatar {
+  width: 30px;
+  height: 30px;
+  background: linear-gradient(135deg, #ff00ff, #00bfff);
+  border-radius: 50%;
+  margin-right: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 0.8rem;
+  color: white;
+  font-weight: bold;
+  border: 1px solid rgba(255, 255, 255, 0.3);
+}
+
+.userName {
+  font-size: 1.25rem;
+  font-weight: 600;
+}
+
+.loadingSpinner {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 30px 0;
+}
+
+.spinner {
+  border: 4px solid rgba(255, 255, 255, 0.1);
+  border-radius: 50%;
+  border-top: 4px solid #4970B3;
+  width: 40px;
+  height: 40px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.errorMessage {
+  color: #FF6B6B;
+  text-align: center;
+  padding: 20px;
+  background-color: rgba(255, 107, 107, 0.1);
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.retryButton {
+  background-color: #4970B3;
+  color: #FFFFFF;
+  border: none;
+  border-radius: 4px;
+  padding: 6px 12px;
+  margin-top: 10px;
+  cursor: pointer;
+  font-size: 0.9rem;
+}
+
+.retryButton:hover {
+  background-color: #3A5A91;
+}
+
+.referralSection {
+  margin-bottom: 24px;
+}
+
+.referralSection h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+}
+
+.referralLinkContainer {
+  display: flex;
+  margin-bottom: 16px;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.referralLink {
+  background-color: rgba(0, 0, 0, 0.75);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+  border-radius: 8px;
+  padding: 12px;
+  color: #FFFFFF;
+  font-size: 0.9rem;
+  outline: none;
+  margin: 5px auto;
+  word-break: break-all;
+  width: 100%;
+  max-width: 280px;
+  text-align: center;
+}
+
+.copyButton {
+  background: linear-gradient(45deg, #9932CC, #8A2BE2);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 8px 15px;
+  margin: 10px auto;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.3s;
+  font-weight: 600;
+  display: block;
+  width: auto;
+}
+
+.copyButton:hover {
+  background: linear-gradient(45deg, #8A2BE2, #9932CC);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(153, 50, 204, 0.4);
+}
+
+.copyButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(153, 50, 204, 0.4);
+}
+
+.statsSection {
+  margin: 20px 0;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(100px, 1fr));
+  gap: 10px;
+  justify-content: center;
+  text-align: center;
+}
+
+.statItem {
+  padding: 10px;
+  background-color: rgba(0, 0, 0, 0.5);
+  border-radius: 8px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  transition: all 0.3s ease;
+}
+
+.statLabel {
+  font-size: 14px;
+  color: #ccc;
+  margin-bottom: 5px;
+  line-height: 1.2;
+  word-wrap: break-word;
+  overflow-wrap: break-word;
+  hyphens: auto;
+}
+
+.statValue {
+  font-size: 18px;
+  font-weight: bold;
+  color: #fff;
+  text-shadow: 0 0 10px rgba(255, 215, 0, 0.5);
+}
+
+/* Медиа-запросы для адаптивности */
+@media (max-width: 600px) {
+  .modalContent {
+    width: 95%;
+    padding: 15px;
+  }
+  
+  .statsSection {
+    grid-template-columns: repeat(auto-fit, minmax(90px, 1fr));
+    gap: 8px;
+  }
+  
+  .statLabel {
+    font-size: 12px;
+  }
+  
+  .statValue {
+    font-size: 16px;
+  }
+
+  .channelButton, 
+  .copyButton, 
+  .claimButton, 
+  .retryButton {
+    padding: 8px 10px;
+    font-size: 12px;
+  }
+
+  .referralLinkContainer {
+    flex-direction: column;
+  }
+
+  .referralLink {
+    margin-bottom: 8px;
+    width: 100%;
+  }
+
+  .copyButton {
+    width: 100%;
+  }
+}
+
+.bonusSection {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+.pendingBonus {
+  font-size: 1rem;
+  margin-bottom: 10px;
+}
+
+.claimButton {
+  background: linear-gradient(45deg, #FFD700, #DAA520);
+  color: #000000;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  margin: 5px auto;
+  display: block;
+  width: auto;
+}
+
+.claimButton:hover {
+  background: linear-gradient(45deg, #DAA520, #FFD700);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(218, 165, 32, 0.4);
+}
+
+.claimButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(218, 165, 32, 0.4);
+}
+
+.claimButton:disabled {
+  background: linear-gradient(45deg, #888888, #666666);
+  color: #AAAAAA;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+.referralsListSection {
+  margin-bottom: 24px;
+}
+
+.referralsListSection h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+}
+
+.referralsList {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  padding: 15px;
+  max-height: 300px;
+  overflow-y: auto;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+.referralItem {
+  display: flex;
+  align-items: center;
+  padding: 10px;
+  border-bottom: 1px solid rgba(255, 0, 255, 0.1);
+}
+
+.referralItem:last-child {
+  border-bottom: none;
+}
+
+.validReferral {
+  background-color: rgba(0, 255, 0, 0.05);
+}
+
+.referralAvatar {
+  margin-right: 10px;
+}
+
+.referralAvatar img {
+  border-radius: 50%;
+  width: 30px;
+  height: 30px;
+}
+
+.referralName {
+  flex: 1;
+  text-align: left;
+}
+
+.referralStatus {
+  margin-left: 10px;
+}
+
+.statusIndicators {
+  display: flex;
+  margin-top: 5px;
+}
+
+.statusDot {
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  background-color: rgba(60, 60, 60, 0.8);
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #555;
+  font-size: 18px;
+  transition: all 0.3s ease;
+}
+
+.statusDot.completed {
+  background-color: rgba(0, 180, 0, 0.3);
+  border-color: rgba(0, 255, 0, 0.5);
+  color: #00ff00;
+  box-shadow: 0 0 10px rgba(0, 255, 0, 0.5);
+}
+
+.statusDot span {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: bold;
+  text-shadow: 0 0 5px rgba(0, 255, 0, 0.8);
+}
+
+.progressSection {
+  margin-bottom: 24px;
+}
+
+.progressSection h3 {
+  font-size: 1.1rem;
+  margin-bottom: 10px;
+  color: #FFFFFF;
+  text-shadow: 0 0 10px rgba(255, 0, 255, 0.7);
+}
+
+.progressBar {
+  height: 10px;
+  background-color: #333333;
+  border-radius: 5px;
+  margin-bottom: 5px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(45deg, #9932CC, #8A2BE2);
+  border-radius: 5px;
+}
+
+.progressText {
+  font-size: 0.9rem;
+  color: #CCCCCC;
+}
+
+.noData {
+  background-color: rgba(0, 0, 0, 0.5);
+  padding: 15px;
+  border-radius: 8px;
+  margin-top: 10px;
+}
+
+.channelSection {
+  background-color: rgba(0, 0, 0, 0.75);
+  border-radius: 10px;
+  padding: 15px;
+  margin-bottom: 20px;
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(255, 0, 255, 0.3);
+}
+
+.channelContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.channelStatus {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.channelName {
+  font-weight: 600;
+  color: #FFFFFF;
+  margin-bottom: 10px;
+}
+
+.channelButton {
+  background: linear-gradient(45deg, #9932CC, #8A2BE2);
+  color: white;
+  border: none;
+  border-radius: 5px;
+  padding: 10px 20px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: all 0.3s;
+  margin: 5px auto;
+  display: block;
+  width: auto;
+}
+
+.channelButton:hover {
+  background: linear-gradient(45deg, #8A2BE2, #9932CC);
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(153, 50, 204, 0.4);
+}
+
+.channelButton:active {
+  transform: translateY(0);
+  box-shadow: 0 2px 5px rgba(153, 50, 204, 0.4);
+}
+
+.channelButton:disabled {
+  background: linear-gradient(45deg, #888888, #666666);
+  color: #AAAAAA;
+  cursor: not-allowed;
+  transform: none;
+  box-shadow: none;
+}
+
+/* Стили для скроллбара */
+.modalContent::-webkit-scrollbar {
+  width: 8px;
+}
+
+.modalContent::-webkit-scrollbar-track {
+  background: rgba(0, 0, 0, 0.3);
+  border-radius: 8px;
+}
+
+.modalContent::-webkit-scrollbar-thumb {
+  background: linear-gradient(45deg, #9932CC, #8A2BE2);
+  border-radius: 8px;
+} 
