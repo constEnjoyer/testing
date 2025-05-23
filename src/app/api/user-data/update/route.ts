@@ -71,6 +71,7 @@ export async function POST(request: Request): Promise<NextResponse> {
     if (userData.tickets !== undefined) user.tickets = Number(userData.tickets);
     if (userData.tonotChanceTickets !== undefined) user.tonotChanceTickets = Number(userData.tonotChanceTickets);
     if (userData.balance !== undefined) user.balance = Number(userData.balance);
+    if (userData.walletAddress !== undefined) user.walletAddress = userData.walletAddress;
     if (userData.locale !== undefined) {
       if (userData.locale === 'en' || userData.locale === 'ru') {
         user.locale = userData.locale;

@@ -13,6 +13,29 @@ export function useTonConnect() {
   const [loading, setLoading] = useState<boolean>(false);
   const [error, setError] = useState<string | null>(null);
 
+  // Функция для обновления адреса кошелька в базе данных
+  const updateWalletAddress = useCallback(async (walletAddress: string) => {
+    try {
+      const response = await fetch('/api/user-data/update', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({
+          walletAddress
+        }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to update wallet address');
+      }
+
+      console.log('[useTonConnect] Адрес кошелька успешно обновлен в базе данных');
+    } catch (err) {
+      console.error('[useTonConnect] Ошибка при обновлении адреса кошелька:', err);
+    }
+  }, []);
+
   // Проверка состояния подключения при монтировании
   useEffect(() => {
     const walletConnectionStatus = () => {
@@ -20,7 +43,10 @@ export function useTonConnect() {
       setIsConnected(Boolean(walletInfo));
       
       if (walletInfo) {
-        setAddress(walletInfo.account.address);
+        const newAddress = walletInfo.account.address;
+        setAddress(newAddress);
+        // Обновляем адрес в базе данных при подключении
+        updateWalletAddress(newAddress);
       } else {
         setAddress(null);
       }
@@ -36,7 +62,7 @@ export function useTonConnect() {
       // Отписываемся при размонтировании
       unsubscribe();
     };
-  }, [tonConnectUI]);
+  }, [tonConnectUI, updateWalletAddress]);
 
   // Подключение к кошельку
   const connect = useCallback(async () => {
@@ -62,7 +88,9 @@ export function useTonConnect() {
     }
     setIsConnected(false);
     setAddress(null);
-  }, [tonConnectUI]);
+    // Очищаем адрес в базе данных при отключении
+    updateWalletAddress('');
+  }, [tonConnectUI, updateWalletAddress]);
 
   // Отправка транзакции
   const sendTransaction = useCallback(async (amount: number, toAddress: string) => {
