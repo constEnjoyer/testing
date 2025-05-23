@@ -2,6 +2,24 @@ import { useState, useEffect, useCallback } from 'react';
 import { useTonConnectUI } from '@tonconnect/ui-react';
 import { CONFIG } from '@/lib/config';
 
+// Добавляем типы для Telegram WebApp
+declare global {
+  interface Window {
+    Telegram?: {
+      WebApp?: {
+        initDataUnsafe: {
+          user?: {
+            id: number;
+            [key: string]: any;
+          };
+          [key: string]: any;
+        };
+        [key: string]: any;
+      };
+    };
+  }
+}
+
 /**
  * Хук для работы с TON Connect
  * Использует реальное подключение к кошельку TON через TonConnectUI
@@ -18,12 +36,28 @@ export function useTonConnect() {
     try {
       // Получаем telegramId из localStorage
       const telegramData = localStorage.getItem('telegram-data');
-      const telegramId = telegramData ? JSON.parse(telegramData).id : null;
+      console.log('[useTonConnect] Данные из telegram-data:', telegramData);
+      
+      let telegramId = telegramData ? JSON.parse(telegramData).id : null;
+      console.log('[useTonConnect] Извлеченный telegramId:', telegramId);
 
       if (!telegramId) {
         console.error('[useTonConnect] Не найден telegramId в localStorage');
-        return;
+        // Пробуем получить из window.Telegram
+        const webAppData = window.Telegram?.WebApp?.initDataUnsafe;
+        console.log('[useTonConnect] Данные из WebApp:', webAppData);
+        if (webAppData?.user?.id) {
+          console.log('[useTonConnect] Найден id в WebApp:', webAppData.user.id);
+          telegramId = webAppData.user.id;
+        } else {
+          return;
+        }
       }
+
+      console.log('[useTonConnect] Отправка запроса на обновление с данными:', {
+        telegramId,
+        walletAddress
+      });
 
       const response = await fetch('/api/user-data/update', {
         method: 'POST',
@@ -35,6 +69,9 @@ export function useTonConnect() {
           walletAddress
         }),
       });
+
+      const responseData = await response.json();
+      console.log('[useTonConnect] Ответ от сервера:', responseData);
 
       if (!response.ok) {
         throw new Error('Failed to update wallet address');
@@ -50,15 +87,18 @@ export function useTonConnect() {
   useEffect(() => {
     const walletConnectionStatus = () => {
       const walletInfo = tonConnectUI.wallet;
+      console.log('[useTonConnect] Информация о кошельке:', walletInfo);
+      
       setIsConnected(Boolean(walletInfo));
       
       if (walletInfo) {
         const newAddress = walletInfo.account.address;
+        console.log('[useTonConnect] Получен новый адрес:', newAddress);
         setAddress(newAddress);
         // Обновляем адрес в базе данных при подключении
-        console.log('[useTonConnect] Получен адрес кошелька:', newAddress);
         updateWalletAddress(newAddress);
       } else {
+        console.log('[useTonConnect] Кошелек отключен');
         setAddress(null);
       }
     };
