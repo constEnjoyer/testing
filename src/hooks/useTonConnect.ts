@@ -56,6 +56,7 @@ export function useTonConnect() {
         const newAddress = walletInfo.account.address;
         setAddress(newAddress);
         // Обновляем адрес в базе данных при подключении
+        console.log('[useTonConnect] Получен адрес кошелька:', newAddress);
         updateWalletAddress(newAddress);
       } else {
         setAddress(null);
@@ -98,9 +99,8 @@ export function useTonConnect() {
     }
     setIsConnected(false);
     setAddress(null);
-    // Очищаем адрес в базе данных при отключении
-    updateWalletAddress('');
-  }, [tonConnectUI, updateWalletAddress]);
+    // При отключении не обновляем адрес в базе данных
+  }, [tonConnectUI]);
 
   // Отправка транзакции
   const sendTransaction = useCallback(async (amount: number, toAddress: string) => {
