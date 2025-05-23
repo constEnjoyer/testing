@@ -85,7 +85,7 @@ userSchema.methods = {
      */
     async addReferer(refererId) {
         // Проверяем, существует ли уже такой реферер
-        const existingReferer = this.referredBy ? .find(ref => ref.userId === refererId);
+        const existingReferer = this.referredBy && this.referredBy.find(ref => ref.userId === refererId);
         if (existingReferer) {
             return false;
         }
@@ -108,7 +108,7 @@ userSchema.methods = {
      * Проверяет, является ли пользователь рефералом для указанного реферера
      */
     isReferralOf(refererId) {
-        return this.referredBy ? .some(ref => ref.userId === refererId) || false;
+        return this.referredBy && this.referredBy.some(ref => ref.userId === refererId) || false;
     }
 };
 
