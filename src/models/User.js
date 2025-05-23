@@ -121,6 +121,6 @@ console.log('[UserModel] Модель User существует:', modelExists);
 const User = mongoose.models.User || mongoose.model('User', userSchema, 'users');
 
 console.log('[UserModel] Модель User инициализирована');
-console.log('[UserModel] Имя коллекции:', User.collection ? .name || 'Неизвестно');
+console.log('[UserModel] Имя коллекции:', User.collection && User.collection.name || 'Неизвестно');
 
 export default User;
