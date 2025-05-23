@@ -44,7 +44,7 @@ const userSchema = new mongoose.Schema({
     tonotChanceTickets: { type: Number, default: 0 },
     balance: { type: Number, default: 0 },
     tonBalance: { type: Number, default: 0 },
-    walletAddress: { type: String },
+    walletAddress: { type: String, default: '' },
     locale: { type: String, enum: ['en', 'ru'], default: 'en' },
     // Реферальная система
     referralCode: {

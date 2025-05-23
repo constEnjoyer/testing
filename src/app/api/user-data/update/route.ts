@@ -109,6 +109,7 @@ export async function POST(request: Request): Promise<NextResponse> {
         tonotChanceTickets: user.tonotChanceTickets,
         balance: user.balance,
         locale: user.locale || 'en',
+        walletAddress: user.walletAddress || '',
         purchaseHistory: user.purchaseHistory,
         gameHistory: user.gameHistory
       }

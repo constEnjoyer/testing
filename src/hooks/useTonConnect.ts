@@ -16,12 +16,22 @@ export function useTonConnect() {
   // Функция для обновления адреса кошелька в базе данных
   const updateWalletAddress = useCallback(async (walletAddress: string) => {
     try {
+      // Получаем telegramId из localStorage
+      const telegramData = localStorage.getItem('telegram-data');
+      const telegramId = telegramData ? JSON.parse(telegramData).id : null;
+
+      if (!telegramId) {
+        console.error('[useTonConnect] Не найден telegramId в localStorage');
+        return;
+      }
+
       const response = await fetch('/api/user-data/update', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json',
         },
         body: JSON.stringify({
+          telegramId,
           walletAddress
         }),
       });
