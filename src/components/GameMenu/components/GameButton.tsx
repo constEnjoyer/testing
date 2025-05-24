@@ -12,11 +12,8 @@ export function GameButton({ onClick, isCleanMode = false }: GameButtonProps) {
   const t = useTranslations('i18n');
   const [showModeButtons, setShowModeButtons] = useState(false);
 
-  const handleMainButtonClick = () => {
-    setShowModeButtons(!showModeButtons);
-  };
-
-  const handleModeClick = (mode: 'x2' | 'x10') => {
+  const handleModeClick = (mode: 'x2' | 'x10', e: React.MouseEvent) => {
+    e.stopPropagation(); // Предотвращаем всплытие события
     onClick(mode);
     setShowModeButtons(false);
   };
@@ -27,14 +24,14 @@ export function GameButton({ onClick, isCleanMode = false }: GameButtonProps) {
       <div className={`${styles.modeButtons} ${showModeButtons ? styles.visible : ''}`}>
         <button 
           className={styles.modeButton}
-          onClick={() => handleModeClick('x2')}
+          onClick={(e) => handleModeClick('x2', e)}
           aria-label="2 игрока"
         >
           x2
         </button>
         <button 
           className={styles.modeButton}
-          onClick={() => handleModeClick('x10')}
+          onClick={(e) => handleModeClick('x10', e)}
           aria-label="10 игроков"
         >
           x10
@@ -44,7 +41,7 @@ export function GameButton({ onClick, isCleanMode = false }: GameButtonProps) {
       {/* Основная кнопка */}
       <button 
         className={styles.gameButtonLink}
-        onClick={handleMainButtonClick}
+        onClick={() => setShowModeButtons(!showModeButtons)}
       >
         {t('game_room')}
         <Image

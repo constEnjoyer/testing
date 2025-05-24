@@ -376,6 +376,27 @@ export const GameMenu = () => {
     console.log(`Успешно приобретено билетов!`);
   }, [fetchUserData, updateBalance]);
 
+  // Обработчик для кнопки игровой комнаты с поддержкой режимов
+  const handleGameRoomClick = (mode: GameMode) => {
+    console.log('[GameMenu] Переход в игровую комнату:', mode);
+    playClickSound();
+    
+    // Сохраняем текущий режим
+    setGameMode(mode);
+    
+    // Показываем анимацию перехода
+    setShowTransition(true);
+    
+    // Переходим в соответствующую комнату
+    const route = mode === 'x10' ? '/game-x10' : '/game-room';
+    router.push(route);
+  };
+
+  // Обработчик для завершения анимации перехода
+  const handleTransitionComplete = useCallback(() => {
+    setShowTransition(false);
+  }, []);
+
   // Обновляем обработчик для кнопки игровой комнаты
   const handleGameButtonClick = useCallback(() => {
     console.log('[GameMenu] Запуск перехода в игровую комнату');
@@ -400,36 +421,6 @@ export const GameMenu = () => {
     playClickSound();
     setIsHistoryModalOpen(false);
   }, [playClickSound]);
-
-  // Обработчик для завершения анимации перехода
-  const handleTransitionComplete = useCallback(() => {
-    console.log('[GameMenu] Завершение перехода в игровую комнату');
-    
-    try {
-      // Сохраняем состояние меню перед уходом на другую страницу
-      const stateToSave = {
-        balance: balanceState,
-        isGameRoomActive,
-        isExchangeActive,
-        isHistoryActive,
-        gameMode
-      };
-      
-      saveToLocalStorage(STORAGE_KEYS.MENU_STATE, JSON.stringify(stateToSave));
-      
-      // Переходим в соответствующую комнату в зависимости от режима
-      if (gameMode === 'x10') {
-        router.push('/game-x10');
-      } else {
-        router.push('/game-room');
-      }
-    } catch (error) {
-      console.error('[GameMenu] Ошибка при переходе в игровую комнату:', error);
-      
-      // В случае ошибки используем прямой редирект
-      window.location.href = gameMode === 'x10' ? '/game-x10' : '/game-room';
-    }
-  }, [router, balanceState, isGameRoomActive, isExchangeActive, isHistoryActive, gameMode]);
 
   // Эффект для инициализации меню при монтировании
   useEffect(() => {
@@ -492,11 +483,6 @@ export const GameMenu = () => {
 
   // Генерируем звезды для фона
   const starGenerator = <StarGenerator starCount={150} />;
-
-  // Обработчик для кнопки игровой комнаты с поддержкой режимов
-  const handleGameRoomClick = (mode: GameMode) => {
-    handleNavigate(ScreenType.GAME_ROOM);
-  };
 
   return (
     <MenuContainer isCleanMode={isCleanMode}>

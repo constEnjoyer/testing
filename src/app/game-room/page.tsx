@@ -1,10 +1,10 @@
 'use client';
 
-import { Suspense } from 'react';
-import dynamic from 'next/dynamic';
+import { useEffect } from 'react';
 import { useTranslations } from 'next-intl';
-import '../_assets/globals.css';
-// Удалено: import './styles.css';
+import GameRoomContainer from '@/components/GameRoom/GameRoomContainer';
+import { useUser } from '@/contexts/UserContext';
+import { useTelegramUser } from '@/hooks/useTelegramUser';
 
 /**
  * Страница игровой комнаты (рефакторинг)
@@ -13,18 +13,22 @@ import '../_assets/globals.css';
  * Стили перенесены в модульные CSS файлы внутри компонентов
  */
 
-// Импортируем новый GameRoomContainer с динамической загрузкой
-const GameRoomContainer = dynamic(
-  () => import('@/components/GameRoom/GameRoomContainer'),
-  { ssr: false }
-);
-
 export default function GameRoomPage() {
-  const t = useTranslations('game');
+  const t = useTranslations('i18n');
+  const { user } = useUser();
+  const { telegramUser } = useTelegramUser();
 
-  return (
-    <Suspense fallback={<div className="loading">{t('loading')}</div>}>
-      <GameRoomContainer />
-    </Suspense>
-  );
+  // Сохраняем флаг, что мы находимся в игровой комнате x2
+  useEffect(() => {
+    localStorage.setItem('inGameRoom', 'true');
+    return () => {
+      localStorage.removeItem('inGameRoom');
+    };
+  }, []);
+
+  if (!user && !telegramUser) {
+    return <div>{t('loading')}</div>;
+  }
+
+  return <GameRoomContainer />;
 } 

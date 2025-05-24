@@ -415,50 +415,17 @@ export function GlobalSound() {
   // Обновляем обработчик видимости страницы
   useEffect(() => {
     const handleVisibilityChange = () => {
-      try {
-        // При возврате в приложение
-        if (!document.hidden) {
-          console.log('[Root] 🔄 Возврат в приложение');
-          
-          // Проверяем системный звук
-          checkSystemAudioState().then(({ isMuted: systemMuted, hasHeadphones }) => {
-            // Если не на беззвучном или есть наушники
-            if (!systemMuted || hasHeadphones) {
-              // Возобновляем фоновую музыку только если она была запущена и сейчас на паузе
-              if (backgroundMusicRef.current && !isMuted && hasInteractedRef.current && backgroundMusicRef.current.paused) {
-                console.log('[Root] 🎵 Возобновление фоновой музыки');
-                backgroundMusicRef.current.play().catch(console.error);
-              }
-            }
-          });
-        }
-      } catch (error) {
-        console.error('[Root] Ошибка при обработке видимости:', error);
+      if (!document.hidden && backgroundMusicRef.current && !isMuted && hasInteractedRef.current) {
+        backgroundMusicRef.current.play().catch(console.error);
       }
     };
 
-    // Добавляем обработчик для роутинга Next.js
+    // Упрощенный обработчик для роутинга Next.js
     const handleRouteChange = () => {
       // Сохраняем текущее состояние музыки
-      if (backgroundMusicRef.current) {
-        const wasPlaying = !backgroundMusicRef.current.paused;
+      if (backgroundMusicRef.current && !backgroundMusicRef.current.paused) {
         const currentTime = backgroundMusicRef.current.currentTime;
-        const currentVolume = backgroundMusicRef.current.volume;
-
-        // Предотвращаем остановку музыки
-        if (wasPlaying) {
-          console.log('[Root] 🎵 Сохраняем состояние музыки при навигации');
-          backgroundMusicRef.current.pause();
-          
-          // Восстанавливаем воспроизведение после короткой задержки
-          setTimeout(() => {
-            if (backgroundMusicRef.current && wasPlaying) {
-              backgroundMusicRef.current.currentTime = currentTime;
-              backgroundMusicRef.current.volume = currentVolume;
-              backgroundMusicRef.current.play().catch(console.error);
-            }
-          }, 50);
-        }
+        backgroundMusicRef.current.currentTime = currentTime;
       }
     };
 
@@ -471,7 +438,7 @@ export function GlobalSound() {
       window.removeEventListener('routeChangeStart', handleRouteChange);
       window.removeEventListener('routeChangeComplete', handleRouteChange);
     };
-  }, [checkSystemAudioState, isMuted]);
+  }, [isMuted]);
   
   // Обновляем toggleMute
   const toggleMute = useCallback(() => {
