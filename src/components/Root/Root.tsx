@@ -431,39 +431,40 @@ export function GlobalSound() {
               }
             }
           });
-        } else {
-          // При скрытии страницы ставим музыку на паузу
-          if (backgroundMusicRef.current && !backgroundMusicRef.current.paused) {
-            backgroundMusicRef.current.pause();
-          }
         }
       } catch (error) {
         console.error('[Root] Ошибка при обработке видимости:', error);
       }
     };
 
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    
-    // Добавляем обработчик для кнопки 18+
-    const handleAgeConfirm = () => {
-      console.log('[Root] 🔓 Разблокировка звука по кнопке 18+');
-      unlockAudio();
+    // Добавляем обработчик для роутинга Next.js
+    const handleRouteChange = () => {
+      // Предотвращаем перезапуск фоновой музыки при навигации
+      if (backgroundMusicRef.current && !backgroundMusicRef.current.paused) {
+        console.log('[Root] 🎵 Сохраняем состояние фоновой музыки при навигации');
+        const currentTime = backgroundMusicRef.current.currentTime;
+        const wasPlaying = !backgroundMusicRef.current.paused;
+        
+        // Восстанавливаем состояние после небольшой задержки
+        setTimeout(() => {
+          if (backgroundMusicRef.current && wasPlaying) {
+            backgroundMusicRef.current.currentTime = currentTime;
+            backgroundMusicRef.current.play().catch(console.error);
+          }
+        }, 100);
+      }
     };
 
-    // Находим кнопку по классу или ID
-    const ageButton = document.querySelector('.age-confirm-button');
-    if (ageButton) {
-      ageButton.addEventListener('click', handleAgeConfirm);
-    }
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    window.addEventListener('routeChangeStart', handleRouteChange);
+    window.addEventListener('routeChangeComplete', handleRouteChange);
     
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
-      const ageButton = document.querySelector('.age-confirm-button');
-      if (ageButton) {
-        ageButton.removeEventListener('click', handleAgeConfirm);
-      }
+      window.removeEventListener('routeChangeStart', handleRouteChange);
+      window.removeEventListener('routeChangeComplete', handleRouteChange);
     };
-  }, [checkSystemAudioState, isMuted, unlockAudio]);
+  }, [checkSystemAudioState, isMuted]);
   
   // Обновляем toggleMute
   const toggleMute = useCallback(() => {

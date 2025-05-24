@@ -77,8 +77,16 @@ export async function POST(request: Request): Promise<NextResponse> {
       if (walletAddress && walletAddress.length >= 48) { // Минимальная длина TON адреса
         user.walletAddress = walletAddress;
         console.log(`[API user-data/update] Обновлен адрес кошелька для пользователя ${telegramId}: ${walletAddress}`);
+      } else if (walletAddress === '') {
+        // Если адрес пустой, очищаем его в БД
+        user.walletAddress = '';
+        console.log(`[API user-data/update] Очищен адрес кошелька для пользователя ${telegramId}`);
       } else {
         console.warn(`[API user-data/update] Получен некорректный адрес кошелька: ${walletAddress}`);
+        return NextResponse.json(
+          { success: false, error: 'Некорректный формат адреса кошелька' },
+          { status: 400 }
+        );
       }
     }
     if (userData.locale !== undefined) {

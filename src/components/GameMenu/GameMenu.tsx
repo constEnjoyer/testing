@@ -284,65 +284,25 @@ export const GameMenu = () => {
   }, []);
 
   // Обновляем handleNavigate для поддержки режимов
-  const handleNavigate = useCallback((screen: ScreenType, mode?: GameMode) => {
-    playClickSound();
-    closeAllModals();
+  const handleNavigate = useCallback((screen: ScreenType) => {
+    // Очищаем предыдущее состояние перед навигацией
+    setShowTransition(false);
+    setIsHypnoMode(false);
+    setIsCleanMode(false);
+    
+    // Сбрасываем все модальные окна
+    setIsTicketModalOpen(false);
+    setIsExchangeModalOpen(false);
+    setIsHistoryModalOpen(false);
     
     // Обновляем активный экран
     setActiveScreen(screen);
     
-    // Для совместимости с существующей логикой устанавливаем старые флаги
-    setIsGameRoomActive(screen === ScreenType.GAME_ROOM);
-    setIsExchangeActive(screen === ScreenType.EXCHANGE);
-    setIsHistoryActive(screen === ScreenType.HISTORY);
+    // Сохраняем состояние в localStorage
+    saveToLocalStorage(STORAGE_KEYS.ACTIVE_SCREEN, screen);
     
-    // Обрабатываем специфичные действия в зависимости от выбранного экрана
-    switch (screen) {
-      case ScreenType.HOME:
-        // Просто остаемся на главном экране
-        break;
-        
-      case ScreenType.TICKETS:
-        // Открываем модальное окно покупки билетов
-        setIsTicketModalOpen(true);
-        break;
-        
-      case ScreenType.EXCHANGE:
-        // Открываем модальное окно обмена
-        setIsExchangeModalOpen(true);
-        break;
-        
-      case ScreenType.HISTORY:
-        // Открываем модальное окно истории
-        setIsHistoryModalOpen(true);
-        break;
-        
-      case ScreenType.GAME_ROOM:
-        if (mode) {
-          setGameMode(mode);
-        }
-        // Сохраняем состояние и переходим в игровую комнату
-        saveToSessionStorage(STORAGE_KEYS.HAS_VISITED_GAME_ROOM, 'true');
-        
-        try {
-          const menuState = {
-            balance: balanceState,
-            isGameRoomActive: true,
-            isExchangeActive: false,
-            isHistoryActive: false,
-            gameMode: mode || gameMode // Сохраняем выбранный режим
-          };
-          saveToLocalStorage(STORAGE_KEYS.MENU_STATE, menuState);
-        } catch (error) {
-          console.error('Ошибка при сохранении состояния меню:', error);
-        }
-        
-        // Показываем анимацию перехода
-        setShowTransition(true);
-        console.log('Переход в игровую комнату без перезагрузки страницы, режим:', mode || gameMode);
-        break;
-    }
-  }, [playClickSound, closeAllModals, balanceState, gameMode]);
+    console.log('[GameMenu] Навигация к экрану:', screen);
+  }, []);
 
   // Для совместимости с существующим кодом оставляем отдельные обработчики,
   // но переписываем их через новый универсальный обработчик
@@ -484,25 +444,21 @@ export const GameMenu = () => {
   }, [playClickSound, isHypnoMode]);
   
   // Обновляем обработчик для кнопки домой
-  const handleHomeClick = React.useCallback(() => {
-    playClickSound();
+  const handleHomeClick = useCallback(() => {
+    console.log('[GameMenu] Обработка клика по кнопке ДОМОЙ');
     
-    // Если уже находимся на домашнем экране, активируем чистый режим
-    if (activeScreen === ScreenType.HOME && !isCleanMode) {
-      closeAllModals();
-      toggleCleanMode();
-      return;
-    }
+    // Очищаем все состояния
+    setShowTransition(false);
+    setIsHypnoMode(false);
+    setIsCleanMode(false);
+    setActiveScreen(ScreenType.HOME);
     
-    // Если мы в чистом режиме, просто выходим из него
-    if (isCleanMode) {
-      toggleCleanMode();
-      return;
-    }
+    // Принудительно очищаем историю навигации
+    window.history.pushState({}, '', window.location.pathname);
     
-    // Стандартное поведение - переход на домашний экран
-    handleNavigate(ScreenType.HOME);
-  }, [activeScreen, isCleanMode, toggleCleanMode, handleNavigate, playClickSound, closeAllModals]);
+    // Сохраняем состояние
+    saveToLocalStorage(STORAGE_KEYS.ACTIVE_SCREEN, ScreenType.HOME);
+  }, []);
 
   // Эффект для очистки классов при размонтировании компонента
   useEffect(() => {
@@ -517,7 +473,7 @@ export const GameMenu = () => {
 
   // Обработчик для кнопки игровой комнаты с поддержкой режимов
   const handleGameRoomClick = (mode: GameMode) => {
-    handleNavigate(ScreenType.GAME_ROOM, mode);
+    handleNavigate(ScreenType.GAME_ROOM);
   };
 
   return (

@@ -5,26 +5,29 @@
 // Константы для ключей хранилища (чтобы не разбрасывать строковые литералы по коду)
 export const STORAGE_KEYS = {
   // Локализация
-  APP_LOCALE: 'app-locale',
-  HANDLING_LOCALE: 'handling-locale',
+  APP_LOCALE: 'app_locale',
+  HANDLING_LOCALE: 'handling_locale',
   
   // Пользовательские данные
-  TELEGRAM_USER_ID: 'telegram-user-id',
-  USER_DATA: 'user-data',
+  TELEGRAM_USER_ID: 'telegram_user_id',
+  USER_DATA: 'user_data',
   
   // Реферальная система
   REFERRAL_PARAM: 'referral_param',
   REFERRAL_PROCESSED: 'referral_processed',
   
   // Состояние интерфейса
-  MENU_STATE: 'menuState',
-  HAS_VISITED_GAME_ROOM: 'hasVisitedGameRoom',
+  MENU_STATE: 'menu_state',
+  HAS_VISITED_GAME_ROOM: 'has_visited_game_room',
   
   // Настройки звука
-  SOUND_MUTED: 'sound-muted',
+  SOUND_MUTED: 'sound_muted',
   
   // Настройки окружения
-  ENV_MOCKED: 'env-mocked'
+  ENV_MOCKED: 'env_mocked',
+  
+  // Добавляем новый ключ
+  ACTIVE_SCREEN: 'active_screen'
 };
 
 /**
