@@ -189,12 +189,10 @@ export function GlobalSound() {
           const unlockPromises = audioElementsRef.current.map(async (audio) => {
             if (audio) {
               try {
-                // Устанавливаем атрибуты для работы в фоне
                 audio.setAttribute('playsinline', '');
                 audio.setAttribute('webkit-playsinline', '');
                 audio.setAttribute('background', 'true');
                 
-                // Разблокируем
                 audio.muted = true;
                 await audio.play();
                 audio.pause();
@@ -217,16 +215,10 @@ export function GlobalSound() {
             setIsAudioUnlocked(true);
             hasInteractedRef.current = true;
 
-            // После разблокировки сначала запускаем фоновую музыку
+            // После разблокировки запускаем фоновую музыку
             if (backgroundMusicRef.current && !isMuted) {
-              console.log('[Root] 🎵 Запуск фоновой музыки');
+              console.log('[Root] 🎵 Запуск фоновой музыки после разблокировки');
               await backgroundMusicRef.current.play();
-              
-              // После запуска фоновой музыки запускаем intro
-              if (introSoundRef.current) {
-                console.log('[Root] 🎵 Воспроизведение интро');
-                await introSoundRef.current.play();
-              }
             }
           }
         } catch (e) {
@@ -234,13 +226,90 @@ export function GlobalSound() {
         }
       };
 
-      // Запускаем разблокировку сразу для кнопки 18+
       forceUnlock();
-
     } catch (error) {
       console.error('[Root] ❌ Критическая ошибка при разблокировке аудио:', error);
     }
   }, [deviceInfo, isAudioUnlocked, isMuted]);
+
+  // Одноразовая инициализация аудио
+  useEffect(() => {
+    if (typeof Audio !== 'undefined' && !musicInitializedRef.current && deviceInfo) {
+      musicInitializedRef.current = true;
+      console.log('[Root] 🎵 Инициализация аудио системы');
+      
+      // Используем статический экземпляр для фоновой музыки
+      backgroundMusicRef.current = staticBackgroundMusic;
+      
+      // Создаем остальные звуки
+      clickSoundRef.current = createAudio('/sounds/click.mp3', { volume: 0.5 });
+      introSoundRef.current = createAudio('/sounds/introsound.mp3', { volume: 0.5 });
+      winSoundRef.current = createAudio('/sounds/win.mp3', { volume: 0.6 });
+      loseSoundRef.current = createAudio('/sounds/lose.mp3', { volume: 0.6 });
+      wheelSpinSoundRef.current = createAudio('/sounds/wheel-spin.mp3', { volume: 0.5, loop: true });
+      
+      // Создаем звук для кредо
+      const currentLang = getFromLocalStorage<'ru' | 'en'>(STORAGE_KEYS.APP_LOCALE, 'ru');
+      const credoSoundFile = currentLang === 'en' ? '/sounds/credoen.mp3' : '/sounds/credoru.mp3';
+      credoSoundRef.current = createAudio(credoSoundFile, { volume: 0.5 });
+
+      // Инициализация X10 звуков
+      x10CombineSoundRef.current = createAudio('/sounds/combine.mp3', { volume: 0.5 });
+      x10WheelAppearSoundRef.current = createAudio('/sounds/appear.mp3', { volume: 0.5 });
+      x10WheelSpinSoundRef.current = createAudio('/sounds/x10-spin-wheel.mp3', { volume: 0.5, loop: true });
+      x10WheelDisappearSoundRef.current = createAudio('/sounds/disappear.mp3', { volume: 0.5 });
+      x10WinSoundRef.current = createAudio('/sounds/win.mp3', { volume: 0.6 });
+      x10LoseSoundRef.current = createAudio('/sounds/lose.mp3', { volume: 0.6 });
+
+      // Проверяем все звуки
+      console.log('[Root] 🔍 Проверка звуковых файлов...');
+      audioElementsRef.current.forEach((audio, index) => {
+        if (audio) {
+          audio.load();
+          console.log(`[Root] ✅ Звук ${index + 1} загружен:`, audio.src);
+        }
+      });
+
+      // Автоматически запускаем фоновую музыку
+      setTimeout(() => {
+        if (backgroundMusicRef.current && !isMuted) {
+          console.log('[Root] 🎵 Автозапуск фоновой музыки');
+          backgroundMusicRef.current.play().catch(err => {
+            console.error('[Root] Ошибка автозапуска фоновой музыки:', err);
+            // Пробуем разблокировать и запустить снова
+            unlockAudio();
+            setTimeout(() => {
+              if (backgroundMusicRef.current) {
+                backgroundMusicRef.current.play().catch(console.error);
+              }
+            }, 1000);
+          });
+        }
+      }, 1000);
+    }
+  }, [deviceInfo, staticBackgroundMusic, createAudio, isMuted, unlockAudio]);
+
+  // Добавляем эффект для автозапуска музыки при первом взаимодействии
+  useEffect(() => {
+    const handleFirstInteraction = () => {
+      if (!hasInteractedRef.current && backgroundMusicRef.current && !isMuted) {
+        console.log('[Root] 🎵 Запуск музыки после первого взаимодействия');
+        backgroundMusicRef.current.play().catch(console.error);
+        hasInteractedRef.current = true;
+      }
+    };
+
+    // Слушаем различные события взаимодействия
+    window.addEventListener('click', handleFirstInteraction);
+    window.addEventListener('touchstart', handleFirstInteraction);
+    window.addEventListener('keydown', handleFirstInteraction);
+
+    return () => {
+      window.removeEventListener('click', handleFirstInteraction);
+      window.removeEventListener('touchstart', handleFirstInteraction);
+      window.removeEventListener('keydown', handleFirstInteraction);
+    };
+  }, [isMuted]);
 
   // Добавляем состояние для отслеживания системного звука
   const [systemAudioState, setSystemAudioState] = useState<{
@@ -368,46 +437,6 @@ export function GlobalSound() {
       }
     };
   }, [checkSystemAudioState]);
-
-  // Одноразовая инициализация аудио
-  useEffect(() => {
-    if (typeof Audio !== 'undefined' && !musicInitializedRef.current && deviceInfo) {
-      musicInitializedRef.current = true;
-      console.log('[Root] 🎵 Инициализация аудио системы');
-      
-      // Используем статический экземпляр для фоновой музыки
-      backgroundMusicRef.current = staticBackgroundMusic;
-      
-      // Создаем остальные звуки
-      clickSoundRef.current = createAudio('/sounds/click.mp3', { volume: 0.5 });
-      introSoundRef.current = createAudio('/sounds/introsound.mp3', { volume: 0.5 });
-      winSoundRef.current = createAudio('/sounds/win.mp3', { volume: 0.6 });
-      loseSoundRef.current = createAudio('/sounds/lose.mp3', { volume: 0.6 });
-      wheelSpinSoundRef.current = createAudio('/sounds/wheel-spin.mp3', { volume: 0.5, loop: true });
-      
-      // Создаем звук для кредо
-      const currentLang = getFromLocalStorage<'ru' | 'en'>(STORAGE_KEYS.APP_LOCALE, 'ru');
-      const credoSoundFile = currentLang === 'en' ? '/sounds/credoen.mp3' : '/sounds/credoru.mp3';
-      credoSoundRef.current = createAudio(credoSoundFile, { volume: 0.5 });
-
-      // Инициализация X10 звуков
-      x10CombineSoundRef.current = createAudio('/sounds/combine.mp3', { volume: 0.5 });
-      x10WheelAppearSoundRef.current = createAudio('/sounds/appear.mp3', { volume: 0.5 });
-      x10WheelSpinSoundRef.current = createAudio('/sounds/x10-spin-wheel.mp3', { volume: 0.5, loop: true });
-      x10WheelDisappearSoundRef.current = createAudio('/sounds/disappear.mp3', { volume: 0.5 });
-      x10WinSoundRef.current = createAudio('/sounds/win.mp3', { volume: 0.6 });
-      x10LoseSoundRef.current = createAudio('/sounds/lose.mp3', { volume: 0.6 });
-
-      // Проверяем все звуки
-      console.log('[Root] 🔍 Проверка звуковых файлов...');
-      audioElementsRef.current.forEach((audio, index) => {
-        if (audio) {
-          audio.load();
-          console.log(`[Root] ✅ Звук ${index + 1} загружен:`, audio.src);
-        }
-      });
-    }
-  }, [deviceInfo, staticBackgroundMusic, createAudio]);
   
   // Обновляем обработчик видимости страницы
   useEffect(() => {

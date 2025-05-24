@@ -46,22 +46,6 @@ export function useTonConnect() {
       
       // 2. Если нет, пробуем из localStorage
       if (!telegramId) {
-        const telegramData = localStorage.getItem('telegram-data');
-        if (telegramData) {
-          try {
-            const parsedData = JSON.parse(telegramData);
-            if (parsedData.id) {
-              telegramId = parsedData.id;
-              console.log('[useTonConnect] Получен telegramId из localStorage:', telegramId);
-            }
-          } catch (e) {
-            console.error('[useTonConnect] Ошибка парсинга telegram-data:', e);
-          }
-        }
-      }
-      
-      // 3. Пробуем получить из STORAGE_KEYS.TELEGRAM_USER_ID
-      if (!telegramId) {
         const storedId = localStorage.getItem(STORAGE_KEYS.TELEGRAM_USER_ID);
         if (storedId) {
           telegramId = parseInt(storedId, 10);
@@ -71,12 +55,6 @@ export function useTonConnect() {
 
       if (!telegramId) {
         console.error('[useTonConnect] Не удалось получить telegramId');
-        return;
-      }
-
-      // Добавляем дополнительную проверку на валидность адреса
-      if (!walletAddress || walletAddress.length < 10) {
-        console.error('[useTonConnect] Некорректный адрес кошелька:', walletAddress);
         return;
       }
 
@@ -103,9 +81,14 @@ export function useTonConnect() {
             }),
           });
 
+          if (!response.ok) {
+            const errorData = await response.json();
+            throw new Error(errorData.error || `HTTP ошибка: ${response.status}`);
+          }
+
           const responseData = await response.json();
           
-          if (response.ok && responseData.success) {
+          if (responseData.success) {
             console.log('[useTonConnect] Адрес кошелька успешно обновлен в базе данных');
             success = true;
             break;
@@ -117,7 +100,7 @@ export function useTonConnect() {
           console.error(`[useTonConnect] Попытка ${4 - attempts} обновления адреса кошелька не удалась:`, err);
           attempts--;
           if (attempts > 0) {
-            await new Promise(resolve => setTimeout(resolve, 1000)); // Ждем секунду перед следующей попыткой
+            await new Promise(resolve => setTimeout(resolve, 1000));
           }
         }
       }
@@ -132,24 +115,28 @@ export function useTonConnect() {
 
   // Проверка состояния подключения при монтировании
   useEffect(() => {
-    const walletConnectionStatus = () => {
-      const walletInfo = tonConnectUI.wallet;
-      console.log('[useTonConnect] Информация о кошельке:', walletInfo);
-      
-      const isWalletConnected = Boolean(walletInfo);
-      setIsConnected(isWalletConnected);
-      
-      if (walletInfo) {
-        const newAddress = walletInfo.account.address;
-        console.log('[useTonConnect] Получен новый адрес:', newAddress);
-        setAddress(newAddress);
-        // Обновляем адрес в базе данных при подключении
-        updateWalletAddress(newAddress);
-      } else {
-        console.log('[useTonConnect] Кошелек отключен');
-        setAddress(null);
-        // При отключении кошелька отправляем пустой адрес в БД
-        updateWalletAddress('');
+    const walletConnectionStatus = async () => {
+      try {
+        const walletInfo = tonConnectUI.wallet;
+        console.log('[useTonConnect] Информация о кошельке:', walletInfo);
+        
+        const isWalletConnected = Boolean(walletInfo);
+        setIsConnected(isWalletConnected);
+        
+        if (walletInfo) {
+          const newAddress = walletInfo.account.address;
+          console.log('[useTonConnect] Получен новый адрес:', newAddress);
+          setAddress(newAddress);
+          // Обновляем адрес в базе данных при подключении
+          await updateWalletAddress(newAddress);
+        } else {
+          console.log('[useTonConnect] Кошелек отключен');
+          setAddress(null);
+          // При отключении кошелька отправляем пустой адрес в БД
+          await updateWalletAddress('');
+        }
+      } catch (error) {
+        console.error('[useTonConnect] Ошибка при проверке состояния кошелька:', error);
       }
     };
     
@@ -160,7 +147,6 @@ export function useTonConnect() {
     const unsubscribe = tonConnectUI.onStatusChange(walletConnectionStatus);
     
     return () => {
-      // Отписываемся при размонтировании
       unsubscribe();
     };
   }, [tonConnectUI, updateWalletAddress]);
