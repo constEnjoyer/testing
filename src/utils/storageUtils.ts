@@ -27,7 +27,8 @@ export const STORAGE_KEYS = {
   ENV_MOCKED: 'env_mocked',
   
   // Добавляем новый ключ
-  ACTIVE_SCREEN: 'active_screen'
+  ACTIVE_SCREEN: 'active_screen',
+  GAME_MODE: 'game_mode'
 };
 
 /**

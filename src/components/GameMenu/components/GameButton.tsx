@@ -25,14 +25,12 @@ export function GameButton({ onClick, isCleanMode = false }: GameButtonProps) {
         <button 
           className={styles.modeButton}
           onClick={(e) => handleModeClick('x2', e)}
-          aria-label="2 игрока"
         >
           x2
         </button>
         <button 
           className={styles.modeButton}
           onClick={(e) => handleModeClick('x10', e)}
-          aria-label="10 игроков"
         >
           x10
         </button>
@@ -40,7 +38,7 @@ export function GameButton({ onClick, isCleanMode = false }: GameButtonProps) {
 
       {/* Основная кнопка */}
       <button 
-        className={styles.gameButtonLink}
+        className={styles.mainButton}
         onClick={() => setShowModeButtons(!showModeButtons)}
       >
         {t('game_room')}
@@ -49,7 +47,7 @@ export function GameButton({ onClick, isCleanMode = false }: GameButtonProps) {
           alt="Temple of Harmony"
           width={24}
           height={24}
-          className={styles.templeIcon}
+          className={styles.icon}
           priority
         />
       </button>

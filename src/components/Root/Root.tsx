@@ -347,7 +347,27 @@ export function GlobalSound() {
     };
   }, [checkSystemAudioState]);
 
-  // Одноразовая инициализация аудио
+  // Обновляем обработчик видимости страницы
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      try {
+        if (!document.hidden && backgroundMusicRef.current && !isMuted && hasInteractedRef.current) {
+          console.log('[Root] 🎵 Возобновление фоновой музыки');
+          backgroundMusicRef.current.play().catch(console.error);
+        }
+      } catch (error) {
+        console.error('[Root] Ошибка при обработке видимости:', error);
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+    };
+  }, [isMuted]);
+  
+  // Инициализация музыки
   useEffect(() => {
     if (typeof Audio !== 'undefined' && !musicInitializedRef.current && deviceInfo) {
       musicInitializedRef.current = true;
@@ -376,14 +396,6 @@ export function GlobalSound() {
       const credoSoundFile = currentLang === 'en' ? '/sounds/credoen.mp3' : '/sounds/credoru.mp3';
       credoSoundRef.current = createAudio(credoSoundFile, { volume: 0.5 });
 
-      // Инициализация X10 звуков
-      x10CombineSoundRef.current = createAudio('/sounds/combine.mp3', { volume: 0.5 });
-      x10WheelAppearSoundRef.current = createAudio('/sounds/appear.mp3', { volume: 0.5 });
-      x10WheelSpinSoundRef.current = createAudio('/sounds/x10-spin-wheel.mp3', { volume: 0.5, loop: true });
-      x10WheelDisappearSoundRef.current = createAudio('/sounds/disappear.mp3', { volume: 0.5 });
-      x10WinSoundRef.current = createAudio('/sounds/win.mp3', { volume: 0.6 });
-      x10LoseSoundRef.current = createAudio('/sounds/lose.mp3', { volume: 0.6 });
-
       // Проверяем все звуки
       console.log('[Root] 🔍 Проверка звуковых файлов...');
       audioElementsRef.current.forEach((audio, index) => {
@@ -393,52 +405,15 @@ export function GlobalSound() {
         }
       });
 
-      // Автоматически запускаем фоновую музыку
-      setTimeout(() => {
-        if (backgroundMusicRef.current && !isMuted) {
-          console.log('[Root] 🎵 Запуск фоновой музыки');
-          backgroundMusicRef.current.play().catch(err => {
-            console.error('[Root] Ошибка запуска фоновой музыки:', err);
-            // Пробуем разблокировать и запустить снова
-            unlockAudio();
-            setTimeout(() => {
-              if (backgroundMusicRef.current) {
-                backgroundMusicRef.current.play().catch(console.error);
-              }
-            }, 1000);
-          });
-        }
-      }, 1000);
+      // Запускаем фоновую музыку после загрузки
+      if (backgroundMusicRef.current && !isMuted) {
+        console.log('[Root] 🎵 Запуск фоновой музыки');
+        backgroundMusicRef.current.play().catch(err => {
+          console.error('[Root] Ошибка запуска фоновой музыки:', err);
+        });
+      }
     }
-  }, [deviceInfo, unlockAudio, createAudio, isMuted]);
-  
-  // Обновляем обработчик видимости страницы
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      if (!document.hidden && backgroundMusicRef.current && !isMuted && hasInteractedRef.current) {
-        backgroundMusicRef.current.play().catch(console.error);
-      }
-    };
-
-    // Упрощенный обработчик для роутинга Next.js
-    const handleRouteChange = () => {
-      // Сохраняем текущее состояние музыки
-      if (backgroundMusicRef.current && !backgroundMusicRef.current.paused) {
-        const currentTime = backgroundMusicRef.current.currentTime;
-        backgroundMusicRef.current.currentTime = currentTime;
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    window.addEventListener('routeChangeStart', handleRouteChange);
-    window.addEventListener('routeChangeComplete', handleRouteChange);
-    
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-      window.removeEventListener('routeChangeStart', handleRouteChange);
-      window.removeEventListener('routeChangeComplete', handleRouteChange);
-    };
-  }, [isMuted]);
+  }, [deviceInfo, createAudio, isMuted]);
   
   // Обновляем toggleMute
   const toggleMute = useCallback(() => {

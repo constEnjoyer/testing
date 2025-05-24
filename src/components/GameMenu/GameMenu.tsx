@@ -283,6 +283,27 @@ export const GameMenu = () => {
     setIsHistoryModalOpen(false);
   }, []);
 
+  // Обработчик для кнопки игровой комнаты
+  const handleGameRoomClick = useCallback((mode: GameMode) => {
+    console.log('[GameMenu] Переход в игровую комнату:', mode);
+    playClickSound();
+    
+    // Показываем анимацию перехода
+    setShowTransition(true);
+    
+    // Сохраняем режим в localStorage
+    saveToLocalStorage(STORAGE_KEYS.GAME_MODE, mode);
+    
+    // Переходим в соответствующую комнату
+    const route = mode === 'x10' ? '/game-x10' : '/game-room';
+    router.push(route);
+  }, [playClickSound, router]);
+
+  // Обработчик для завершения анимации перехода
+  const handleTransitionComplete = useCallback(() => {
+    setShowTransition(false);
+  }, []);
+
   // Обработчик для кнопки домой
   const handleHomeClick = useCallback(() => {
     console.log('[GameMenu] Обработка клика по кнопке ДОМОЙ');
@@ -301,31 +322,17 @@ export const GameMenu = () => {
     
     // Принудительно очищаем историю навигации
     window.history.pushState({}, '', window.location.pathname);
-    
-    // Сохраняем состояние
-    saveToLocalStorage(STORAGE_KEYS.ACTIVE_SCREEN, ScreenType.HOME);
   }, [playClickSound]);
 
-  // Обновляем handleNavigate для поддержки режимов
+  // Обработчик для навигации
   const handleNavigate = useCallback((screen: ScreenType) => {
     console.log('[GameMenu] Навигация к экрану:', screen);
     playClickSound();
     
-    // Очищаем предыдущее состояние перед навигацией
-    setShowTransition(false);
-    setIsHypnoMode(false);
-    setIsCleanMode(false);
-    
-    // Сбрасываем все модальные окна
-    setIsTicketModalOpen(false);
-    setIsExchangeModalOpen(false);
-    setIsHistoryModalOpen(false);
-    
-    // Обновляем активный экран
-    setActiveScreen(screen);
-    
-    // Обрабатываем специальные случаи
     switch (screen) {
+      case ScreenType.HOME:
+        handleHomeClick();
+        break;
       case ScreenType.TICKETS:
         setIsTicketModalOpen(true);
         break;
@@ -335,13 +342,7 @@ export const GameMenu = () => {
       case ScreenType.HISTORY:
         setIsHistoryModalOpen(true);
         break;
-      case ScreenType.HOME:
-        handleHomeClick();
-        break;
     }
-    
-    // Сохраняем состояние в localStorage
-    saveToLocalStorage(STORAGE_KEYS.ACTIVE_SCREEN, screen);
   }, [playClickSound, handleHomeClick]);
 
   /**
@@ -375,27 +376,6 @@ export const GameMenu = () => {
     // Показываем информационное сообщение
     console.log(`Успешно приобретено билетов!`);
   }, [fetchUserData, updateBalance]);
-
-  // Обработчик для кнопки игровой комнаты с поддержкой режимов
-  const handleGameRoomClick = (mode: GameMode) => {
-    console.log('[GameMenu] Переход в игровую комнату:', mode);
-    playClickSound();
-    
-    // Сохраняем текущий режим
-    setGameMode(mode);
-    
-    // Показываем анимацию перехода
-    setShowTransition(true);
-    
-    // Переходим в соответствующую комнату
-    const route = mode === 'x10' ? '/game-x10' : '/game-room';
-    router.push(route);
-  };
-
-  // Обработчик для завершения анимации перехода
-  const handleTransitionComplete = useCallback(() => {
-    setShowTransition(false);
-  }, []);
 
   // Обновляем обработчик для кнопки игровой комнаты
   const handleGameButtonClick = useCallback(() => {
