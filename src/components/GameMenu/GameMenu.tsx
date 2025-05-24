@@ -506,12 +506,16 @@ export const GameMenu = () => {
     handleNavigate(ScreenType.GAME_ROOM, mode);
   };
 
+  // Логируем пользователя для отладки
+  console.log('[GameMenu] user из useUser:', user);
+  console.log('[GameMenu] telegramUser из initData:', telegramUser);
+
   // Fallback для главного меню
-  if (activeScreen === ScreenType.HOME && (!user || !user.username)) {
+  if (activeScreen === ScreenType.HOME && !user) {
     return (
       <div style={{ color: 'white', textAlign: 'center', marginTop: 100 }}>
         <h2>TONOT CHANCE</h2>
-        <p>Добро пожаловать! Загрузка данных пользователя...</p>
+        <p style={{color: 'red'}}>Ошибка: не удалось получить данные пользователя Telegram.<br/>Проверьте, что вы открыли приложение из Telegram Mini App.</p>
       </div>
     );
   }
