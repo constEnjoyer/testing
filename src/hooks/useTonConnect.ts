@@ -37,10 +37,8 @@ export function useTonConnect() {
       // Получаем telegramId из localStorage
       const telegramData = localStorage.getItem('telegram-data');
       console.log('[useTonConnect] Данные из telegram-data:', telegramData);
-      
       let telegramId = telegramData ? JSON.parse(telegramData).id : null;
       console.log('[useTonConnect] Извлеченный telegramId:', telegramId);
-
       if (!telegramId) {
         console.error('[useTonConnect] Не найден telegramId в localStorage');
         // Пробуем получить из window.Telegram
@@ -53,12 +51,12 @@ export function useTonConnect() {
           return;
         }
       }
-
       console.log('[useTonConnect] Отправка запроса на обновление с данными:', {
         telegramId,
-        walletAddress
+        walletAddress,
+        walletAddressType: typeof walletAddress,
+        walletAddressLength: walletAddress?.length
       });
-
       const response = await fetch('/api/user-data/update', {
         method: 'POST',
         headers: {
@@ -69,14 +67,11 @@ export function useTonConnect() {
           walletAddress
         }),
       });
-
       const responseData = await response.json();
       console.log('[useTonConnect] Ответ от сервера:', responseData);
-
       if (!response.ok) {
         throw new Error('Failed to update wallet address');
       }
-
       console.log('[useTonConnect] Адрес кошелька успешно обновлен в базе данных');
     } catch (err) {
       console.error('[useTonConnect] Ошибка при обновлении адреса кошелька:', err);

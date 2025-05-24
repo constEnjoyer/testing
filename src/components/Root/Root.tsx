@@ -679,18 +679,20 @@ export function GlobalSound() {
   const playIntroSound = useCallback(() => {
     if (!hasInteractedRef.current) {
       console.log('[Root] 🔓 Разблокировка звука при первом взаимодействии');
-      unlockAudio();
-      return;
+      hasInteractedRef.current = true;
+      if (backgroundMusicRef.current && backgroundMusicRef.current.paused) {
+        backgroundMusicRef.current.play().catch(console.error);
+      }
+    } else {
+      // Если уже было взаимодействие, не перезапускаем музыку
+      if (backgroundMusicRef.current && backgroundMusicRef.current.paused) {
+        console.log('[Root] 🎵 Музыка на паузе, пробуем возобновить');
+        backgroundMusicRef.current.play().catch(console.error);
+      } else {
+        console.log('[Root] 🎵 Музыка уже играет, повторный запуск не требуется');
+      }
     }
-
-    // Если уже разблокировано, просто запускаем intro
-    if (introSoundRef.current && !isMuted) {
-      console.log('[Root] 🎵 Воспроизведение интро звука');
-      introSoundRef.current.play().catch(error => {
-        console.error('[Root] Ошибка воспроизведения интро звука:', error);
-      });
-    }
-  }, [unlockAudio, isMuted]);
+  }, []);
 
   const playCredoSound = useCallback(() => {
     if (!credoSoundRef.current || isMuted) return;
