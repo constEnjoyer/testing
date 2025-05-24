@@ -283,8 +283,34 @@ export const GameMenu = () => {
     setIsHistoryModalOpen(false);
   }, []);
 
+  // Обработчик для кнопки домой
+  const handleHomeClick = useCallback(() => {
+    console.log('[GameMenu] Обработка клика по кнопке ДОМОЙ');
+    playClickSound();
+    
+    // Очищаем все состояния
+    setShowTransition(false);
+    setIsHypnoMode(false);
+    setIsCleanMode(false);
+    setActiveScreen(ScreenType.HOME);
+    
+    // Закрываем все модальные окна
+    setIsTicketModalOpen(false);
+    setIsExchangeModalOpen(false);
+    setIsHistoryModalOpen(false);
+    
+    // Принудительно очищаем историю навигации
+    window.history.pushState({}, '', window.location.pathname);
+    
+    // Сохраняем состояние
+    saveToLocalStorage(STORAGE_KEYS.ACTIVE_SCREEN, ScreenType.HOME);
+  }, [playClickSound]);
+
   // Обновляем handleNavigate для поддержки режимов
   const handleNavigate = useCallback((screen: ScreenType) => {
+    console.log('[GameMenu] Навигация к экрану:', screen);
+    playClickSound();
+    
     // Очищаем предыдущее состояние перед навигацией
     setShowTransition(false);
     setIsHypnoMode(false);
@@ -298,22 +324,25 @@ export const GameMenu = () => {
     // Обновляем активный экран
     setActiveScreen(screen);
     
+    // Обрабатываем специальные случаи
+    switch (screen) {
+      case ScreenType.TICKETS:
+        setIsTicketModalOpen(true);
+        break;
+      case ScreenType.EXCHANGE:
+        setIsExchangeModalOpen(true);
+        break;
+      case ScreenType.HISTORY:
+        setIsHistoryModalOpen(true);
+        break;
+      case ScreenType.HOME:
+        handleHomeClick();
+        break;
+    }
+    
     // Сохраняем состояние в localStorage
     saveToLocalStorage(STORAGE_KEYS.ACTIVE_SCREEN, screen);
-    
-    console.log('[GameMenu] Навигация к экрану:', screen);
-  }, []);
-
-  // Для совместимости с существующим кодом оставляем отдельные обработчики,
-  // но переписываем их через новый универсальный обработчик
-  const openTicketModal = React.useCallback(() => {
-    handleNavigate(ScreenType.TICKETS);
-  }, [handleNavigate]);
-
-  const closeTicketModal = React.useCallback(() => {
-    playClickSound();
-    setIsTicketModalOpen(false);
-  }, [playClickSound]);
+  }, [playClickSound, handleHomeClick]);
 
   /**
    * Обработчик успешной покупки билетов
@@ -346,18 +375,33 @@ export const GameMenu = () => {
     // Показываем информационное сообщение
     console.log(`Успешно приобретено билетов!`);
   }, [fetchUserData, updateBalance]);
-  
-  // Обновленный обработчик для кнопки игры
+
+  // Обновляем обработчик для кнопки игровой комнаты
   const handleGameButtonClick = useCallback(() => {
-    if (playClickSound) playClickSound();
-    
     console.log('[GameMenu] Запуск перехода в игровую комнату');
+    playClickSound();
     
     // Показываем анимацию перехода
     setShowTransition(true);
   }, [playClickSound]);
   
-  // Обработчик завершения анимации перехода
+  // Обработчики для модальных окон
+  const handleCloseTicketModal = useCallback(() => {
+    playClickSound();
+    setIsTicketModalOpen(false);
+  }, [playClickSound]);
+
+  const handleCloseExchangeModal = useCallback(() => {
+    playClickSound();
+    setIsExchangeModalOpen(false);
+  }, [playClickSound]);
+
+  const handleCloseHistoryModal = useCallback(() => {
+    playClickSound();
+    setIsHistoryModalOpen(false);
+  }, [playClickSound]);
+
+  // Обработчик для завершения анимации перехода
   const handleTransitionComplete = useCallback(() => {
     console.log('[GameMenu] Завершение перехода в игровую комнату');
     
@@ -386,33 +430,28 @@ export const GameMenu = () => {
       window.location.href = gameMode === 'x10' ? '/game-x10' : '/game-room';
     }
   }, [router, balanceState, isGameRoomActive, isExchangeActive, isHistoryActive, gameMode]);
-  
-  const handleCloseExchangeModal = React.useCallback(() => {
-    setIsExchangeModalOpen(false);
-    playClickSound();
-  }, [playClickSound]);
-  
-  const handleCloseHistoryModal = React.useCallback(() => {
-    setIsHistoryModalOpen(false);
-    playClickSound();
-  }, [playClickSound]);
-  
-  const handleExchangeSuccess = useCallback((type: 'exchange' | 'withdraw') => {
-    // Закрываем модальное окно
-    setIsExchangeModalOpen(false);
-    
-    // Обновляем данные пользователя после успешной операции
-    fetchUserData();
-    
-    // Воспроизводим звук успешного действия
-    playClickSound();
-    
-    // Показываем уведомление о успехе только в консоли
-    console.log(type === 'exchange' 
-      ? t('messages.exchange_tonot_success', {tonot: '1000', ton: '0.00000001'})
-      : t('messages.withdraw_success', {amount: '0.00000001'})
-    );
-  }, [fetchUserData, playClickSound, t]);
+
+  // Эффект для инициализации меню при монтировании
+  useEffect(() => {
+    const initializeMenu = async () => {
+      try {
+        // Восстанавливаем состояние из localStorage
+        const savedScreen = getFromLocalStorage<ScreenType>(STORAGE_KEYS.ACTIVE_SCREEN, ScreenType.HOME);
+        setActiveScreen(savedScreen);
+
+        // Загружаем данные пользователя
+        if (telegramUser?.id) {
+          await fetchUserData();
+        }
+
+        console.log('[GameMenu] Меню инициализировано:', { savedScreen });
+      } catch (error) {
+        console.error('[GameMenu] Ошибка при инициализации меню:', error);
+      }
+    };
+
+    initializeMenu();
+  }, [telegramUser?.id, fetchUserData]);
 
   // Функция для переключения гипно-режима
   const toggleHypnoMode = useCallback(() => {
@@ -443,23 +482,6 @@ export const GameMenu = () => {
     }
   }, [playClickSound, isHypnoMode]);
   
-  // Обновляем обработчик для кнопки домой
-  const handleHomeClick = useCallback(() => {
-    console.log('[GameMenu] Обработка клика по кнопке ДОМОЙ');
-    
-    // Очищаем все состояния
-    setShowTransition(false);
-    setIsHypnoMode(false);
-    setIsCleanMode(false);
-    setActiveScreen(ScreenType.HOME);
-    
-    // Принудительно очищаем историю навигации
-    window.history.pushState({}, '', window.location.pathname);
-    
-    // Сохраняем состояние
-    saveToLocalStorage(STORAGE_KEYS.ACTIVE_SCREEN, ScreenType.HOME);
-  }, []);
-
   // Эффект для очистки классов при размонтировании компонента
   useEffect(() => {
     return () => {
@@ -539,7 +561,17 @@ export const GameMenu = () => {
             </>
           )}
           
-          {/* Модальные окна остаются без изменений */}
+          {/* Обновляем модальные окна с новыми обработчиками */}
+          <TicketPurchaseModal
+            isOpen={isTicketModalOpen}
+            onClose={handleCloseTicketModal}
+            telegramId={telegramUser?.id}
+            walletAddress={tonAddress ?? undefined}
+            onPurchaseSuccess={handlePurchaseSuccess}
+            connected={isConnected}
+            sendTransaction={sendTransaction}
+          />
+          
           {isExchangeModalOpen && telegramUser && (
             <ExchangeModal
               open={isExchangeModalOpen}
@@ -549,7 +581,10 @@ export const GameMenu = () => {
                 ton: balanceState.ton || 0
               }}
               userId={telegramUser.id}
-              onSuccess={() => handleExchangeSuccess('exchange')}
+              onSuccess={() => {
+                handleCloseExchangeModal();
+                fetchUserData();
+              }}
             />
           )}
           
@@ -560,17 +595,6 @@ export const GameMenu = () => {
               userId={telegramUser.id}
             />
           )}
-          
-          {/* Модальное окно покупки билетов */}
-          <TicketPurchaseModal
-            isOpen={isTicketModalOpen}
-            onClose={closeTicketModal}
-            telegramId={telegramUser?.id}
-            walletAddress={tonAddress ?? undefined}
-            onPurchaseSuccess={handlePurchaseSuccess}
-            connected={isConnected}
-            sendTransaction={sendTransaction}
-          />
         </MenuContent>
       )}
       
@@ -584,9 +608,12 @@ export const GameMenu = () => {
         />
       )}
       
-      {/* Анимация перехода в игровую комнату */}
+      {/* Анимация перехода */}
       {showTransition && (
-        <GameTransition direction="toGame" onComplete={handleTransitionComplete} />
+        <GameTransition 
+          direction="toGame"
+          onComplete={handleTransitionComplete}
+        />
       )}
     </MenuContainer>
   );

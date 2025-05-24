@@ -1,17 +1,17 @@
 import React from 'react';
-import styles from './MenuContainer.module.css';
+import styles from './styles/MenuContainer.module.css';
 
 interface MenuContainerProps {
   children: React.ReactNode;
-  isCleanMode: boolean;
+  isCleanMode?: boolean;
 }
 
-export function MenuContainer({ children, isCleanMode }: MenuContainerProps) {
+const MenuContainer: React.FC<MenuContainerProps> = ({ children, isCleanMode }) => {
   return (
-    <div className={`${styles.gameMenuPage} ${isCleanMode ? styles.cleanMode : ''} game-menu-container`}>
+    <div className={`${styles.container} ${isCleanMode ? styles.cleanMode : ''}`}>
       {children}
     </div>
   );
-}
+};
 
 export default MenuContainer; 

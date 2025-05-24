@@ -439,19 +439,26 @@ export function GlobalSound() {
 
     // Добавляем обработчик для роутинга Next.js
     const handleRouteChange = () => {
-      // Предотвращаем перезапуск фоновой музыки при навигации
-      if (backgroundMusicRef.current && !backgroundMusicRef.current.paused) {
-        console.log('[Root] 🎵 Сохраняем состояние фоновой музыки при навигации');
-        const currentTime = backgroundMusicRef.current.currentTime;
+      // Сохраняем текущее состояние музыки
+      if (backgroundMusicRef.current) {
         const wasPlaying = !backgroundMusicRef.current.paused;
-        
-        // Восстанавливаем состояние после небольшой задержки
-        setTimeout(() => {
-          if (backgroundMusicRef.current && wasPlaying) {
-            backgroundMusicRef.current.currentTime = currentTime;
-            backgroundMusicRef.current.play().catch(console.error);
-          }
-        }, 100);
+        const currentTime = backgroundMusicRef.current.currentTime;
+        const currentVolume = backgroundMusicRef.current.volume;
+
+        // Предотвращаем остановку музыки
+        if (wasPlaying) {
+          console.log('[Root] 🎵 Сохраняем состояние музыки при навигации');
+          backgroundMusicRef.current.pause();
+          
+          // Восстанавливаем воспроизведение после короткой задержки
+          setTimeout(() => {
+            if (backgroundMusicRef.current && wasPlaying) {
+              backgroundMusicRef.current.currentTime = currentTime;
+              backgroundMusicRef.current.volume = currentVolume;
+              backgroundMusicRef.current.play().catch(console.error);
+            }
+          }, 50);
+        }
       }
     };
 
