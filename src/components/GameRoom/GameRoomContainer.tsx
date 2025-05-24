@@ -29,8 +29,7 @@ import {
   GamePhase, 
   GameStatus, 
   type GameResult,
-  type Match as GameMatch,
-  GameState as IGameState
+  type Match as GameMatch 
 } from '@/@types/game';
 import { useSocket } from '@/hooks/useSocket';
 import { useStorage, STORAGE_KEYS } from '@/hooks/useStorage';
@@ -500,47 +499,6 @@ const GameRoomContainer: React.FC = () => {
     gameState,
     updateGameState
   ]);
-
-  // Эффект для очистки состояния при размонтировании
-  useEffect(() => {
-    // Очищаем состояние при монтировании
-    const clearGameState = () => {
-      console.log('[GameRoom] Очистка состояния игры');
-      resetGameState();
-      updateGameState({ phase: GamePhase.WAITING });
-      setModalState({
-        tickets: false,
-        exchange: false,
-        history: false,
-        menuTransition: false,
-        reset: false,
-        resetGame: false
-      });
-      setError(null);
-      setIsLoading(false);
-    };
-
-    // Очищаем состояние при монтировании
-    clearGameState();
-
-    // Очищаем состояние при размонтировании
-    return () => {
-      clearGameState();
-      // Очищаем сохраненное состояние
-      setSavedGameRoomState({} as GameRoomSavedState);
-    };
-  }, [resetGameState, updateGameState, setSavedGameRoomState]);
-
-  // Обработчик ошибок
-  useEffect(() => {
-    if (gameError) {
-      console.error('[GameRoom] Ошибка игры:', gameError);
-      setError(gameError);
-      // Очищаем состояние при ошибке
-      resetGameState();
-      updateGameState({ phase: GamePhase.WAITING });
-    }
-  }, [gameError, resetGameState, updateGameState]);
 
   return (
     <div className={styles.container}>

@@ -12,8 +12,11 @@ export function GameButton({ onClick, isCleanMode = false }: GameButtonProps) {
   const t = useTranslations('i18n');
   const [showModeButtons, setShowModeButtons] = useState(false);
 
-  const handleModeClick = (mode: 'x2' | 'x10', e: React.MouseEvent) => {
-    e.stopPropagation(); // Предотвращаем всплытие события
+  const handleMainButtonClick = () => {
+    setShowModeButtons(!showModeButtons);
+  };
+
+  const handleModeClick = (mode: 'x2' | 'x10') => {
     onClick(mode);
     setShowModeButtons(false);
   };
@@ -24,13 +27,15 @@ export function GameButton({ onClick, isCleanMode = false }: GameButtonProps) {
       <div className={`${styles.modeButtons} ${showModeButtons ? styles.visible : ''}`}>
         <button 
           className={styles.modeButton}
-          onClick={(e) => handleModeClick('x2', e)}
+          onClick={() => handleModeClick('x2')}
+          aria-label="2 игрока"
         >
           x2
         </button>
         <button 
           className={styles.modeButton}
-          onClick={(e) => handleModeClick('x10', e)}
+          onClick={() => handleModeClick('x10')}
+          aria-label="10 игроков"
         >
           x10
         </button>
@@ -38,8 +43,8 @@ export function GameButton({ onClick, isCleanMode = false }: GameButtonProps) {
 
       {/* Основная кнопка */}
       <button 
-        className={styles.mainButton}
-        onClick={() => setShowModeButtons(!showModeButtons)}
+        className={styles.gameButtonLink}
+        onClick={handleMainButtonClick}
       >
         {t('game_room')}
         <Image
@@ -47,7 +52,7 @@ export function GameButton({ onClick, isCleanMode = false }: GameButtonProps) {
           alt="Temple of Harmony"
           width={24}
           height={24}
-          className={styles.icon}
+          className={styles.templeIcon}
           priority
         />
       </button>

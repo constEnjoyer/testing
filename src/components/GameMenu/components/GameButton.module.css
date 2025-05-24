@@ -1,84 +1,27 @@
 .gameButton {
-    position: relative;
+    margin-top: 20px;
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
     max-width: 300px;
-    margin: 0 auto;
+    position: relative;
+    transform: scale(1);
+    transition: all 0.3s ease;
+    animation: button-pulse 2s infinite ease-in-out;
 }
 
 .gameButtonCleanMode {
-    composes: gameButton;
-    opacity: 0;
-    pointer-events: none;
-}
-
-.mainButton {
+    margin-top: 10px;
     width: 100%;
-    padding: 15px;
-    background: linear-gradient(45deg, #1a1a1a, #333);
-    border: 2px solid #444;
-    border-radius: 10px;
-    color: white;
-    font-size: 18px;
     display: flex;
+    justify-content: center;
     align-items: center;
-    justify-content: center;
-    gap: 10px;
+    max-width: 300px;
+    position: relative;
+    transform: scale(0.8);
     transition: all 0.3s ease;
-    cursor: pointer;
-}
-
-.mainButton:active {
-    transform: scale(0.98);
-}
-
-.icon {
-    width: 24px;
-    height: 24px;
-    transition: transform 0.3s ease;
-}
-
-.mainButton:hover .icon {
-    transform: rotate(180deg);
-}
-
-.modeButtons {
-    position: absolute;
-    top: -70px;
-    left: 0;
-    right: 0;
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    opacity: 0;
-    transform: translateY(20px);
-    transition: all 0.3s ease;
-    pointer-events: none;
-}
-
-.modeButtons.visible {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
-}
-
-.modeButton {
-    padding: 10px 20px;
-    background: linear-gradient(45deg, #2a2a2a, #444);
-    border: 2px solid #555;
-    border-radius: 8px;
-    color: white;
-    font-size: 16px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-}
-
-.modeButton:hover {
-    background: linear-gradient(45deg, #333, #555);
-    transform: translateY(-2px);
-}
-
-.modeButton:active {
-    transform: scale(0.95);
+    animation: button-pulse 2s infinite ease-in-out;
 }
 
 .gameButtonLink {
@@ -145,5 +88,69 @@
     .templeIcon {
         width: 20px;
         height: 20px;
+    }
+}
+
+
+/* Стили для контейнера дополнительных кнопок */
+
+.modeButtons {
+    position: absolute;
+    top: -80px;
+    left: 50%;
+    transform: translateX(-50%);
+    display: flex;
+    gap: 20px;
+    opacity: 0;
+    visibility: hidden;
+    transition: all 0.3s ease;
+}
+
+.modeButtons.visible {
+    opacity: 1;
+    visibility: visible;
+    top: -60px;
+}
+
+
+/* Стили для кнопок x2 и x10 */
+
+.modeButton {
+    width: 50px;
+    height: 50px;
+    border-radius: 50%;
+    background: linear-gradient(45deg, rgba(255, 0, 255, 0.8), rgba(0, 191, 255, 0.8));
+    border: none;
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    box-shadow: 0 0 15px rgba(255, 0, 255, 0.3);
+    transition: all 0.3s ease;
+    transform: scale(0);
+    animation: mode-button-appear 0.3s forwards;
+}
+
+.modeButton:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 20px rgba(255, 0, 255, 0.5);
+}
+
+.modeButton:active {
+    transform: scale(0.95);
+}
+
+
+/* Анимация появления кнопок */
+
+@keyframes mode-button-appear {
+    0% {
+        transform: scale(0) translateY(20px);
+    }
+    100% {
+        transform: scale(1) translateY(0);
     }
 }

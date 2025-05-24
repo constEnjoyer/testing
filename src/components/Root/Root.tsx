@@ -347,27 +347,7 @@ export function GlobalSound() {
     };
   }, [checkSystemAudioState]);
 
-  // Обновляем обработчик видимости страницы
-  useEffect(() => {
-    const handleVisibilityChange = () => {
-      try {
-        if (!document.hidden && backgroundMusicRef.current && !isMuted && hasInteractedRef.current) {
-          console.log('[Root] 🎵 Возобновление фоновой музыки');
-          backgroundMusicRef.current.play().catch(console.error);
-        }
-      } catch (error) {
-        console.error('[Root] Ошибка при обработке видимости:', error);
-      }
-    };
-
-    document.addEventListener('visibilitychange', handleVisibilityChange);
-    
-    return () => {
-      document.removeEventListener('visibilitychange', handleVisibilityChange);
-    };
-  }, [isMuted]);
-  
-  // Инициализация музыки
+  // Одноразовая инициализация аудио
   useEffect(() => {
     if (typeof Audio !== 'undefined' && !musicInitializedRef.current && deviceInfo) {
       musicInitializedRef.current = true;
@@ -396,6 +376,14 @@ export function GlobalSound() {
       const credoSoundFile = currentLang === 'en' ? '/sounds/credoen.mp3' : '/sounds/credoru.mp3';
       credoSoundRef.current = createAudio(credoSoundFile, { volume: 0.5 });
 
+      // Инициализация X10 звуков
+      x10CombineSoundRef.current = createAudio('/sounds/combine.mp3', { volume: 0.5 });
+      x10WheelAppearSoundRef.current = createAudio('/sounds/appear.mp3', { volume: 0.5 });
+      x10WheelSpinSoundRef.current = createAudio('/sounds/x10-spin-wheel.mp3', { volume: 0.5, loop: true });
+      x10WheelDisappearSoundRef.current = createAudio('/sounds/disappear.mp3', { volume: 0.5 });
+      x10WinSoundRef.current = createAudio('/sounds/win.mp3', { volume: 0.6 });
+      x10LoseSoundRef.current = createAudio('/sounds/lose.mp3', { volume: 0.6 });
+
       // Проверяем все звуки
       console.log('[Root] 🔍 Проверка звуковых файлов...');
       audioElementsRef.current.forEach((audio, index) => {
@@ -405,15 +393,77 @@ export function GlobalSound() {
         }
       });
 
-      // Запускаем фоновую музыку после загрузки
-      if (backgroundMusicRef.current && !isMuted) {
-        console.log('[Root] 🎵 Запуск фоновой музыки');
-        backgroundMusicRef.current.play().catch(err => {
-          console.error('[Root] Ошибка запуска фоновой музыки:', err);
-        });
-      }
+      // Автоматически запускаем фоновую музыку
+      setTimeout(() => {
+        if (backgroundMusicRef.current && !isMuted) {
+          console.log('[Root] 🎵 Запуск фоновой музыки');
+          backgroundMusicRef.current.play().catch(err => {
+            console.error('[Root] Ошибка запуска фоновой музыки:', err);
+            // Пробуем разблокировать и запустить снова
+            unlockAudio();
+            setTimeout(() => {
+              if (backgroundMusicRef.current) {
+                backgroundMusicRef.current.play().catch(console.error);
+              }
+            }, 1000);
+          });
+        }
+      }, 1000);
     }
-  }, [deviceInfo, createAudio, isMuted]);
+  }, [deviceInfo, unlockAudio, createAudio, isMuted]);
+  
+  // Обновляем обработчик видимости страницы
+  useEffect(() => {
+    const handleVisibilityChange = () => {
+      try {
+        // При возврате в приложение
+        if (!document.hidden) {
+          console.log('[Root] 🔄 Возврат в приложение');
+          
+          // Проверяем системный звук
+          checkSystemAudioState().then(({ isMuted: systemMuted, hasHeadphones }) => {
+            // Если не на беззвучном или есть наушники
+            if (!systemMuted || hasHeadphones) {
+              // Возобновляем фоновую музыку только если она была запущена и сейчас на паузе
+              if (backgroundMusicRef.current && !isMuted && hasInteractedRef.current && backgroundMusicRef.current.paused) {
+                console.log('[Root] 🎵 Возобновление фоновой музыки');
+                backgroundMusicRef.current.play().catch(console.error);
+              }
+            }
+          });
+        } else {
+          // При скрытии страницы ставим музыку на паузу
+          if (backgroundMusicRef.current && !backgroundMusicRef.current.paused) {
+            backgroundMusicRef.current.pause();
+          }
+        }
+      } catch (error) {
+        console.error('[Root] Ошибка при обработке видимости:', error);
+      }
+    };
+
+    document.addEventListener('visibilitychange', handleVisibilityChange);
+    
+    // Добавляем обработчик для кнопки 18+
+    const handleAgeConfirm = () => {
+      console.log('[Root] 🔓 Разблокировка звука по кнопке 18+');
+      unlockAudio();
+    };
+
+    // Находим кнопку по классу или ID
+    const ageButton = document.querySelector('.age-confirm-button');
+    if (ageButton) {
+      ageButton.addEventListener('click', handleAgeConfirm);
+    }
+    
+    return () => {
+      document.removeEventListener('visibilitychange', handleVisibilityChange);
+      const ageButton = document.querySelector('.age-confirm-button');
+      if (ageButton) {
+        ageButton.removeEventListener('click', handleAgeConfirm);
+      }
+    };
+  }, [checkSystemAudioState, isMuted, unlockAudio]);
   
   // Обновляем toggleMute
   const toggleMute = useCallback(() => {
