@@ -512,38 +512,10 @@ export const GameMenu = () => {
 
   // Fallback для главного меню
   if (activeScreen === ScreenType.HOME && !user) {
-    // Проверка: если нет Telegram Mini App, делаем редирект через JS
-    if (typeof window !== 'undefined' && !window.Telegram?.WebApp?.initDataUnsafe) {
-      setTimeout(() => {
-        window.location.href = 'https://t.me/devroomc_bot?start=webapp';
-      }, 2000); // Через 2 секунды редирект
-    }
     return (
       <div style={{ color: 'white', textAlign: 'center', marginTop: 100 }}>
         <h2>TONOT CHANCE</h2>
-        <p style={{color: 'red', fontSize: 18, marginBottom: 24}}>
-          Это приложение работает только внутри Telegram.<br/>
-          Пожалуйста, откройте его через Telegram Mini App.<br/>
-        </p>
-        <a
-          href="https://t.me/devroomc_bot?start=webapp"
-          style={{
-            display: 'inline-block',
-            background: '#229ED9',
-            color: 'white',
-            padding: '14px 32px',
-            borderRadius: 12,
-            fontSize: 20,
-            textDecoration: 'none',
-            fontWeight: 600,
-            boxShadow: '0 2px 8px rgba(34,158,217,0.2)',
-            marginTop: 16
-          }}
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Открыть в Telegram
-        </a>
+        <p>Добро пожаловать! Загрузка данных пользователя...</p>
       </div>
     );
   }
