@@ -1,6 +1,7 @@
 import { useState, useEffect, useCallback } from 'react';
 import { useTonConnectUI } from '@tonconnect/ui-react';
 import { CONFIG } from '@/lib/config';
+import { STORAGE_KEYS } from '@/utils/storageUtils';
 
 // Добавляем типы для Telegram WebApp
 declare global {
@@ -34,24 +35,49 @@ export function useTonConnect() {
   // Функция для обновления адреса кошелька в базе данных
   const updateWalletAddress = useCallback(async (walletAddress: string) => {
     try {
-      // Получаем telegramId из localStorage
-      const telegramData = localStorage.getItem('telegram-data');
-      console.log('[useTonConnect] Данные из telegram-data:', telegramData);
+      // Пытаемся получить telegramId из разных источников
+      let telegramId = null;
       
-      let telegramId = telegramData ? JSON.parse(telegramData).id : null;
-      console.log('[useTonConnect] Извлеченный telegramId:', telegramId);
+      // 1. Пробуем получить из window.Telegram.WebApp
+      if (window.Telegram?.WebApp?.initDataUnsafe?.user?.id) {
+        telegramId = window.Telegram.WebApp.initDataUnsafe.user.id;
+        console.log('[useTonConnect] Получен telegramId из WebApp:', telegramId);
+      }
+      
+      // 2. Если нет, пробуем из localStorage
+      if (!telegramId) {
+        const telegramData = localStorage.getItem('telegram-data');
+        if (telegramData) {
+          try {
+            const parsedData = JSON.parse(telegramData);
+            if (parsedData.id) {
+              telegramId = parsedData.id;
+              console.log('[useTonConnect] Получен telegramId из localStorage:', telegramId);
+            }
+          } catch (e) {
+            console.error('[useTonConnect] Ошибка парсинга telegram-data:', e);
+          }
+        }
+      }
+      
+      // 3. Пробуем получить из STORAGE_KEYS.TELEGRAM_USER_ID
+      if (!telegramId) {
+        const storedId = localStorage.getItem(STORAGE_KEYS.TELEGRAM_USER_ID);
+        if (storedId) {
+          telegramId = parseInt(storedId, 10);
+          console.log('[useTonConnect] Получен telegramId из STORAGE_KEYS:', telegramId);
+        }
+      }
 
       if (!telegramId) {
-        console.error('[useTonConnect] Не найден telegramId в localStorage');
-        // Пробуем получить из window.Telegram
-        const webAppData = window.Telegram?.WebApp?.initDataUnsafe;
-        console.log('[useTonConnect] Данные из WebApp:', webAppData);
-        if (webAppData?.user?.id) {
-          console.log('[useTonConnect] Найден id в WebApp:', webAppData.user.id);
-          telegramId = webAppData.user.id;
-        } else {
-          return;
-        }
+        console.error('[useTonConnect] Не удалось получить telegramId');
+        return;
+      }
+
+      // Добавляем дополнительную проверку на валидность адреса
+      if (!walletAddress || walletAddress.length < 10) {
+        console.error('[useTonConnect] Некорректный адрес кошелька:', walletAddress);
+        return;
       }
 
       console.log('[useTonConnect] Отправка запроса на обновление с данными:', {
@@ -59,27 +85,48 @@ export function useTonConnect() {
         walletAddress
       });
 
-      const response = await fetch('/api/user-data/update', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify({
-          telegramId,
-          walletAddress
-        }),
-      });
+      // Делаем три попытки отправки запроса
+      let attempts = 3;
+      let success = false;
+      let lastError = null;
 
-      const responseData = await response.json();
-      console.log('[useTonConnect] Ответ от сервера:', responseData);
+      while (attempts > 0 && !success) {
+        try {
+          const response = await fetch('/api/user-data/update', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify({
+              telegramId,
+              walletAddress
+            }),
+          });
 
-      if (!response.ok) {
-        throw new Error('Failed to update wallet address');
+          const responseData = await response.json();
+          
+          if (response.ok && responseData.success) {
+            console.log('[useTonConnect] Адрес кошелька успешно обновлен в базе данных');
+            success = true;
+            break;
+          } else {
+            throw new Error(responseData.error || 'Неизвестная ошибка');
+          }
+        } catch (err) {
+          lastError = err;
+          console.error(`[useTonConnect] Попытка ${4 - attempts} обновления адреса кошелька не удалась:`, err);
+          attempts--;
+          if (attempts > 0) {
+            await new Promise(resolve => setTimeout(resolve, 1000)); // Ждем секунду перед следующей попыткой
+          }
+        }
       }
 
-      console.log('[useTonConnect] Адрес кошелька успешно обновлен в базе данных');
+      if (!success && lastError) {
+        throw lastError;
+      }
     } catch (err) {
-      console.error('[useTonConnect] Ошибка при обновлении адреса кошелька:', err);
+      console.error('[useTonConnect] Критическая ошибка при обновлении адреса кошелька:', err);
     }
   }, []);
 

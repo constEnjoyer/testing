@@ -366,8 +366,21 @@ export function GlobalSound() {
       musicInitializedRef.current = true;
       console.log('[Root] 🎵 Инициализация аудио системы');
       
-      // Создаем фоновую музыку
+      // Создаем фоновую музыку с сохранением позиции
+      const savedPosition = getFromLocalStorage(STORAGE_KEYS.BACKGROUND_MUSIC_POSITION, '0');
       backgroundMusicRef.current = createAudio('/sounds/background.mp3', { volume: 0.3, loop: true });
+      if (backgroundMusicRef.current) {
+        backgroundMusicRef.current.currentTime = parseFloat(savedPosition);
+        
+        // Сохраняем позицию воспроизведения каждую секунду
+        backgroundMusicRef.current.addEventListener('timeupdate', () => {
+          if (backgroundMusicRef.current) {
+            saveToLocalStorage(STORAGE_KEYS.BACKGROUND_MUSIC_POSITION, 
+              backgroundMusicRef.current.currentTime.toString()
+            );
+          }
+        });
+      }
       
       // Создаем звук клика
       clickSoundRef.current = createAudio('/sounds/click.mp3', { volume: 0.5 });
@@ -429,24 +442,26 @@ export function GlobalSound() {
   useEffect(() => {
     const handleVisibilityChange = () => {
       try {
-        // При возврате в приложение
         if (!document.hidden) {
           console.log('[Root] 🔄 Возврат в приложение');
           
-          // Проверяем системный звук
           checkSystemAudioState().then(({ isMuted: systemMuted, hasHeadphones }) => {
-            // Если не на беззвучном или есть наушники
             if (!systemMuted || hasHeadphones) {
-              // Возобновляем фоновую музыку только если она была запущена и сейчас на паузе
-              if (backgroundMusicRef.current && !isMuted && hasInteractedRef.current && backgroundMusicRef.current.paused) {
-                console.log('[Root] 🎵 Возобновление фоновой музыки');
+              if (backgroundMusicRef.current && !isMuted && hasInteractedRef.current) {
+                // Восстанавливаем позицию воспроизведения
+                const savedPosition = getFromLocalStorage(STORAGE_KEYS.BACKGROUND_MUSIC_POSITION, '0');
+                backgroundMusicRef.current.currentTime = parseFloat(savedPosition);
+                console.log('[Root] 🎵 Возобновление фоновой музыки с позиции:', savedPosition);
                 backgroundMusicRef.current.play().catch(console.error);
               }
             }
           });
         } else {
-          // При скрытии страницы ставим музыку на паузу
+          // При скрытии страницы сохраняем позицию и ставим на паузу
           if (backgroundMusicRef.current && !backgroundMusicRef.current.paused) {
+            saveToLocalStorage(STORAGE_KEYS.BACKGROUND_MUSIC_POSITION, 
+              backgroundMusicRef.current.currentTime.toString()
+            );
             backgroundMusicRef.current.pause();
           }
         }
@@ -784,6 +799,18 @@ export function GlobalSound() {
     
     return () => {
       window.removeEventListener('app-locale-changed', handleLocaleChange as EventListener);
+    };
+  }, []);
+
+  // Очистка при размонтировании
+  useEffect(() => {
+    return () => {
+      // Сохраняем позицию воспроизведения при размонтировании
+      if (backgroundMusicRef.current) {
+        saveToLocalStorage(STORAGE_KEYS.BACKGROUND_MUSIC_POSITION, 
+          backgroundMusicRef.current.currentTime.toString()
+        );
+      }
     };
   }, []);
 

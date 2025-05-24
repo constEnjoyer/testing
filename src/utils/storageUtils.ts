@@ -22,6 +22,7 @@ export const STORAGE_KEYS = {
   
   // Настройки звука
   SOUND_MUTED: 'sound-muted',
+  BACKGROUND_MUSIC_POSITION: 'background-music-position',
   
   // Настройки окружения
   ENV_MOCKED: 'env-mocked'
