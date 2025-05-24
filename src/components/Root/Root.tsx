@@ -276,6 +276,7 @@ export function GlobalSound() {
       loop?: boolean;
       playbackRate?: number;
       maxRetries?: number;
+      forceRestart?: boolean;
     } = {}
   ) => {
     // Проверяем условия воспроизведения
@@ -297,7 +298,8 @@ export function GlobalSound() {
       volume = 0.5,
       loop = false,
       playbackRate = 1.0,
-      maxRetries = 3
+      maxRetries = 3,
+      forceRestart = false
     } = options;
 
     let currentRetry = 0;
@@ -306,10 +308,21 @@ export function GlobalSound() {
       try {
         if (!soundRef.current) return;
 
+        // Если звук уже играет и не требуется принудительный перезапуск, пропускаем
+        if (!forceRestart && !soundRef.current.paused) {
+          console.log(`[Root] 🎵 Звук ${soundName} уже воспроизводится`);
+          return;
+        }
+
         // Установка параметров без принудительной остановки
         soundRef.current.volume = deviceInfo?.isMobile ? volume * 0.8 : volume;
         soundRef.current.loop = loop;
         soundRef.current.playbackRate = playbackRate;
+
+        // Если требуется перезапуск, сначала останавливаем
+        if (forceRestart) {
+          soundRef.current.currentTime = 0;
+        }
 
         // Пробуем воспроизвести
         await soundRef.current.play();

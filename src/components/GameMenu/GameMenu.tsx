@@ -483,26 +483,17 @@ export const GameMenu = () => {
     }
   }, [playClickSound, isHypnoMode]);
   
-  // Обновляем обработчик для кнопки домой
-  const handleHomeClick = React.useCallback(() => {
-    playClickSound();
-    
-    // Если уже находимся на домашнем экране, активируем чистый режим
-    if (activeScreen === ScreenType.HOME && !isCleanMode) {
-      closeAllModals();
-      toggleCleanMode();
+  // Обновляем handleHomeClick
+  const handleHomeClick = useCallback(() => {
+    // Если мы уже на главном экране, просто игнорируем клик
+    if (activeScreen === ScreenType.HOME) {
+      playClickSound();
       return;
     }
     
-    // Если мы в чистом режиме, просто выходим из него
-    if (isCleanMode) {
-      toggleCleanMode();
-      return;
-    }
-    
-    // Стандартное поведение - переход на домашний экран
+    // В противном случае выполняем навигацию на главный экран
     handleNavigate(ScreenType.HOME);
-  }, [activeScreen, isCleanMode, toggleCleanMode, handleNavigate, playClickSound, closeAllModals]);
+  }, [activeScreen, handleNavigate, playClickSound]);
 
   // Эффект для очистки классов при размонтировании компонента
   useEffect(() => {
