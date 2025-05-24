@@ -485,10 +485,24 @@ export const GameMenu = () => {
   
   // Обновляем обработчик для кнопки домой
   const handleHomeClick = React.useCallback(() => {
-    console.log('[GameMenu] Клик по ДОМОЙ, activeScreen:', activeScreen, 'isCleanMode:', isCleanMode);
-    setIsCleanMode(false); // Всегда выключаем cleanMode при возврате домой
-    setActiveScreen(ScreenType.HOME);
-  }, [activeScreen, isCleanMode]);
+    playClickSound();
+    
+    // Если уже находимся на домашнем экране, активируем чистый режим
+    if (activeScreen === ScreenType.HOME && !isCleanMode) {
+      closeAllModals();
+      toggleCleanMode();
+      return;
+    }
+    
+    // Если мы в чистом режиме, просто выходим из него
+    if (isCleanMode) {
+      toggleCleanMode();
+      return;
+    }
+    
+    // Стандартное поведение - переход на домашний экран
+    handleNavigate(ScreenType.HOME);
+  }, [activeScreen, isCleanMode, toggleCleanMode, handleNavigate, playClickSound, closeAllModals]);
 
   // Эффект для очистки классов при размонтировании компонента
   useEffect(() => {
@@ -505,20 +519,6 @@ export const GameMenu = () => {
   const handleGameRoomClick = (mode: GameMode) => {
     handleNavigate(ScreenType.GAME_ROOM, mode);
   };
-
-  // Логируем пользователя для отладки
-  console.log('[GameMenu] user из useUser:', user);
-  console.log('[GameMenu] telegramUser из initData:', telegramUser);
-
-  // Fallback для главного меню
-  if (activeScreen === ScreenType.HOME && !user) {
-    return (
-      <div style={{ color: 'white', textAlign: 'center', marginTop: 100 }}>
-        <h2>TONOT CHANCE</h2>
-        <p>Добро пожаловать! Загрузка данных пользователя...</p>
-      </div>
-    );
-  }
 
   return (
     <MenuContainer isCleanMode={isCleanMode}>

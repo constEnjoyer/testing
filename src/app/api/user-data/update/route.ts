@@ -72,13 +72,13 @@ export async function POST(request: Request): Promise<NextResponse> {
     if (userData.tonotChanceTickets !== undefined) user.tonotChanceTickets = Number(userData.tonotChanceTickets);
     if (userData.balance !== undefined) user.balance = Number(userData.balance);
     if (userData.walletAddress !== undefined) {
+      // Проверяем, что адрес не пустой и имеет правильный формат
       const walletAddress = userData.walletAddress.trim();
-      console.log(`[API user-data/update] Получен walletAddress: '${walletAddress}', длина: ${walletAddress.length}`);
       if (walletAddress && walletAddress.length >= 48) { // Минимальная длина TON адреса
         user.walletAddress = walletAddress;
         console.log(`[API user-data/update] Обновлен адрес кошелька для пользователя ${telegramId}: ${walletAddress}`);
       } else {
-        console.warn(`[API user-data/update] Получен некорректный адрес кошелька: '${walletAddress}', длина: ${walletAddress.length}`);
+        console.warn(`[API user-data/update] Получен некорректный адрес кошелька: ${walletAddress}`);
       }
     }
     if (userData.locale !== undefined) {
