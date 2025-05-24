@@ -167,6 +167,15 @@ export function GlobalSound() {
     }
   }, []);
 
+  // Создаем статический экземпляр аудио для фоновой музыки
+  const staticBackgroundMusic = useMemo(() => {
+    if (typeof window === 'undefined') return null;
+    const audio = new Audio('/sounds/background.mp3');
+    audio.loop = true;
+    audio.volume = 0.3;
+    return audio;
+  }, []);
+
   // Оптимизируем разблокировку аудио
   const unlockAudio = useCallback(() => {
     if (isAudioUnlocked || !deviceInfo) return;
@@ -366,35 +375,14 @@ export function GlobalSound() {
       musicInitializedRef.current = true;
       console.log('[Root] 🎵 Инициализация аудио системы');
       
-      // Создаем фоновую музыку с сохранением позиции
-      const savedPosition = getFromLocalStorage(STORAGE_KEYS.BACKGROUND_MUSIC_POSITION, '0');
-      backgroundMusicRef.current = createAudio('/sounds/background.mp3', { volume: 0.3, loop: true });
-      if (backgroundMusicRef.current) {
-        backgroundMusicRef.current.currentTime = parseFloat(savedPosition);
-        
-        // Сохраняем позицию воспроизведения каждую секунду
-        backgroundMusicRef.current.addEventListener('timeupdate', () => {
-          if (backgroundMusicRef.current) {
-            saveToLocalStorage(STORAGE_KEYS.BACKGROUND_MUSIC_POSITION, 
-              backgroundMusicRef.current.currentTime.toString()
-            );
-          }
-        });
-      }
+      // Используем статический экземпляр для фоновой музыки
+      backgroundMusicRef.current = staticBackgroundMusic;
       
-      // Создаем звук клика
+      // Создаем остальные звуки
       clickSoundRef.current = createAudio('/sounds/click.mp3', { volume: 0.5 });
-      
-      // Создаем звук для интро
       introSoundRef.current = createAudio('/sounds/introsound.mp3', { volume: 0.5 });
-      
-      // Создаем звук победы
       winSoundRef.current = createAudio('/sounds/win.mp3', { volume: 0.6 });
-      
-      // Создаем звук поражения
       loseSoundRef.current = createAudio('/sounds/lose.mp3', { volume: 0.6 });
-      
-      // Создаем звук вращения колеса
       wheelSpinSoundRef.current = createAudio('/sounds/wheel-spin.mp3', { volume: 0.5, loop: true });
       
       // Создаем звук для кредо
@@ -418,25 +406,8 @@ export function GlobalSound() {
           console.log(`[Root] ✅ Звук ${index + 1} загружен:`, audio.src);
         }
       });
-
-      // Автоматически запускаем фоновую музыку
-      setTimeout(() => {
-        if (backgroundMusicRef.current && !isMuted) {
-          console.log('[Root] 🎵 Запуск фоновой музыки');
-          backgroundMusicRef.current.play().catch(err => {
-            console.error('[Root] Ошибка запуска фоновой музыки:', err);
-            // Пробуем разблокировать и запустить снова
-            unlockAudio();
-            setTimeout(() => {
-              if (backgroundMusicRef.current) {
-                backgroundMusicRef.current.play().catch(console.error);
-              }
-            }, 1000);
-          });
-        }
-      }, 1000);
     }
-  }, [deviceInfo, unlockAudio, createAudio, isMuted]);
+  }, [deviceInfo, staticBackgroundMusic, createAudio]);
   
   // Обновляем обработчик видимости страницы
   useEffect(() => {
@@ -448,20 +419,13 @@ export function GlobalSound() {
           checkSystemAudioState().then(({ isMuted: systemMuted, hasHeadphones }) => {
             if (!systemMuted || hasHeadphones) {
               if (backgroundMusicRef.current && !isMuted && hasInteractedRef.current) {
-                // Восстанавливаем позицию воспроизведения
-                const savedPosition = getFromLocalStorage(STORAGE_KEYS.BACKGROUND_MUSIC_POSITION, '0');
-                backgroundMusicRef.current.currentTime = parseFloat(savedPosition);
-                console.log('[Root] 🎵 Возобновление фоновой музыки с позиции:', savedPosition);
+                console.log('[Root] 🎵 Возобновление фоновой музыки');
                 backgroundMusicRef.current.play().catch(console.error);
               }
             }
           });
         } else {
-          // При скрытии страницы сохраняем позицию и ставим на паузу
           if (backgroundMusicRef.current && !backgroundMusicRef.current.paused) {
-            saveToLocalStorage(STORAGE_KEYS.BACKGROUND_MUSIC_POSITION, 
-              backgroundMusicRef.current.currentTime.toString()
-            );
             backgroundMusicRef.current.pause();
           }
         }
@@ -471,27 +435,10 @@ export function GlobalSound() {
     };
 
     document.addEventListener('visibilitychange', handleVisibilityChange);
-    
-    // Добавляем обработчик для кнопки 18+
-    const handleAgeConfirm = () => {
-      console.log('[Root] 🔓 Разблокировка звука по кнопке 18+');
-      unlockAudio();
-    };
-
-    // Находим кнопку по классу или ID
-    const ageButton = document.querySelector('.age-confirm-button');
-    if (ageButton) {
-      ageButton.addEventListener('click', handleAgeConfirm);
-    }
-    
     return () => {
       document.removeEventListener('visibilitychange', handleVisibilityChange);
-      const ageButton = document.querySelector('.age-confirm-button');
-      if (ageButton) {
-        ageButton.removeEventListener('click', handleAgeConfirm);
-      }
     };
-  }, [checkSystemAudioState, isMuted, unlockAudio]);
+  }, [checkSystemAudioState, isMuted]);
   
   // Обновляем toggleMute
   const toggleMute = useCallback(() => {
@@ -501,16 +448,20 @@ export function GlobalSound() {
     try {
       saveToLocalStorage(STORAGE_KEYS.SOUND_MUTED, String(newState));
       
-      // Управляем только состоянием mute
+      // Управляем только состоянием mute для всех звуков
       audioElementsRef.current.forEach(audio => {
         if (audio) {
           audio.muted = newState;
         }
       });
 
-      // Если включаем звук и фоновая музыка не играет - запускаем
-      if (!newState && backgroundMusicRef.current?.paused && hasInteractedRef.current) {
-        backgroundMusicRef.current.play().catch(console.error);
+      // Специальная обработка для фоновой музыки
+      if (backgroundMusicRef.current) {
+        if (newState) {
+          backgroundMusicRef.current.pause();
+        } else if (hasInteractedRef.current) {
+          backgroundMusicRef.current.play().catch(console.error);
+        }
       }
     } catch (e) {
       console.error('[Root] Ошибка при переключении звука:', e);

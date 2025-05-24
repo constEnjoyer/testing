@@ -72,9 +72,9 @@ export async function POST(request: Request): Promise<NextResponse> {
     if (userData.tonotChanceTickets !== undefined) user.tonotChanceTickets = Number(userData.tonotChanceTickets);
     if (userData.balance !== undefined) user.balance = Number(userData.balance);
     if (userData.walletAddress !== undefined) {
-      // Сохраняем адрес кошелька как есть, без дополнительных проверок
+      // Обновляем адрес кошелька, даже если он пустой
       user.walletAddress = userData.walletAddress;
-      console.log(`[API user-data/update] Обновлен адрес кошелька для пользователя ${telegramId}: ${userData.walletAddress}`);
+      console.log(`[API user-data/update] ${userData.walletAddress ? 'Обновлен' : 'Удален'} адрес кошелька для пользователя ${telegramId}: ${userData.walletAddress || '<пусто>'}`);
     }
     if (userData.locale !== undefined) {
       if (userData.locale === 'en' || userData.locale === 'ru') {

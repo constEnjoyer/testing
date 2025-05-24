@@ -136,7 +136,8 @@ export function useTonConnect() {
       const walletInfo = tonConnectUI.wallet;
       console.log('[useTonConnect] Информация о кошельке:', walletInfo);
       
-      setIsConnected(Boolean(walletInfo));
+      const isWalletConnected = Boolean(walletInfo);
+      setIsConnected(isWalletConnected);
       
       if (walletInfo) {
         const newAddress = walletInfo.account.address;
@@ -147,6 +148,8 @@ export function useTonConnect() {
       } else {
         console.log('[useTonConnect] Кошелек отключен');
         setAddress(null);
+        // При отключении кошелька отправляем пустой адрес в БД
+        updateWalletAddress('');
       }
     };
     
@@ -180,14 +183,19 @@ export function useTonConnect() {
   }, [tonConnectUI]);
 
   // Отключение от кошелька
-  const disconnect = useCallback(() => {
-    if (tonConnectUI.wallet) {
-      tonConnectUI.disconnect();
+  const disconnect = useCallback(async () => {
+    try {
+      if (tonConnectUI.wallet) {
+        await tonConnectUI.disconnect();
+      }
+      setIsConnected(false);
+      setAddress(null);
+      // При отключении явно отправляем пустой адрес в БД
+      await updateWalletAddress('');
+    } catch (error) {
+      console.error('[useTonConnect] Ошибка при отключении кошелька:', error);
     }
-    setIsConnected(false);
-    setAddress(null);
-    // При отключении не обновляем адрес в базе данных
-  }, [tonConnectUI]);
+  }, [tonConnectUI, updateWalletAddress]);
 
   // Отправка транзакции
   const sendTransaction = useCallback(async (amount: number, toAddress: string) => {
