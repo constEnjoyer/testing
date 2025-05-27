@@ -1,9 +1,9 @@
 {
-  "url": "https://tonot-chance.vercel.app",
+  "url": "https://coworq.site",
   "name": "TONOTCHANCE",
-  "iconUrl": "https://tonot-chance.vercel.app/images/tonot.png",
-  "termsOfUseUrl": "https://tonot-chance.vercel.app/terms",
-  "privacyPolicyUrl": "https://tonot-chance.vercel.app/privacy",
+  "iconUrl": "https://coworq.site/images/tonot.png",
+  "termsOfUseUrl": "https://coworq.site/terms",
+  "privacyPolicyUrl": "https://coworq.site/privacy",
   "manifestVersion": 2,
   "permissions": [
     "tonTransfer"
@@ -11,5 +11,5 @@
   "version": "1.0.0",
   "description": "Игра, где всегда есть шанс",
   "supportEmail": "support@tonotchance.com",
-  "redirectUrl": "https://t.me/tonotchance_bot/app"
+  "redirectUrl": "https://t.me/devroomc_bot/app"
 }

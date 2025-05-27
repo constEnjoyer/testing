@@ -1,4 +1,4 @@
-// File: C:\Users\const\Desktop\tonotchance-main\src\app\game-room\page.tsx
+// File: /root/testing/src/app/game-room/page.tsx
 import * as entry from '../../../../src/app/game-room/page.js'
 import type { ResolvingMetadata, ResolvingViewport } from 'next/dist/lib/metadata/types/metadata-interface.js'
 

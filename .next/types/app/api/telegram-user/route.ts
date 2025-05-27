@@ -1,4 +1,4 @@
-// File: C:\Users\const\Desktop\tonotchance-main\src\app\api\telegram-user\route.ts
+// File: /root/testing/src/app/api/telegram-user/route.ts
 import * as entry from '../../../../../src/app/api/telegram-user/route.js'
 import type { NextRequest } from 'next/server.js'
 
